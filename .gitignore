@@ -1,13 +1,22 @@
-*.log
-.htaccess
-sitemap.xml
-sitemap.xml.gz
-wp-config.php
-wp-content/advanced-cache.php
-wp-content/backup-db/
-wp-content/backups/
-wp-content/blogs.dir/
-wp-content/cache/
-wp-content/upgrade/
-wp-content/uploads/
-wp-content/wp-cache-config.php
+# Ignore everything in except:
+
+/*
+!.gitignore
+!wp-content/
+
+# Ignore everything in the "wp-content" directory, except the "plugins"
+# and "themes" directories.
+# and "mu-plugins"
+wp-content/*
+!wp-content/plugins/
+!wp-content/mu-plugins/
+!wp-content/themes/
+
+# Ignore everything in the "plugins" directory, except the plugins listed below
+wp-content/plugins/*
+!wp-content/plugins/advanced-custom-fields
+!wp-content/plugins/advanced-custom-fields-pro
+
+# Ignore everything in the "themes" directory, except the Kiosk theme
+wp-content/themes/*
+!wp-content/themes/helsingborg_kiosk
