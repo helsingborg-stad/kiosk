@@ -1,0 +1,55 @@
+
+	header {
+		position: relative; 
+		height: 40vh; 
+		background: no-repeat center; 
+		background-size: cover; 
+		
+		.brand {
+			@include center(); 
+			
+			.logo {
+				img {
+					height: 200px;
+					width: auto; 
+				}
+			}
+		}
+		
+		.stripe {
+			width: 40px; 
+			position: absolute; 
+			left: 0; 
+			top: 0; 
+			bottom: 0; 
+			
+			div {
+				background: rgba(#fff,0.4); 
+				width: 100%; 
+				height: 20%; 
+				
+				&:nth-child(1) {
+					background-color: #f7a600; 
+				} 
+				
+				&:nth-child(2) {
+					background-color: #cb0050; 
+				} 
+				
+				&:nth-child(3) {
+					background-color: #ec6701; 
+				} 
+				
+				&:nth-child(4) {
+					background-color: #ae0b05; 
+				} 
+				
+				&:nth-child(5) {
+					background-color: #e3000f; 
+				} 
+
+			}
+
+		}
+		
+	}

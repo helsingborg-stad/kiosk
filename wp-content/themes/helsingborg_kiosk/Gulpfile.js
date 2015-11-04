@@ -19,6 +19,7 @@ var plumber = require('gulp-plumber');
  * Variables
  */
 var bower_components = 'bower_components/';
+var bootstrap_components = 'boostrap_components/';
 
 /**
  * Compiles jQuery and jQuery UI
@@ -32,15 +33,7 @@ gulp.task('jquery-core', function () {
             .pipe(gulp.dest('assets/js/dist'))
 });
 
-gulp.task('jquery-ui', function () {
-    return gulp.src([
-                bower_components + 'jquery-ui/jquery-ui.min.js'
-            ])
-            .pipe(concat('jquery-ui.min.js'))
-            .pipe(gulp.dest('assets/js/dist'))
-});
-
-gulp.task('jquery', ['jquery-core', 'jquery-ui']);
+gulp.task('jquery', ['jquery-core']);
 
 /**
  * Compiles the SASS for distribution
@@ -109,32 +102,6 @@ gulp.task('scripts-dev', function () {
             .pipe(gulp.dest('assets/js/dist'));
 });
 
-gulp.task('scripts-search', function () {
-    return gulp.src('assets/js/src/search/*.js')
-            .pipe(concat('search.js'))
-            .pipe(gulp.dest('assets/js/dist'))
-            .pipe(rename('search.min.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest('assets/js/dist'));
-});
-
-gulp.task('scripts-event', function () {
-    return gulp.src('assets/js/src/event/*.js')
-            .pipe(concat('event.js'))
-            .pipe(gulp.dest('assets/js/dist'))
-            .pipe(rename('event.min.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest('assets/js/dist'));
-});
-
-gulp.task('scripts-alarm', function () {
-    return gulp.src('assets/js/src/alarm/*.js')
-            .pipe(concat('alarm.js'))
-            .pipe(gulp.dest('assets/js/dist'))
-            .pipe(rename('alarm.min.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest('assets/js/dist'));
-});
 
 gulp.task('scripts-admin', function () {
     return gulp.src('assets/js/src/admin/*.js')
@@ -145,20 +112,8 @@ gulp.task('scripts-admin', function () {
             .pipe(gulp.dest('assets/js/dist'));
 });
 
-gulp.task('scripts-dist', ['scripts-dev', 'scripts-search', 'scripts-event', 'scripts-alarm', 'scripts-admin']);
+gulp.task('scripts-dist', ['scripts-dev', 'scripts-admin']);
 
-/**
- * Copies given bower components to the assets/js/dist directory
- */
-gulp.task('scripts-copy', function () {
-    return gulp.src([
-                bower_components + 'jquery-ui/jquery-ui.min.js',
-                bower_components + 'knockout/dist/knockout.js'
-            ])
-            .pipe(copy('assets/js/dist/', {
-                prefix: 10
-            }));
-})
 
 /**
  * Watch for changes
@@ -173,4 +128,4 @@ gulp.task('watch', function () {
  * Default task
  * Compiles sass, js and starts the watch task
  */
-gulp.task('default', ['jquery', 'sass-dist', 'sass-admin-dist', 'scripts-dist', 'scripts-copy', 'watch']);
+gulp.task('default', ['jquery', 'sass-dist', 'sass-admin-dist', 'scripts-dist', 'watch']);

@@ -19,4 +19,6 @@ wp-content/plugins/*
 
 # Ignore everything in the "themes" directory, except the Kiosk theme
 wp-content/themes/*
+wp-content/themes/node_modules
+wp-content/themes/node_modules/* 
 !wp-content/themes/helsingborg_kiosk
