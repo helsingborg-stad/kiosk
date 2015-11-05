@@ -1,9 +1,7 @@
 
 	jQuery(function(){
-		
-		jQuery('#event-modal').on('show-event-modal', function () {
-		
+		jQuery(".show-event-modal").click(function(){
+			jQuery('#event-modal').modal(); 
 		}); 
-			
 	}); 
-	
+	 

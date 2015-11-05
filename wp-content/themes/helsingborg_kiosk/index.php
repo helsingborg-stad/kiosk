@@ -3,7 +3,7 @@
 	<?php $items = array("Sollicitudin Ornare Mattis Fusce", "Purus Tortor","Nibh Pellentesque Tellus Vestibulum Risus", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla."); ?>
 	<section id="content">
 	
-		<div class="js-flickity page-main-slider"  data-flickity-options='{ "cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": false}'>
+		<div class="js-flickity page-main-slider"  data-flickity-options='{ "cellAlign": "left", "contain": true, "pageDots": false, "prevNextButtons": false, "wrapAround": true}'>
 			<?php for ($a = 0; $a <= 10; $a++) { ?>
 				<div class="slide-panel animated bounceInUp">
 			
