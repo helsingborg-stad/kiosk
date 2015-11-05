@@ -6400,118 +6400,8 @@ http://flickity.metafizzy.co
   opacity: 1; }
 
 /**
- * ## Partials
- * This is where the most part of our sass/css lives.
- * This is all the different style for all elements on our site.
+ * ## Sections
  */
-body {
-  position: initial !important;
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", "Helvetica", "Arial";
-  font-size: 13pt;
-  height: 100vh; }
-
-.site-wrapper {
-  background-color: #fff; }
-
-.container {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 100%; }
-
-.row {
-  max-width: none;
-  width: 100%; }
-  .row + .row {
-    margin-top: 30px; }
-
-ul.row {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; }
-
-img.responsive {
-  max-width: 100%;
-  width: 100%;
-  height: auto; }
-
-.link-item {
-  position: relative;
-  left: 20px;
-  padding-right: 20px; }
-  .link-item::before {
-    font-family: FontAwesome;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    content: "";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: inline-block;
-    margin-right: 6px;
-    color: rgba(0, 0, 0, 0.4);
-    margin-left: -20px;
-    text-decoration: none; }
-
-.link-item[href*="//"]:not([href*="helsingborg.se"])::before {
-  font-family: FontAwesome;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  content: "";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
-  margin-right: 6px;
-  color: rgba(0, 0, 0, 0.4); }
-
-.link-item-light::before {
-  color: rgba(255, 255, 255, 0.7); }
-  @media print {
-    .link-item-light::before {
-      color: rgba(0, 0, 0, 0.5) !important; } }
-
-.pdf-item::before {
-  font-family: FontAwesome;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  content: "";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
-  margin-right: 8px;
-  color: rgba(0, 0, 0, 0.4); }
-
-.pdf-item-light::before {
-  color: rgba(255, 255, 255, 0.7); }
-
-.word-item::before {
-  font-family: FontAwesome;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  content: "";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
-  margin-right: 8px;
-  color: rgba(0, 0, 0, 0.4); }
-
 header {
   position: relative;
   height: 40vh;
@@ -6658,3 +6548,122 @@ footer {
         padding-top: 0; }
         footer #category-nav div.slide-item.is-selected a:before {
           opacity: 0; }
+
+/**
+ * ## Partials
+ * This is where the most part of our sass/css lives.
+ * This is all the different style for all elements on our site.
+ */
+body {
+  position: initial !important;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Helvetica", "Arial";
+  font-size: 13pt;
+  height: 100vh; }
+
+.site-wrapper {
+  background-color: #fff; }
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%; }
+
+.row {
+  max-width: none;
+  width: 100%; }
+  .row + .row {
+    margin-top: 30px; }
+
+ul.row {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+img.responsive {
+  max-width: 100%;
+  width: 100%;
+  height: auto; }
+
+.link-item {
+  position: relative;
+  left: 20px;
+  padding-right: 20px; }
+  .link-item::before {
+    font-family: FontAwesome;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    content: "";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    margin-right: 6px;
+    color: rgba(0, 0, 0, 0.4);
+    margin-left: -20px;
+    text-decoration: none; }
+
+.link-item[href*="//"]:not([href*="helsingborg.se"])::before {
+  font-family: FontAwesome;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  content: "";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  margin-right: 6px;
+  color: rgba(0, 0, 0, 0.4); }
+
+.link-item-light::before {
+  color: rgba(255, 255, 255, 0.7); }
+  @media print {
+    .link-item-light::before {
+      color: rgba(0, 0, 0, 0.5) !important; } }
+
+.pdf-item::before {
+  font-family: FontAwesome;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  content: "";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  margin-right: 8px;
+  color: rgba(0, 0, 0, 0.4); }
+
+.pdf-item-light::before {
+  color: rgba(255, 255, 255, 0.7); }
+
+.word-item::before {
+  font-family: FontAwesome;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  content: "";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  margin-right: 8px;
+  color: rgba(0, 0, 0, 0.4); }
+
+.screensaver {
+  background-color: #cb0050; }
+
+.screensaver-container {
+  padding: 3%; }

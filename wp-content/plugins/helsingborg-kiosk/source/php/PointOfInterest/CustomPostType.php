@@ -1,13 +1,15 @@
 <?php
 
-namespace hbgKiosk\CustomPostType;
+namespace HbgKiosk\PointOfInterest;
 
-class PointOfInterest
+class CustomPostType
 {
     public function __construct()
     {
         // Register the post type
         add_action('init', array($this, 'registerPostType'));
+
+        //$parser = new Csv\Parse('/www/sites/kiosk/cbis_mat.csv');
     }
 
     /**

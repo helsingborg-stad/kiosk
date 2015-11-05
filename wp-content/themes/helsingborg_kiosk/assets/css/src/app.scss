@@ -34,8 +34,15 @@
  * ## Librarys
  * Imports librarys not avabile in npm
  */
- 
- @import 'lib/flickity'; 
+
+ @import 'lib/flickity';
+
+/**
+ * ## Sections
+ */
+@import 'sections/header';
+@import 'sections/content';
+@import 'sections/footer';
 
 /**
  * ## Partials
@@ -43,6 +50,4 @@
  * This is all the different style for all elements on our site.
  */
 @import 'partials/base';
-@import 'sections/header';
-@import 'sections/content';
-@import 'sections/footer';
+@import 'partials/screensaver';
