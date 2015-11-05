@@ -31,9 +31,18 @@
 @import '../../../node_modules/foundation/scss/normalize.scss'; // Foundation normalize
 
 /**
+ * ## Librarys
+ * Imports librarys not avabile in npm
+ */
+ 
+ @import 'lib/flickity'; 
+
+/**
  * ## Partials
  * This is where the most part of our sass/css lives.
  * This is all the different style for all elements on our site.
  */
 @import 'partials/base';
 @import 'sections/header';
+@import 'sections/content';
+@import 'sections/footer';

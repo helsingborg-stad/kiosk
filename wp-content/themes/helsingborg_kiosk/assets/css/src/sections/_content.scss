@@ -1,0 +1,50 @@
+
+	section#content {
+		@include fillall(); 
+		top: 40vh; 
+		bottom: 205px; 
+		
+		.page-main-slider {
+			@include fillall(); 
+			width: 100%; 
+			display: block; 
+			.slide-panel {
+				@include fillall(); 
+				width: 100%; 
+				padding: 40px;  
+				opacity: 1; 
+				transition: opacity 200ms ease; 
+				
+				h2 {
+					margin-top: 0; 
+				}
+				
+				&:not(.is-selected) {
+					opacity: 0; 
+				}
+				
+				.list-group {
+					
+					.overflower {
+						overflow: scroll; 
+						max-height: 20vh; 
+						display: block; 
+						
+						li {
+							border-top: none; 
+							border-left: none; 
+							border-right: none; 
+						}
+					}
+					
+				}
+				
+			}
+			
+			
+		}
+		
+		
+		
+		
+	}

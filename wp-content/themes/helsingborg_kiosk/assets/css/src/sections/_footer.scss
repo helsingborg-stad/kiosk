@@ -1,0 +1,63 @@
+
+	$active-tab-offset: 20px; 
+
+	footer {
+		position: fixed; 
+		top: auto; 
+		right: 0; 
+		bottom: -$active-tab-offset; 
+		left: 0;  
+		background: #eee; 
+		
+		#category-nav {
+			padding: 0; 
+			margin: 0; 
+			width: 100%;
+			display: block; 
+			position: relative; 
+			
+			div.slide-item {
+				padding-top: $active-tab-offset; 
+				transition: padding 300ms ease; 
+				a {
+					display: block; 
+					padding-top: 56.25%; 
+					width: 400px; 
+					background-size: cover; 
+					font-size: 2em; 
+					font-weight: bold; 
+					color: #fff; 
+					position: relative; 
+					
+					&:before {
+						@include fillall(); 
+						transition: opacity 300ms ease;
+						
+						background-color: rgba(#000,.4); 
+						
+						&:nth-child(5n) {
+							background-color: rgba(#000,1); 
+						}
+						
+					}
+					
+					&:after {
+						@include center(); 
+						display: block; 
+						content: attr(data-name); 
+					}
+				}
+				
+				&.is-selected {
+					padding-top: 0; 
+					a {
+						&:before {
+							opacity: 0; 
+						}
+					}
+				}
+				
+			}
+			
+		}	
+	}
