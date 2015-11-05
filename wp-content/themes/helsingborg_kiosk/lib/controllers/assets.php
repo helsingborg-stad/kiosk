@@ -12,9 +12,9 @@
 		//Styles
 		wp_enqueue_style ( 'reset'				, CSSURL."/app.min.css", 	array(), ASSET_VERSION );
 
-		//Scripts (Local)		
-		wp_enqueue_script( 'application-share'	, JSURL."/app.min.js", 		array(), ASSET_VERSION, true );
-
+		//Scripts (Local)			
+		wp_enqueue_script( 'application'		, JSURL."/app.min.js", 		array(), ASSET_VERSION, true );
+		
 	});
 
 	//Deque styles

@@ -37,7 +37,7 @@
 
 	<!-- Wp head -->
 	<?php wp_head(); ?>
-	
+		
 </head>
 <body class="<?php echo body_class(); ?>">
 	
@@ -51,12 +51,12 @@
 		    <div></div>
 		</div>
 
-        <a href="#" class="brand text-center">
+        <span class="brand text-center">
             <span class="logo">
 	            <img src="http://helsingborg.dev/wp-content/themes/This-is-Helsingborg/assets/images/helsingborg.svg" alt="Helsingborg Stad" width="239" height="68">
             </span>
             
             <h1>Vad vill du göra idag?</h1>
-        </a>
+        </span>
 
 	</header>

@@ -1,25 +1,19 @@
 
 		<footer id="footer">
-		
-		    <div class="container">
-			    
-			    <div class="row">
-		
-					<div class="col-xs-24">
-						
-						<nav id="navigation-item">
-							<a href="#goback">Bakåt</a>
-							<a href="#enter">Enter</a>
-							<a href="#goup">Upp</a>
-							<a href="#godown">Ned</a>							
-						</nav>
+			
+			<nav id="category-nav" class="js-flickity" data-flickity-options='{ "cellAlign": "center", "contain": true, "pageDots": false, "asNavFor": ".page-main-slider" }'>
+				<?php for ($x = 0; $x <= 10; $x++) { ?>
+					<div class="slide-item"><a href="#" data-name="Skor" style="background-image: url('http://www.helsingborg.se/wp-content/uploads/2015/10/host_compressed.jpg');"></a></div>
+				<?php } ?>
+			</nav>
+			
+			<!--<nav id="navigation-item">
+				<a href="#goback">Bakåt</a>
+				<a href="#enter">Enter</a>
+				<a href="#goup">Upp</a>
+				<a href="#godown">Ned</a>							
+			</nav>-->
 
-					</div>
-		        
-			    </div>
-		
-		    </div>
-		
 		</footer>
 		
 		<!--[if lt IE 10]>

@@ -19,10 +19,9 @@ var plumber = require('gulp-plumber');
  * Variables
  */
 var bower_components = 'bower_components/';
-var bootstrap_components = 'boostrap_components/';
 
 /**
- * Compiles jQuery and jQuery UI
+ * Compiles jQuery
  */
 
 gulp.task('jquery-core', function () {
@@ -88,13 +87,9 @@ gulp.task('sass-admin-dist', function () {
  */
 gulp.task('scripts-dev', function () {
     return gulp.src([
-                'assets/js/src/dev/**/*.js',
-                bower_components + 'foundation/js/foundation/foundation.js',
-                bower_components + 'foundation/js/foundation/foundation.equalizer.js',
-                bower_components + 'foundation/js/foundation/foundation.orbit.js',
-                bower_components + 'foundation-multiselect/zmultiselect/zurb5-multiselect.js',
-                bower_components + 'datetimepicker/jquery.datetimepicker.js'
-            ])
+    			'assets/js/src/*/*.js',
+    			'assets/js/src/*.js'
+    		])
             .pipe(concat('app.js'))
             .pipe(gulp.dest('assets/js/dist'))
             .pipe(rename('app.min.js'))
@@ -102,17 +97,7 @@ gulp.task('scripts-dev', function () {
             .pipe(gulp.dest('assets/js/dist'));
 });
 
-
-gulp.task('scripts-admin', function () {
-    return gulp.src('assets/js/src/admin/*.js')
-            .pipe(concat('admin.js'))
-            .pipe(gulp.dest('assets/js/dist'))
-            .pipe(rename('admin.min.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest('assets/js/dist'));
-});
-
-gulp.task('scripts-dist', ['scripts-dev', 'scripts-admin']);
+gulp.task('scripts-dist', ['scripts-dev']);
 
 
 /**

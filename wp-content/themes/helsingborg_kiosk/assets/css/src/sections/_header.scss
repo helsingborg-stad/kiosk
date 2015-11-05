@@ -4,9 +4,18 @@
 		height: 40vh; 
 		background: no-repeat center; 
 		background-size: cover; 
+		display: block; 
+		
+		&:before {
+			@include fillall(); 
+			background: rgba(#000,.2); 
+		}
 		
 		.brand {
 			@include center(); 
+			h1 {
+				color: #fff; 
+			}
 			
 			.logo {
 				img {
@@ -14,6 +23,7 @@
 					width: auto; 
 				}
 			}
+			
 		}
 		
 		.stripe {
