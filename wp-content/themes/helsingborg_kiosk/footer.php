@@ -1,9 +1,9 @@
 
 		<footer id="footer">
-			
+			<?php $items = array("Äta","Shoppa","Resa","Fika","Hänga med börn"); ?>
 			<nav id="category-nav" class="js-flickity" data-flickity-options='{ "cellAlign": "center", "contain": true, "pageDots": false, "asNavFor": ".page-main-slider" }'>
 				<?php for ($x = 0; $x <= 10; $x++) { ?>
-					<div class="slide-item"><a href="#" data-name="Skor" style="background-image: url('http://www.helsingborg.se/wp-content/uploads/2015/10/host_compressed.jpg');"></a></div>
+					<div class="slide-item"><a href="#" data-name="<?php echo $items[array_rand($items)]; ?>" style="background-image: url('http://www.helsingborg.se/wp-content/uploads/2015/10/host_compressed.jpg');"></a></div>
 				<?php } ?>
 			</nav>
 			

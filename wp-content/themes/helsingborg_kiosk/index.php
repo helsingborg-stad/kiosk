@@ -11,7 +11,7 @@
 			
 					<div class="list-group">
 						<span class="overflower">
-							<?php for ($x = 0; $x <= 10; $x++) { ?>
+							<?php for ($x = 0; $x <= 50; $x++) { ?>
 								<a class="list-group-item show-event-modal">
 									<span class="title"><?php echo $items[array_rand($items)]; ?> </span>
 									<span class="badge"><?php echo rand($x+1,$x+4); ?>KM</span>

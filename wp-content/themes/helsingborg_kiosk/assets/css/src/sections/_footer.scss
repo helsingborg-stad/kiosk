@@ -19,42 +19,51 @@
 			
 			div.slide-item {
 				padding-top: $active-tab-offset; 
-				transition: padding 300ms ease; 
+				transition: padding 100ms ease; 
 				a {
 					display: block; 
 					padding-top: 56.25%; 
-					width: 400px; 
+					width: 350px; 
 					background-size: cover; 
 					font-size: 2em; 
 					font-weight: bold; 
 					color: #fff; 
 					position: relative; 
+					border-top: 4px solid #cb0050;
+					font-weight: 300; 
+					text-transform: uppercase;
+					transition: all 100ms ease; 
 					
 					&:before {
 						@include fillall(); 
-						transition: opacity 300ms ease;
-						
-						background-color: rgba(#000,.4); 
-						
-						&:nth-child(5n) {
-							background-color: rgba(#000,1); 
-						}
-						
+						transition: background 400ms ease;  
+						background-color: rgba(#fff,.4); 
 					}
 					
 					&:after {
 						@include center(); 
 						display: block; 
 						content: attr(data-name); 
+						width: 90%; 
+						text-align: center; 
+						line-height: 130%; 
 					}
 				}
 				
 				&.is-selected {
+					
 					padding-top: 0; 
 					a {
+						border-top-color: #f6f5f2; 
+						font-size: 3em; 
+						
 						&:before {
-							opacity: 0; 
+							background-color: rgba(#cb0050,.95); 
 						}
+					}
+					
+					&:before {
+						content: ""; 
 					}
 				}
 				
@@ -62,3 +71,28 @@
 			
 		}	
 	}
+	
+	.flickity-prev-next-button {
+		top: $active-tab-offset; 
+		bottom: $active-tab-offset; 
+		height: auto; 
+		transform: none; 
+		background: #fff; 
+		border-radius: 0; 
+		opacity: 1; 
+		
+		&.previous {
+			left: 0; 
+		}
+		
+		&.next {
+			right: 0; 
+		}
+		
+		&:active,
+		&:focus {
+			opacity: .9; 
+		}
+	}
+	
+	

@@ -1,4 +1,7 @@
 
+	$panel-height: 600px; 
+	$number-of-visible-items: 10; 
+
 	section#content {
 		@include fillall(); 
 		top: 50%; 
@@ -13,8 +16,7 @@
 				width: 100%; 
 				padding: 40px;  
 				opacity: 1;  
-				transition: opacity 200ms ease; 
-				visibility: visible; 
+				transition: opacity 400ms ease; 
 				
 				h2 {
 					margin-top: 0; 
@@ -27,13 +29,14 @@
 				}
 				
 				&:not(.is-selected) {
-					visibility: hidden; 
 					opacity: 0;  
 				}
 				
 				.list-group {
 					border: 1px solid #eee;
-					border-radius: 0 !important;   
+					border-radius: 0 !important; 
+					margin-bottom: 0; 
+					box-shadow: 0 2px 3px rgba(0,0,0,0.02); 
 
 					&:before {
 						border-top: 4px solid #cb0050; 
@@ -43,7 +46,7 @@
 					
 					.overflower {
 						overflow: scroll; 
-						max-height: 20vh; 
+						max-height: $panel-height; 
 						display: block; 
 						
 						a {
@@ -51,7 +54,9 @@
 							border: none; 
 							border-bottom: 1px solid #e7e5e1; 
 							margin-bottom: 0; 
-							padding: 15px 20px; 
+							padding: 0 20px; 
+							height: $panel-height/$number-of-visible-items; 
+							line-height: $panel-height/$number-of-visible-items; 
 							
 							&:active, &:hover, &:visited {
 								color: #ae0b05; 
