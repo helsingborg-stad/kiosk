@@ -1,7 +1,253 @@
-.screensaver {
-    background-color: $palette-red-2;
+$animation-delay: 1000ms;
+
+html {
+    width: 100%;
+    height: 100%;
 }
 
+.screensaver {
+    background-color: $palette-red-2;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.screensaver-slide {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 5%;
+    width: 100%;
+    height: 100%;
+
+    &:first-child {
+        display: block;
+    }
+}
+
+// Container element
+//
+
 .screensaver-container {
-    padding: 3%;
+    height: 100%;
+}
+
+// Call to action element
+//
+
+.screensaver-cta {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100%;
+    padding: 40px 0;
+    background-color: rgba(#000, .8);
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+
+    h3 {
+        font-size: 2em;
+        margin-bottom: .1em;
+    }
+
+    .screensaver-cta-message {
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: -20px;
+        text-align: left;
+    }
+
+    .screensaver-cta-dot {
+        $size: 70px;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        border-radius: 50%;
+        width: $size;
+        height: $size;
+        background-color: #fff;
+        margin-right: 25px;
+
+        &::before {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -$size/2;
+            margin-left: -$size/2;
+            content: '';
+            width: $size;
+            height: $size;
+            border: 5px solid rgba(#fff, .8);
+            border-radius: 50%;
+
+            animation-name: zoomPulse;
+            animation-duration: 1000ms;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+// Gallery
+//
+// This is the gallery with boomIn animation
+
+.screensaver-gallery {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+
+    li {
+        display: inline-block;
+        margin: 0;
+        max-width: 40vw;
+
+        $movein-1: $animation-delay;
+        $movein-2: $animation-delay+200;
+        $movein-3: $animation-delay+400;
+        $movein-4: $animation-delay+600;
+        $movein-5: $animation-delay+800;
+        $movein-6: $animation-delay+1000;
+
+        &:nth-child(1) {
+            transform: rotate(3deg);
+
+            .screensaver-item-frame {
+                animation-delay: $animation-delay;
+            }
+        }
+
+        &:nth-child(2) {
+            transform: rotate(-5deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-2;
+            }
+        }
+
+        &:nth-child(3) {
+            transform: rotate(-2deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-3;
+            }
+        }
+
+        &:nth-child(4) {
+            transform: rotate(2deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-4;
+            }
+        }
+
+        &:nth-child(5) {
+            transform: rotate(-2deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-5;
+            }
+        }
+
+        &:nth-child(6) {
+            transform: rotate(6deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-3;
+            }
+        }
+
+        &:nth-child(7) {
+            transform: rotate(-3deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-2;
+            }
+        }
+
+        &:nth-child(8) {
+            transform: rotate(-6deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-5;
+            }
+        }
+
+        &:nth-child(9) {
+            transform: rotate(-6deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-4;
+            }
+        }
+
+        &:nth-child(10) {
+            transform: rotate(6deg);
+
+            .screensaver-item-frame {
+                animation-delay: $movein-6;
+            }
+        }
+    }
+
+    .screensaver-item-frame {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        background-color: #fff;
+        opacity: 0;
+
+        animation-name: boomIn;
+        animation-duration: 600ms;
+        animation-delay: $animation-delay;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+// Animation keyframes
+//
+
+@keyframes boomIn {
+    0% {
+        transform: scale(3);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1.8);
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
