@@ -1,7 +1,7 @@
 
 	section#content {
 		@include fillall(); 
-		top: 40vh; 
+		top: 50%; 
 		bottom: 205px; 
 		
 		.page-main-slider {
@@ -12,28 +12,74 @@
 				@include fillall(); 
 				width: 100%; 
 				padding: 40px;  
-				opacity: 1; 
+				opacity: 1;  
 				transition: opacity 200ms ease; 
+				visibility: visible; 
 				
 				h2 {
 					margin-top: 0; 
+					color: #cb0050;
+					letter-spacing: .03em;  
+					
+					span:not(:last-child):after {
+						content: "\0020 \00BB \0020";
+					}
 				}
 				
 				&:not(.is-selected) {
-					opacity: 0; 
+					visibility: hidden; 
+					opacity: 0;  
 				}
 				
 				.list-group {
+					border: 1px solid #eee;
+					border-radius: 0 !important;   
+
+					&:before {
+						border-top: 4px solid #cb0050; 
+						content: ""; 
+						display: block; 
+					}
 					
 					.overflower {
 						overflow: scroll; 
 						max-height: 20vh; 
 						display: block; 
 						
-						li {
-							border-top: none; 
-							border-left: none; 
-							border-right: none; 
+						a {
+							font-size: 1.2em; 
+							border: none; 
+							border-bottom: 1px solid #e7e5e1; 
+							margin-bottom: 0; 
+							padding: 15px 20px; 
+							
+							&:active, &:hover, &:visited {
+								color: #ae0b05; 
+								background: #fff; 
+								display: block; 
+							}
+							
+							&:focus {
+								color: #fff; 
+								background: #ae0b05; 
+							}
+							
+							&:last-child {
+								border-bottom: none; 
+							}
+							
+							span.title {
+								@include ellipsis(90%); 
+								display: block; 
+								float: left; 
+							}
+							
+							&:after {
+								content: ""; 
+								display: block; 
+								clear: both; 
+							}
+							
 						}
 					}
 					

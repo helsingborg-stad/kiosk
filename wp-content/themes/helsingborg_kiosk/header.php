@@ -43,7 +43,7 @@
 	
 	<header class="main-header" style="background-image: url('http://www.helsingborg.se/wp-content/uploads/2015/10/host_compressed.jpg');">
       	
-      	<div class="stripe">
+      	<div class="stripe animated slideInLeft">
 		    <div></div>
 		    <div></div>
 		    <div></div>
@@ -53,7 +53,7 @@
 
         <span class="brand text-center">
             <span class="logo">
-	            <img src="http://helsingborg.dev/wp-content/themes/This-is-Helsingborg/assets/images/helsingborg.svg" alt="Helsingborg Stad" width="239" height="68">
+	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad" width="239" height="68">
             </span>
             
             <h1>Vad vill du göra idag?</h1>
