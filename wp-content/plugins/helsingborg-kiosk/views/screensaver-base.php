@@ -1,18 +1,20 @@
 <div class="screensaver-container">
-    <?php
-    foreach ($screensaverMedia as $media) {
-        //var_dump($media);
-        switch ($media->acf_fc_layout) {
-            case 'screensaver-gallery':
-                require \HbgKiosk\Helper\Wp::getTemplate('screensaver-gallery');
-                break;
+    <div class="screensaver-slides">
+        <?php
+        foreach ($screensaverMedia as $media) {
+            //var_dump($media);
+            switch ($media->acf_fc_layout) {
+                case 'screensaver-gallery':
+                    require \HbgKiosk\Helper\Wp::getTemplate('screensaver-gallery');
+                    break;
 
-            case 'screensaver-gallery':
-                require \HbgKiosk\Helper\Wp::getTemplate('screensaver-instagram-feed');
-                break;
+                case 'screensaver-gallery':
+                    require \HbgKiosk\Helper\Wp::getTemplate('screensaver-instagram-feed');
+                    break;
+            }
         }
-    }
-    ?>
+        ?>
+    </div>
 
     <div class="screensaver-cta">
         <span class="screensaver-cta-dot"></span>
