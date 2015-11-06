@@ -1,106 +1,106 @@
 
 	header {
-		background: #fff; 
-		width: 100%; 
-		padding: 30px 40px; 
-		
-		/* Clearfix */ 
+		background: #fff;
+		width: 100%;
+		padding: 30px 40px;
+
+		/* Clearfix */
 		&:after {
-			content: ""; 
-			clear: both; 
-			display: block; 
+			content: "";
+			clear: both;
+			display: block;
 		}
-		
+
 		.logo {
-			display: block; 
-			width: 250px; 
+			display: block;
+			width: 250px;
 		}
-		
+
 		.clock {
-			
+
 			span {
-				display: block; 
-				
+				display: block;
+
 				&.time {
-					font-size: 3em; 
-					font-weight: 400; 
+					font-size: 3em;
+					font-weight: 400;
 				}
-				
+
 				&.date {
-					font-size: 1.1em; 
-					font-weight: 300; 
+					font-size: 1.1em;
+					font-weight: 300;
 				}
 			}
-			
+
 		}
-		
+
 	}
-	
+
 	section#hero {
-		
-		position: relative; 
-		height: 40%; 
-		background-size: cover; 
-		overflow: hidden; 
-		
-		/* Gradient */ 
+
+		position: relative;
+		height: 40%;
+		background-size: cover;
+		overflow: hidden;
+
+		/* Gradient */
 		&:after {
-			@include gradient(rgba(#000,0),rgba(#000,.6)); 
-			content: ""; 
-			position: absolute; 
-			top: 70%; 
-			right: 0; 
-			bottom: 0; 
+			@include gradient(rgba(#000,0), rgba(#000,.4));
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
 			left: 0;
-			z-index: 20; 
+			z-index: 20;
 		}
-		
-		/* Map */ 
+
+		/* Map */
 		.map-canvas {
-			width: 100%; 
-			height: 105%; 
-			z-index: 15;	
+			width: 100%;
+			height: 105%;
+			z-index: 15;
 		}
-		
-		/* Adapative gradient */ 
+
+		/* Adapative gradient */
 		.map-canvas + &:after {
-			display: none !important; 
+			display: none !important;
 		}
-		
+
 		.stripe {
-			width: 20px; 
-			position: absolute; 
-			left: 0; 
-			top: 0; 
-			bottom: 0; 
-			z-index: 30; 
-			
+			width: 20px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 30;
+
 			div {
-				width: 100%; 
-				height: 20%; 
-				
+				width: 100%;
+				height: 20%;
+
 				&:nth-child(1) {
-					background-color: #f7a600; 
-				} 
-				
+					background-color: #f7a600;
+				}
+
 				&:nth-child(2) {
-					background-color: #cb0050; 
-				} 
-				
+					background-color: #cb0050;
+				}
+
 				&:nth-child(3) {
-					background-color: #ec6701; 
-				} 
-				
+					background-color: #ec6701;
+				}
+
 				&:nth-child(4) {
-					background-color: #ae0b05; 
-				} 
-				
+					background-color: #ae0b05;
+				}
+
 				&:nth-child(5) {
-					background-color: #e3000f; 
-				} 
+					background-color: #e3000f;
+				}
 
 			}
 
 		}
-		
+
 	}
