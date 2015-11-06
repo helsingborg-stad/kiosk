@@ -3647,7 +3647,16 @@ header {
     display: block; }
   header .logo {
     display: block;
-    width: 280px; }
+    width: 280px;
+    position: relative; }
+    header .logo:after {
+      content: attr(data-subtitle);
+      text-transform: uppercase;
+      position: absolute;
+      left: 73px;
+      top: 49px;
+      font-size: .8em;
+      font-weight: 400; }
   header .clock span {
     display: block; }
     header .clock span.time {
@@ -3670,19 +3679,19 @@ section#hero {
     background: transparent;
     /* Old browsers */
     /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.4)));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.6)));
     /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
     /* Chrome10+,Safari5.1+ */
     /* Opera 11.10+ */
     /* IE10+ */
-    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
     /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
     /* IE6-9 */
     content: "";
     position: absolute;
-    top: 0;
+    top: 80%;
     right: 0;
     bottom: 0;
     left: 0;
@@ -3745,10 +3754,50 @@ section#content {
   right: 0;
   bottom: 0;
   left: 0;
-  top: 40%;
+  top: 37%;
   bottom: 205px;
   z-index: 25;
   padding: 40px; }
+  section#content article {
+    margin: 140px auto;
+    height: 80%;
+    overflow: auto;
+    position: relative; }
+    section#content article > p,
+    section#content article > ul,
+    section#content article > ol {
+      margin-left: 34%; }
+    section#content article aside {
+      width: 30%;
+      border: 1px solid #eee;
+      margin: 9px 40px 20px 0;
+      float: left; }
+      section#content article aside ul {
+        list-style: none;
+        padding: 15px;
+        margin: 0; }
+  section#content:after {
+    content: "";
+    background: rgba(255, 255, 255, 0);
+    /* Old browsers */
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, white));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+    /* Chrome10+,Safari5.1+ */
+    /* Opera 11.10+ */
+    /* IE10+ */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+    /* IE6-9 */
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 110px;
+    margin-bottom: 25px; }
   section#content .page-main-slider {
     display: block;
     content: " ";
@@ -3771,13 +3820,8 @@ section#content {
       padding: 40px;
       opacity: 1;
       -webkit-transition: opacity 400ms ease;
-              transition: opacity 400ms ease; }
-      section#content .page-main-slider .slide-panel h2 {
-        margin-top: 0;
-        color: #cb0050;
-        letter-spacing: .03em; }
-        section#content .page-main-slider .slide-panel h2 span:not(:last-child):after {
-          content: "\0020 \00BB \0020"; }
+              transition: opacity 400ms ease;
+      /* List item */ }
       section#content .page-main-slider .slide-panel:not(.is-selected) {
         opacity: 0; }
       section#content .page-main-slider .slide-panel .list-group {
@@ -3827,7 +3871,9 @@ section#content {
   font-weight: normal;
   color: #fff;
   text-align: center;
-  text-shadow: 0 0 30px rgba(0, 0, 0, 0.6); }
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  margin: 0 0 40px 0;
+  font-size: 55px; }
 
 /**
  * ## Partials

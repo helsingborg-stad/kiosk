@@ -47,7 +47,7 @@ global $post;
 	<header class="main-header">
 
         <span class="brand text-left pull-left">
-            <span class="logo animated fadeIn">
+            <span class="logo animated fadeIn" data-subtitle="Info">
 	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad">
             </span>
         </span>
@@ -59,7 +59,7 @@ global $post;
 
 	</header>
 
-	<section id="hero" class="animated fadeIn <?php if ( is_single($post->ID) ) { ?>map-area<?php } ?>" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
+	<section id="hero" class="animated fadeIn <?php if ( is_object( $post ) && is_single($post->ID) ) { ?>map-area<?php } ?>" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
 
 		<div class="stripe animated slideInLeft">
 		    <div></div>
@@ -69,7 +69,7 @@ global $post;
 		    <div></div>
 		</div>
 
-		<?php if ( is_single($post->ID) ) { ?>
+		<?php if ( is_object( $post ) && is_single($post->ID) ) { ?>
 			<div id="map-canvas" data-adress="Stortorget 8, Helsingborg, Sweden" class="map-canvas"></div>
 		<?php } ?>
 
