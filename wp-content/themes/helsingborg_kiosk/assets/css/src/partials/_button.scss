@@ -1,0 +1,80 @@
+$button-icon-margin: 8px;
+
+.btn {
+
+}
+
+// Plain button (just text)
+
+.btn-plain {
+    border: none;
+    background: none;
+}
+
+// Navigational buttons (previous and next)
+
+.btn-prev,
+.btn-next {
+    display: block;
+    color: $palette-red-4;
+
+    &:hover,
+    &:focus {
+        background-color: $palette-red-2;
+        border-bottom: 1px solid $palette-red-2;
+        margin-top: -1px;
+        margin-bottom: -1px;
+        color: #fff;
+    }
+}
+
+.btn-prev {
+    border-right: 1px solid $creamy-darker;
+}
+
+.btn-next {
+    border-left: 1px solid $creamy-darker;
+}
+
+.btn-prev i {
+    margin-right: $button-icon-margin;
+}
+
+.btn-next i {
+    margin-left: $button-icon-margin;
+}
+
+// Button with circular badge icon and text underneeht
+
+.btn-badge-icon {
+    $badge-size: 80px;
+
+    position: relative;
+    padding-top: $badge-size;
+    @extend .btn-plain;
+
+    [class*="ion-"] {
+        display: block;
+        @include center-x;
+        top: 0;
+
+        width: $badge-size;
+        height: $badge-size;
+
+        background-color: $palette-red-2;
+        border-radius: 50%;
+        font-size: $badge-size - 22;
+        color: #fff;
+    }
+
+    color: $text-default;
+    font-weight: bold;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+        [class*="ion-"] {
+            background-color: darken($palette-red-2, 10%);
+        }
+    }
+}
