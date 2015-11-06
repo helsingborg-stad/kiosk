@@ -7,7 +7,7 @@
 	});
 	
 	jQuery(function(){
-		jQuery('#event-modal').modal();
+		//jQuery('#event-modal').modal();
 	}); 
 
 	/****************************************************

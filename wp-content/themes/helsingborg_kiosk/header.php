@@ -41,22 +41,32 @@
 </head>
 <body class="<?php echo body_class(); ?>">
 	
-	<header class="main-header" style="background-image: url('http://www.helsingborg.se/wp-content/uploads/2015/10/host_compressed.jpg');">
+	<header class="main-header">
       	
-      	<div class="stripe animated slideInLeft">
+        <span class="brand text-left pull-left">
+            <span class="logo animated fadeIn">
+	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad">
+            </span>
+        </span>
+        
+        <div class="clock text-right pull-right animated fadeIn">
+	        <span class="time">13:37</span>
+	        <span class="date"><?php echo date("j F Y"); ?></span>
+        </div>
+        
+	</header>
+	
+	
+	<section id="hero" class="animated fadeIn" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
+		
+		<div class="stripe animated slideInLeft">
 		    <div></div>
 		    <div></div>
 		    <div></div>
 		    <div></div>
 		    <div></div>
 		</div>
-
-        <span class="brand text-center">
-            <span class="logo">
-	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad" width="239" height="68">
-            </span>
-            
-            <h1>Vad vill du göra idag?</h1>
-        </span>
-
-	</header>
+		
+		<div id="map-canvas" class="map-canvas"></div>
+		
+	</section>
