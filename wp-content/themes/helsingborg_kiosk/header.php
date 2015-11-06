@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php 
+global $post; 	
+	
+?><!DOCTYPE html>
 <!--[if lt IE 8]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if IE 9]>    <html class="no-js ie9 oldie" lang="en"> <![endif]-->
@@ -39,7 +42,7 @@
 	<?php wp_head(); ?>
 		
 </head>
-<body class="<?php echo body_class(); ?>">
+<body class="<?php echo body_class(); ?>"> 
 	
 	<header class="main-header">
       	
@@ -50,14 +53,13 @@
         </span>
         
         <div class="clock text-right pull-right animated fadeIn">
-	        <span class="time">13:37</span>
+	        <span class="time">&nbsp;</span>
 	        <span class="date"><?php echo date("j F Y"); ?></span>
         </div>
         
 	</header>
 	
-	
-	<section id="hero" class="animated fadeIn" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
+	<section id="hero" class="animated fadeIn <?php if ( is_single($post->ID) ) { ?>map-area<?php } ?>" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
 		
 		<div class="stripe animated slideInLeft">
 		    <div></div>
@@ -67,6 +69,9 @@
 		    <div></div>
 		</div>
 		
-		<div id="map-canvas" class="map-canvas"></div>
+		<?php if ( is_single($post->ID) ) { ?>  
+			<div id="map-canvas" data-adress="Stortorget 8, Helsingborg, Sweden" class="map-canvas"></div>
+		<?php } ?> 
 		
 	</section>
+	

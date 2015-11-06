@@ -90,6 +90,7 @@ gulp.task('scripts-dev', function () {
     			'assets/js/src/lib/jquery-2.1.4.js',
     			'assets/js/src/lib/flickity.pkgd.min.js',
     			'assets/js/src/lib/bootstrap.js',
+    			'assets/js/src/lib/gmaps.js',
     			'assets/js/src/*.js'
     		])
             .pipe(concat('app.js'))
