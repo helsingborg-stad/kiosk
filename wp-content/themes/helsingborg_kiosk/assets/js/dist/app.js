@@ -11586,10 +11586,10 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
+var HbgKiosk;
 
-	jQuery(function(){
-		jQuery(".show-event-modal").click(function(){
-			jQuery('#event-modal').modal(); 
-		}); 
-	}); 
-	 
+jQuery(function(){
+	jQuery(".show-event-modal").click(function(){
+		jQuery('#event-modal').modal();
+	});
+});

@@ -1,8 +1,8 @@
 <?php
 
-namespace hbgKiosk\Csv;
+namespace HbgKiosk\PointOfInterest;
 
-class Parse
+class ParseCsv
 {
     public $path;
     public $csv;

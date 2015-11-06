@@ -6,7 +6,7 @@
     Author: Kristoffer Svanmark & Sebastian Thulin @ Helsingborg Stad
  */
 
-define('HBG_ALARM_TEMPLATE_FOLDER', 'hbg-alarm');
+define('HBG_KIOSK_TEMPLATE_FOLDER', 'hbg-kiosk');
 define('HBG_KIOSK_PATH', plugin_dir_path(__FILE__));
 define('HBG_KIOSK_URL', plugins_url('', __FILE__));
 
