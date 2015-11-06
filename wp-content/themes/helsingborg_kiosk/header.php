@@ -6,9 +6,9 @@
 <head>
     <meta charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    
-    <?php echo '<title>' . get_bloginfo('name') . " - " .get_bloginfo('description') . '</title>'; ?> 
-    
+
+    <?php echo '<title>' . get_bloginfo('name') . " - " .get_bloginfo('description') . '</title>'; ?>
+
     <!-- Settings, Safari Viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,34 +31,34 @@
 	<!-- Noscript -->
 	<noscript>
 		<style>
-			.visible-noscript {display: block !important;}	
+			.visible-noscript {display: block !important;}
 		</style>
 	</noscript>
 
 	<!-- Wp head -->
 	<?php wp_head(); ?>
-		
+
 </head>
 <body class="<?php echo body_class(); ?>">
-	
+
 	<header class="main-header">
-      	
+
         <span class="brand text-left pull-left">
             <span class="logo animated fadeIn">
 	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad">
             </span>
         </span>
-        
+
         <div class="clock text-right pull-right animated fadeIn">
 	        <span class="time">13:37</span>
 	        <span class="date"><?php echo date("j F Y"); ?></span>
         </div>
-        
+
 	</header>
-	
-	
+
+
 	<section id="hero" class="animated fadeIn" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
-		
+
 		<div class="stripe animated slideInLeft">
 		    <div></div>
 		    <div></div>
@@ -66,7 +66,9 @@
 		    <div></div>
 		    <div></div>
 		</div>
-		
+
 		<div id="map-canvas" class="map-canvas"></div>
-		
+
 	</section>
+
+	<section id="content">

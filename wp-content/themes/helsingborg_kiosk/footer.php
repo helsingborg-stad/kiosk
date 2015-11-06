@@ -1,3 +1,5 @@
+		</section>
+
 		<footer class="navbar">
 			<button class="btn btn-plain btn-prev pull-left"><i class="ion-chevron-left"></i> Föregående</button>
 

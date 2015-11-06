@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<section id="content">
     <h1 id="content-headline">Vad vill du göra idag?</h1>
     <ul class="metro-grid">
 
@@ -59,6 +58,5 @@
         </li>
 
     </ul>
-</section>
 
 <?php get_footer(); ?>
