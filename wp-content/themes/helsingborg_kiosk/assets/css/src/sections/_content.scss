@@ -1,101 +1,107 @@
 
-	$panel-height: 600px; 
-	$number-of-visible-items: 10; 
+$panel-height: 600px;
+$number-of-visible-items: 10;
 
-	section#content {
-		@include fillall(); 
-		top: 40%; 
-		bottom: 205px; 
-		
-		.page-main-slider {
-			@include fillall(); 
-			width: 100%; 
-			display: block; 
-			.slide-panel {
-				@include fillall(); 
-				width: 100%; 
-				padding: 40px;  
-				opacity: 1;  
-				transition: opacity 400ms ease; 
-				
-				h2 {
-					margin-top: 0; 
-					color: #cb0050;
-					letter-spacing: .03em;  
-					
-					span:not(:last-child):after {
-						content: "\0020 \00BB \0020";
-					}
-				}
-				
-				&:not(.is-selected) {
-					opacity: 0;  
-				}
-				
-				.list-group {
-					border: 1px solid #eee;
-					border-radius: 0 !important; 
-					margin-bottom: 0; 
-					box-shadow: 0 2px 3px rgba(0,0,0,0.02); 
+section#content {
+	@include fillall();
+	top: 40%;
+	bottom: 205px;
+	z-index: 25;
 
-					&:before {
-						border-top: 4px solid #cb0050; 
-						content: ""; 
-						display: block; 
-					}
-					
-					.overflower {
-						overflow: scroll; 
-						max-height: $panel-height; 
-						display: block; 
-						
-						a {
-							font-size: 1.2em; 
-							border: none; 
-							border-bottom: 1px solid #e7e5e1; 
-							margin-bottom: 0; 
-							padding: 0 20px; 
-							height: $panel-height/$number-of-visible-items; 
-							line-height: $panel-height/$number-of-visible-items; 
-							
-							&:active, &:hover, &:visited {
-								color: #ae0b05; 
-								background: #fff; 
-								display: block; 
-							}
-							
-							&:focus {
-								color: #fff; 
-								background: #ae0b05; 
-							}
-							
-							&:last-child {
-								border-bottom: none; 
-							}
-							
-							span.title {
-								@include ellipsis(90%); 
-								display: block; 
-								float: left; 
-							}
-							
-							&:after {
-								content: ""; 
-								display: block; 
-								clear: both; 
-							}
-							
-						}
-					}
-					
+	padding: 40px;
+
+	.page-main-slider {
+		@include fillall();
+		width: 100%;
+		display: block;
+
+		.slide-panel {
+			@include fillall();
+			width: 100%;
+			padding: 40px;
+			opacity: 1;
+			transition: opacity 400ms ease;
+
+			h2 {
+				margin-top: 0;
+				color: #cb0050;
+				letter-spacing: .03em;
+
+				span:not(:last-child):after {
+					content: "\0020 \00BB \0020";
 				}
-				
 			}
-			
-			
+
+			&:not(.is-selected) {
+				opacity: 0;
+			}
+
+			.list-group {
+				border: 1px solid #eee;
+				border-radius: 0 !important;
+				margin-bottom: 0;
+				box-shadow: 0 2px 3px rgba(0,0,0,0.02);
+
+				&:before {
+					border-top: 4px solid #cb0050;
+					content: "";
+					display: block;
+				}
+
+				.overflower {
+					overflow: scroll;
+					max-height: $panel-height;
+					display: block;
+
+					a {
+						font-size: 1.2em;
+						border: none;
+						border-bottom: 1px solid #e7e5e1;
+						margin-bottom: 0;
+						padding: 0 20px;
+						height: $panel-height/$number-of-visible-items;
+						line-height: $panel-height/$number-of-visible-items;
+
+						&:active, &:hover, &:visited {
+							color: #ae0b05;
+							background: #fff;
+							display: block;
+						}
+
+						&:focus {
+							color: #fff;
+							background: #ae0b05;
+						}
+
+						&:last-child {
+							border-bottom: none;
+						}
+
+						span.title {
+							@include ellipsis(90%);
+							display: block;
+							float: left;
+						}
+
+						&:after {
+							content: "";
+							display: block;
+							clear: both;
+						}
+
+					}
+				}
+
+			}
+
 		}
-		
-		
-		
-		
+
 	}
+}
+
+#content-headline {
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 0 30px rgba(#000,.6);
+}
