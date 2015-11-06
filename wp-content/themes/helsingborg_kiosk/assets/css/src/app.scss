@@ -13,23 +13,23 @@
  */
 
 
+// Bootstrap
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables';
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize';
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding';
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid';
+
 /**
  * ## Global
  */
- @import '../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss'; // Foundation globals
-@import '../../../node_modules/foundation/scss/foundation/components/global'; // Foundation globals
-@import '../../../node_modules/ionicons/css/ionicons.css'; // Icon pack 
+@import '../../../node_modules/ionicons/css/ionicons.css'; // Icon pack
 @import 'global/config';
 @import 'global/colors';
 @import 'global/fonts';
 @import 'global/mixins';
 @import 'global/404';
-
-/**
- * ## Foundation dependencies
- * These are required dependencies from Foundation that we use
- */
-@import '../../../node_modules/foundation/scss/normalize.scss'; // Foundation normalize
 
 /**
  * ## Librarys
@@ -53,11 +53,12 @@
  */
 @import 'partials/base';
 @import 'partials/screensaver';
+@import 'partials/navbar';
 
 
 /**
  * ## Widgets
- * Imports widget styling 
+ * Imports widget styling
  */
 
- @import 'widgets/modal'; 
+ @import 'widgets/modal';
