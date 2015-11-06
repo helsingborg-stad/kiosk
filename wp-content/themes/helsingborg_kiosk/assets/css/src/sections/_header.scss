@@ -14,6 +14,17 @@
 		.logo {
 			display: block;
 			width: 280px;
+			position: relative; 
+			
+			&:after {
+				content: attr(data-subtitle); 
+				text-transform: uppercase; 
+				position: absolute; 
+				left: 73px;
+			    top: 49px;
+			    font-size: .8em;
+			    font-weight: 400;
+			}
 		}
 
 		.clock {
@@ -47,10 +58,10 @@
 
 		/* Gradient */
 		&:after {
-			@include gradient(rgba(#000,0), rgba(#000,.4));
+			@include gradient(rgba(#000,0), rgba(#000,.6));
 			content: "";
 			position: absolute;
-			top: 0;
+			top: 80%;
 			right: 0;
 			bottom: 0;
 			left: 0;
