@@ -18,6 +18,7 @@
  */
  @import '../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss'; // Foundation globals
 @import '../../../node_modules/foundation/scss/foundation/components/global'; // Foundation globals
+@import '../../../node_modules/ionicons/css/ionicons.css'; // Icon pack 
 @import 'global/config';
 @import 'global/colors';
 @import 'global/fonts';
@@ -52,3 +53,11 @@
  */
 @import 'partials/base';
 @import 'partials/screensaver';
+
+
+/**
+ * ## Widgets
+ * Imports widget styling 
+ */
+
+ @import 'widgets/modal'; 

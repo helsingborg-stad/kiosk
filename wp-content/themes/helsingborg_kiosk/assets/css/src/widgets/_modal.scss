@@ -1,0 +1,44 @@
+
+	.modal {
+		width: 1080px; 
+		margin: 0 auto; 
+		
+		.modal-dialog {
+			
+			width: auto; 
+			margin: 0; 
+			height: 50%; 
+			
+			.modal-content {
+				
+				box-shadow: none; 
+				border-radius: 0; 
+				
+				.modal-header {
+					padding: 0; 	
+					
+					.map-canvas {
+						height: 50vh; 
+					}
+				}
+				
+				.modal-body {
+					padding: 40px; 
+					height: 40vh;
+				}
+				
+				.modal-footer {
+					height: 10vh; 
+				}
+				
+			}
+				
+		}
+		
+	}
+	
+	.modal-backdrop,
+	.modal-backdrop.in {
+		background-color: rgba(203,0,80,.9); 
+		opacity: 1; 
+	}

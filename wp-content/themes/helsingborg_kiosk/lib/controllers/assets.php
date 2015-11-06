@@ -12,6 +12,9 @@
 		//Styles
 		wp_enqueue_style ( 'reset'				, CSSURL."/app.min.css", 	array(), ASSET_VERSION );
 
+		//Scripts (Remote)			
+		wp_enqueue_script( 'gmaps'				, "http://maps.googleapis.com/maps/api/js", 	array(), "", true );
+
 		//Scripts (Local)			
 		wp_enqueue_script( 'application'		, JSURL."/app.min.js", 		array(), ASSET_VERSION, true );
 		
