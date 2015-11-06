@@ -75,6 +75,16 @@
             font-weight: bold;
 
             text-align: center;
+
+            transition: 100ms;
+
+            &:focus,
+            &:hover {
+                transform: scale(1.1);
+                background-color: #fff;
+                color: $text-default;
+                box-shadow: 0 0 50px rgba(#000, .8);
+            }
         }
     }
 }
