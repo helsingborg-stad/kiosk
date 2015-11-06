@@ -91,3 +91,10 @@
         margin-top: -.1em;
     }
 }
+
+.metro-grid-item-image {
+    @include fillall;
+    background-size: cover;
+    background-position: center center;
+    opacity: .15;
+}
