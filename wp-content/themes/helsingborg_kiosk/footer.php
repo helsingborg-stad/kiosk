@@ -14,7 +14,7 @@
 				
 				<?php if (is_front_page() ) { ?>
 				
-					<button class="btn btn-badge-icon btn-home">
+					<button class="btn btn-badge-icon btn-home" formaction="/selfie/">
 						<span class="animated bounceIn"><!-- Animationwrapper -->
 							<i class="ion-ios-camera"></i>
 						</span>
