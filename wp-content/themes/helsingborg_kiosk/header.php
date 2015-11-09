@@ -47,9 +47,9 @@ global $post;
 	<header class="main-header">
 
         <span class="brand text-left pull-left">
-            <span class="logo animated fadeIn" data-subtitle="Info">
+            <a class="logo animated fadeIn" data-subtitle="Info" href="/">
 	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad">
-            </span>
+            </a>
         </span>
 
         <div class="clock text-right pull-right animated fadeIn">
@@ -59,7 +59,7 @@ global $post;
 
 	</header>
 
-	<section id="hero" class="animated fadeIn <?php if ( is_object( $post ) && is_single($post->ID) ) { ?>map-area<?php } ?>" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
+	<section id="hero" class="animated fadeIn <?php if ( is_object( $post ) && is_single($post->ID) ) { ?>map-area<?php } ?> <?php if ( is_archive() ) { ?>no-gradient<?php } ?>" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
 
 		<div class="stripe animated slideInLeft">
 		    <div></div>
@@ -72,6 +72,23 @@ global $post;
 		<?php if ( is_object( $post ) && is_single($post->ID) ) { ?>
 			<div id="map-canvas" data-adress="Stortorget 8, Helsingborg, Sweden" class="map-canvas"></div>
 		<?php } ?>
+		
+		<?php if ( is_archive( ) ) { ?>
+			<div class="metro-grid-item metro-grid-color-2">
+				<div class="metro-grid-item-image" style="background-image:url('http://media.lifeinsingapore.se/2014/07/DSC_1334.jpg');"></div>
+	            <div class="metro-grid-item-content">
+	                <i class="ion-ios-sunny"></i>
+	                Badplatser
+	            </div>
+			</div>
+		<?php } ?>
+		
+		<?php if ( is_page_template( '' ) ) { ?>
+			<div id="my_camera" style="width:320px; height:240px;"></div>
+		    <div id="my_result"></div>
+		<?php } ?>   
+
+    <a href="javascript:void(take_snapshot())">Take Snapshot</a>
 
 	</section>
 

@@ -1,0 +1,59 @@
+ $wrapper_height: 500px; 
+ $number_of_items: 5; 
+ $margin_height: 20px; 
+ 
+ ul.list-section-places {
+	list-style: none; 
+	padding: 0;  
+	margin: 220px 0 0 0; 
+	overflow: hidden; 
+	height:  $wrapper_height + 100px; 
+	width: 100%; 
+	
+	li {
+		border: 1px solid $creamy-darker; 
+		background: $creamy; 
+		margin-bottom: $margin_height; 
+		transition: all 100ms ease; 
+		
+		a {
+			display: block; 
+			overflow: hidden; 
+			line-height: ($wrapper_height/$number_of_items) - $margin_height; 
+			height: ($wrapper_height/$number_of_items) - $margin_height; 
+			color: #313131; 
+			
+			span {
+				padding: 0 20px; 
+				display: block; 
+				float: left; 
+				line-height: inherit; 
+				height: inherit; 
+				
+				&.image {
+					width: ($wrapper_height/$number_of_items) - $margin_height; 
+					background-size: cover; 
+					outline: 1px solid $creamy-darker; 
+				}
+				
+				&.title {
+					@include ellipsis(65%); 
+				}
+				
+				&.distance {
+					float: right; 
+					font-size: 1.2em; 
+					opacity: .8; 
+				}
+				
+				&.action {
+					float: right; 
+					width: ($wrapper_height/$number_of_items) - $margin_height; 
+					text-align: center; 
+					font-size: 1.6em; 
+				}
+				
+			}
+		}
+	}
+ }

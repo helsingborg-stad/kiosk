@@ -52,11 +52,14 @@
  * This is where the most part of our sass/css lives.
  * This is all the different style for all elements on our site.
  */
+ 
 @import 'partials/base';
 @import 'partials/screensaver';
+@import 'partials/flickity';
 @import 'partials/navbar';
 @import 'partials/button';
 @import 'partials/metro-grid';
+@import 'partials/list';
 
 
 /**

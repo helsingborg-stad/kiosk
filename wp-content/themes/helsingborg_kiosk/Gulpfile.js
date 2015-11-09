@@ -88,10 +88,11 @@ gulp.task('sass-admin-dist', function () {
 gulp.task('scripts-dev', function () {
     return gulp.src([
     			'assets/js/src/lib/jquery-2.1.4.js',
-    			'assets/js/src/lib/flickity.pkgd.min.js',
+    			'assets/js/src/lib/flickity.pkgd.min.js',  
     			'assets/js/src/lib/bootstrap.js',
     			'assets/js/src/lib/gmaps.js',
-    			'assets/js/src/*.js'
+    			'assets/js/src/lib/webcam.js',
+    			'assets/js/src/*.js' 
     		])
             .pipe(concat('app.js'))
             .pipe(gulp.dest('assets/js/dist'))

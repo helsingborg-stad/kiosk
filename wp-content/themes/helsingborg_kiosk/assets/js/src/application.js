@@ -61,7 +61,7 @@
 		              map.setCenter(latlng.lat(), latlng.lng());
 		              map.addMarker({
 		                lat: latlng.lat(),
-		                lng: latlng.lng()
+		                lng: latlng.lng() 
 		              });
 		              map.setZoom(16); 
 		            }
@@ -72,5 +72,55 @@
         }
         
 	}); 
-	 
 	
+	/****************************************************
+	 *
+	 *	Hide  helpers after 3S 
+	 *
+	 ****************************************************/
+	 if ( jQuery("#helperGesture").length ) { 
+		 setTimeout(function(){
+		    document.getElementById('helperGesture').className = 'hand-gestrure-swipe has-ended';
+		 }, 3000);
+	 }
+
+	/****************************************************
+	 *
+	 *	Go one step back
+	 *
+	 ****************************************************/
+		 
+	jQuery(function(){
+		jQuery(".one-step-back").click(function(event){
+			event.preventDefaul(); 
+			window.history.back();
+		}); 
+	}); 
+	
+	/****************************************************
+	 *
+	 *	Webcam functions 
+	 *
+	 ****************************************************/
+	 
+	 //Docs: https://github.com/jhuckaby/webcamjs
+	
+	Webcam.set({
+        width: 1080,
+        height: 1080,
+        dest_width: 640,
+        dest_height: 480,
+        image_format: 'jpeg',
+        jpeg_quality: 90,
+        force_flash: false,
+        flip_horiz: true,
+        fps: 45
+    });
+	
+	Webcam.attach( '#my_camera' );
+
+    function take_snapshot() {
+        Webcam.snap( function(data_uri) {
+            document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+        } );
+    }

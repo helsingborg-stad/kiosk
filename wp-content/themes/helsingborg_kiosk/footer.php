@@ -1,16 +1,59 @@
 		</section>
-
-		<footer class="navbar">
-			<button class="btn btn-plain btn-prev pull-left"><i class="ion-chevron-left"></i> Föregående</button>
-
-			<button class="btn btn-badge-icon btn-home">
-				<i class="ion-ios-camera"></i>
-				Ta en selfie
-			</button>
-
-			<button class="btn btn-plain btn-next pull-right">Nästa <i class="ion-chevron-right"></i></button>
-		</footer>
-
+		
+		<?php global $post; ?> 
+		
+		<form> <!-- Form for action buttons -->
+			<footer class="navbar animated fadeInUp">
+				
+				<button class="btn btn-plain btn-prev pull-left" <?php if ( is_single( $post ) ) { echo 'style="visibility: hidden;"'; } ?>>
+					<?php 
+						echo ' <i class="ion-chevron-left"></i>'; 
+						_e("Föregående", 'kiosk'); 
+					?>
+				</button>
+				
+				<?php if (is_front_page() ) { ?>
+				
+					<button class="btn btn-badge-icon btn-home">
+						<span class="animated bounceIn"><!-- Animationwrapper -->
+							<i class="ion-ios-camera"></i>
+						</span>
+						<span class="animated fadeIn">Ta en selfie</span>
+					</button>
+					
+				<?php } else { ?>
+				
+					<?php if ( is_single( $post ) ) { ?> 
+						
+						<button class="btn btn-badge-icon btn-home one-step-back" formaction="/">
+							<span class="animated bounceIn"><!-- Animationwrapper -->
+								<i class="ion-ios-list"></i>
+							</span>
+							<span class="animated fadeIn">Tillbaka till kategori</span>
+						</button>
+						
+					<?php } else { ?> 
+						
+						<button class="btn btn-badge-icon btn-home" formaction="/">
+							<span class="animated bounceIn"><!-- Animationwrapper -->
+								<i class="ion-ios-home"></i>
+							</span>
+							<span class="animated fadeIn">Tillbaka till startsidan</span>
+						</button>
+						
+					<?php } ?> 
+				
+				<?php } ?> 
+	
+				<button class="btn btn-plain btn-next pull-right" <?php if ( is_single( $post ) ) { echo 'style="visibility: hidden;"'; } ?>>
+					<?php 
+						_e("Nästa", 'kiosk'); 
+						echo ' <i class="ion-chevron-right"></i>'; 
+					?> 
+				</button>
+			
+			</footer>
+		</form>
 
 		<!--[if lt IE 10]>
 			<script src="http://jamesallardice.github.io/Placeholders.js/assets/js/placeholders.min.js"></script>
@@ -22,5 +65,6 @@
 		<![endif]-->
 
 		<?php wp_footer(); ?>
+		
 	</body>
 </html>

@@ -27,6 +27,17 @@ $button-icon-margin: 8px;
     }
 }
 
+.btn:not(.btn-badge-icon) {
+	 	
+	&:hover {
+		background-color: $palette-red-2;
+        color: #fff;
+		a, a span, span {
+			color: #fff; 
+		}
+    }
+}
+
 .btn-prev {
     border-right: 1px solid $creamy-darker;
 }
