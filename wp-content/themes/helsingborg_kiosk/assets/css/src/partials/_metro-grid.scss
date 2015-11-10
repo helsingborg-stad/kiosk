@@ -95,9 +95,14 @@
 
 .metro-grid-item-content {
     $icon-size: 4em;
-    @include center;
+    @include center(absolute, false, true);
+    width: 100%;
+    text-align: center;
 
     svg {
+        display: block;
+        margin: 0 auto 10px auto;
+        width: 70%;
         fill: #fff;
     }
 }
