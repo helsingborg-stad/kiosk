@@ -97,7 +97,7 @@ class ParseCbis
             wp_update_post(array(
                 'ID'           => $postId,
                 'post_title'   => $data->name,
-                'post_content' => $data->introduction . ' ' . $data->description,
+                'post_content' => $data->introduction . "\n\n" . $data->description,
                 'post_status'  => 'publish',
                 'post_type'    => 'hbgKioskPOI'
             ));
@@ -105,7 +105,7 @@ class ParseCbis
             echo "<strong>Creating post</strong><br>";
             $postId = wp_insert_post(array(
                 'post_title'   => $data->name,
-                'post_content' => $data->introduction . ' ' . $data->description,
+                'post_content' => $data->introduction . "\n\n" . $data->description,
                 'post_status'  => 'publish',
                 'post_type'    => 'hbgKioskPOI'
             ));
