@@ -10,8 +10,7 @@ class CustomPostType
     {
         // Register the post type
         add_action('init', array($this, 'registerPostType'));
-
-        $parser = new ParseCbis('/www/sites/kiosk/CSV_CBIS_Sync_Export.csv');
+        add_action('admin_menu', array($this, 'createParsePage'), 100);
     }
 
     /**
@@ -52,9 +51,52 @@ class CustomPostType
                 'with_front' => false
             ),
             'exclude_from_search'  => false,
+            'taxonomies'           => array('category'),
             'supports'             => array('title', 'revisions', 'editor')
         );
 
         register_post_type('hbgKioskPOI', $args);
+    }
+
+    public function createParsePage()
+    {
+        add_submenu_page(
+            'edit.php?post_type=hbgkioskpoi',
+            'Uppdatera data',
+            'Uppdatera data',
+            'edit_posts',
+            'hbgKioskPOIGetNew',
+            array($this, 'pageGetNewData')
+        );
+    }
+
+    public function pageGetNewData()
+    {
+        new ParseCbis('/www/sites/kiosk/CSV_CBIS_Sync_Export.csv');
+    }
+
+    /**
+     * Get poi:s
+     * @param  integer $count     Number of POI to get
+     * @param  array   $metaQuery Optional meta query array
+     * @return object             Object with POI posts
+     */
+    public static function get($count = 10, $metaQuery = null)
+    {
+        $args = array(
+            'posts_per_page' => $count,
+            'post_type'      => 'hbgKioskPOI',
+            'post_status'    => 'publish',
+            'orderby'        => 'date',
+            'order'          => 'DESC'
+        );
+
+        if (is_array($metaQuery)) {
+            $args['meta_query'] = $metaQuery;
+        }
+
+        $posts = get_posts($args);
+
+        return $posts;
     }
 }

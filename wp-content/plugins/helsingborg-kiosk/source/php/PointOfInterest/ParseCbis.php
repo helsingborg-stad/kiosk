@@ -2,6 +2,8 @@
 
 namespace HbgKiosk\PointOfInterest;
 
+use HbgKiosk\PointOfInterest\CustomPostType;
+
 class ParseCbis
 {
     public $path;
@@ -13,8 +15,8 @@ class ParseCbis
     {
         $this->path = $path;
         $this->data = $this->getData($this->path);
-        var_dump($this->data);
-        die();
+        $this->save($this->data);
+        echo '<br><span style="color:#5ec61a">PROCESSEN SLUTFÖRD!</span>';
     }
 
     /**
@@ -67,5 +69,57 @@ class ParseCbis
     public function getHeader($data)
     {
         return $data[0];
+    }
+
+    public function save($data)
+    {
+        foreach ($data as $item) {
+            $this->addPost($item);
+        }
+    }
+
+    public function addPost($data)
+    {
+        $poi = CustomPostType::get(1, array(
+            array(
+                'key' => 'poi-id',
+                'value' => $data->id,
+                'compare' => '='
+            )
+        ));
+
+        $postId = (isset($poi[0]->ID)) ? $poi[0]->ID : null;
+
+        if ($postId !== null) {
+            echo "UPDATING POST<br>";
+            wp_update_post(array(
+                'ID'           => $postId,
+                'post_title'   => $data->name,
+                'post_content' => $data->introduction . ' ' . $data->description,
+                'post_status'  => 'publish',
+                'post_type'    => 'hbgKioskPOI'
+            ));
+        } else {
+            echo "CREATING POST<br>";
+            $postId = wp_insert_post(array(
+                'post_title'   => $data->name,
+                'post_content' => $data->introduction . ' ' . $data->description,
+                'post_status'  => 'publish',
+                'post_type'    => 'hbgKioskPOI'
+            ));
+        }
+
+        update_post_meta($postId, 'poi-id', $data->id);
+        update_post_meta($postId, 'poi-categories', $data->categories);
+        update_post_meta($postId, 'poi-city', $data->cityAddress);
+        update_post_meta($postId, 'poi-address', $data->streetAddress1);
+        update_post_meta($postId, 'poi-postalcode', $data->postalCode);
+        update_post_meta($postId, 'poi-latitude', $data->latitude);
+        update_post_meta($postId, 'poi-longitude', $data->longitude);
+        update_post_meta($postId, 'poi-phone', $data->phoneNumber);
+        update_post_meta($postId, 'poi-price', $data->price);
+
+        update_post_meta($postId, 'poi-image', $data->image);
+        update_post_meta($postId, 'poi-occations', $data->occations);
     }
 }
