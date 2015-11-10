@@ -148,7 +148,7 @@ class ParseCbis
             if (is_array($mapCategories)) {
                 foreach ($mapCategories as $mapCategory) {
                     if (in_array($mapCategory->name, $cbisCategories)) {
-                        wp_set_post_terms($postId, $postCategory->name, 'hbgkioskpoi', $append = false);
+                        wp_set_post_categories($postId, array($postCategory->term_id), true);
                     }
                 }
             }
