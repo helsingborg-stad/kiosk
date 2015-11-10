@@ -69,24 +69,29 @@ global $post;
 		    <div></div>
 		</div>
 
-		<?php if ( is_object( $post ) && is_single($post->ID) ) { ?>
+		<?php if (is_object($post) && is_single($post->ID)) : ?>
 			<div id="map-canvas" data-adress="Stortorget 8, Helsingborg, Sweden" class="map-canvas"></div>
-		<?php } ?>
-		
-		<?php if ( is_archive( ) ) { ?>
+		<?php endif; ?>
+
+		<?php
+		if (is_archive()) :
+			$background = get_field('poi-category-bg', 'category_' . $cat);
+    		$icon = get_field('poi-category-icon', 'category_' . $cat);
+    		$iconSvg = file_get_contents($icon['url']);
+		?>
 			<div class="metro-grid-item metro-grid-color-2">
-				<div class="metro-grid-item-image" style="background-image:url('http://media.lifeinsingapore.se/2014/07/DSC_1334.jpg');"></div>
+				<div class="metro-grid-item-image" style="background-image:url('<?php echo $background['url']; ?>');"></div>
 	            <div class="metro-grid-item-content">
-	                <i class="ion-ios-sunny"></i>
-	                Badplatser
+	                <?php echo $iconSvg; ?>
+	                <?php single_cat_title('', true); ?>
 	            </div>
 			</div>
-		<?php } ?>
-		
-		<?php if ( is_page_template( 'selfie.php' ) ) { ?>
+		<?php endif; ?>
+
+		<?php if (is_page_template( 'selfie.php')) : ?>
 			<div id="my_camera" style="width:320px; height:240px;"></div>
 		    <div id="my_result"></div>
-		<?php } ?>   
+		<?php endif; ?>
 
     <a href="javascript:void(take_snapshot())">Take Snapshot</a>
 
