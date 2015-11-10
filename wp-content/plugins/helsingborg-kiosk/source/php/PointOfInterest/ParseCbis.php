@@ -6,6 +6,7 @@ class ParseCbis
 {
     public $path;
     public $csv;
+    public $header;
     public $data;
 
     public function __construct($path)
@@ -33,21 +34,38 @@ class ParseCbis
 
         fclose($file);
 
-        array_walk_recursive($data, function (&$value, $key) {
-            if (is_string($value)) {
-                $value = utf8_encode($value);
-            }
-        });
+        // Save the header information
+        $this->header = $this->getHeader($data, true);
+        unset($data[0]);
 
-        return $data;
+        $modifiedKeys = array();
+
+        // Set keys and utf8-encode
+        foreach ($data as $rowKey => $rowData) {
+            if (is_array($rowData)) {
+                foreach ($rowData as $key => $value) {
+                    $key = lcfirst($this->header[$key]);
+
+                    if (is_string($value)) {
+                        $value = utf8_encode($value);
+                    }
+
+                    $modifiedKeys[$rowKey][$key] = $value;
+                }
+            }
+        }
+
+        $modifiedKeys = json_decode(json_encode($modifiedKeys));
+        return $modifiedKeys;
     }
 
     /**
      * Gets the first row (presumably the header)
+     * @param array   $data     The csv data
      * @return array The data in the first row
      */
-    public function getHeader()
+    public function getHeader($data)
     {
-        return $this->data[0];
+        return $data[0];
     }
 }

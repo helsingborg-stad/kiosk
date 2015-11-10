@@ -11,7 +11,7 @@ class CustomPostType
         // Register the post type
         add_action('init', array($this, 'registerPostType'));
 
-        //$parser = new ParseCbis('/www/sites/kiosk/CSV_CBIS_Sync_Export.csv');
+        $parser = new ParseCbis('/www/sites/kiosk/CSV_CBIS_Sync_Export.csv');
     }
 
     /**
