@@ -10,6 +10,7 @@ $categories = get_categories(array(
 	    <ul class="metro-grid">
 
 	    	<?php
+	    	if (count($categories) > 0) :
 	    	foreach ($categories as $category) :
 	    		if ($category->name == 'Okategoriserade') continue;
 	    		$background = get_field('poi-category-bg', $category);
@@ -25,7 +26,14 @@ $categories = get_categories(array(
 		                </div>
 		            </a>
 		        </li>
-	    	<?php endforeach; ?>
+	    	<?php
+	    	endforeach;
+	    	else :
+	    	?>
+			<li class="metro-grid-item">
+				Inga kategorier att visa
+			</li>
+	    	<?php endif; ?>
 
 	    </ul>
 
