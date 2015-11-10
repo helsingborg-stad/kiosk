@@ -121,12 +121,21 @@ class ParseCbis
         update_post_meta($postId, 'poi-phone', $data->phoneNumber);
         update_post_meta($postId, 'poi-price', $data->price);
 
-        update_post_meta($postId, 'poi-image', $data->image);
         update_post_meta($postId, 'poi-occations', $data->occations);
+
+        // Map image
+        // Url: http://images.citybreak.com/image.aspx?ImageId=3974570 ProducedBy: CopyrightBy: Keywords:
+        $image = preg_split('/( )?([A-Za-z]+):( )?/i', $data->image);
+        $imageUrl = (strlen($image[2]) > 0) ? 'http:' . $image[2] : null;
+        $imageByline = (strlen($image[3]) > 0) ? 'http:' . $image[3] : null;
+
+        update_post_meta($postId, 'poi-image', $imageUrl);
+        update_post_meta($postId, 'poi-image-by', $imageByline);
 
         // Update CBIS-categories taxonomy
         wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
 
+        // Map categories
         $postCategories = get_categories(array(
             'type' => 'hbgkioskpoi'
         ));
