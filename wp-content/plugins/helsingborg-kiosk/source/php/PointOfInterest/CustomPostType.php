@@ -10,6 +10,10 @@ class CustomPostType
     {
         // Register the post type
         add_action('init', array($this, 'registerPostType'));
+
+        add_action('init', array($this, 'registerTaxonomy'));
+
+        // Add admin pages
         add_action('admin_menu', array($this, 'createParsePage'), 100);
     }
 
@@ -58,6 +62,43 @@ class CustomPostType
         register_post_type('hbgKioskPOI', $args);
     }
 
+    public function registerTaxonomy()
+    {
+        $labels = array(
+            'name'                       => _x('CBIS-kategorier', 'taxonomy general name'),
+            'singular_name'              => _x('CBIS-kategori', 'taxonomy singular name'),
+            'search_items'               => __('Söl CBIS-kategorier'),
+            'popular_items'              => __('Populära CBIS-kategorier'),
+            'all_items'                  => __('Alla CBIS-kategorier'),
+            'parent_item'                => null,
+            'parent_item_colon'          => null,
+            'edit_item'                  => __('Redigera CBIS-kategori'),
+            'update_item'                => __('Uppdatera CBIS-kategori'),
+            'add_new_item'               => __('Lägg till ny CBIS-kategori'),
+            'new_item_name'              => __('Ny CBIS-kategori'),
+            'separate_items_with_commas' => __('Separera CBIS-kategorier med kommatecken'),
+            'add_or_remove_items'        => __('Lägg till eller ta bort CBIS-kategorier'),
+            'choose_from_most_used'      => __('Välj bland de mest använda CBIS-kategorierna'),
+            'not_found'                  => __('Inga CBIS-kategorier hittades'),
+            'menu_name'                  => __('CBIS-kategorier'),
+        );
+
+        $args = array(
+            'hierarchical'          => false,
+            'labels'                => $labels,
+            'show_ui'               => true,
+            'show_admin_column'     => true,
+            'query_var'             => true,
+            'rewrite'               => array('slug' => 'cbis'),
+        );
+
+        register_taxonomy('cbisCategories', 'hbgkioskpoi', $args);
+    }
+
+    /**
+     * Creates a admin page to trigger update data function
+     * @return void
+     */
     public function createParsePage()
     {
         add_submenu_page(
@@ -70,6 +111,10 @@ class CustomPostType
         );
     }
 
+    /**
+     * Contents of the parse page
+     * @return void
+     */
     public function pageGetNewData()
     {
         new ParseCbis('/www/sites/kiosk/CSV_CBIS_Sync_Export.csv');

@@ -110,7 +110,6 @@ class ParseCbis
         }
 
         update_post_meta($postId, 'poi-id', $data->id);
-        update_post_meta($postId, 'poi-categories', $data->categories);
         update_post_meta($postId, 'poi-city', $data->cityAddress);
         update_post_meta($postId, 'poi-address', $data->streetAddress1);
         update_post_meta($postId, 'poi-postalcode', $data->postalCode);
@@ -121,5 +120,7 @@ class ParseCbis
 
         update_post_meta($postId, 'poi-image', $data->image);
         update_post_meta($postId, 'poi-occations', $data->occations);
+
+        wp_set_post_terms($postId, $data->categories, 'cbisCategories', true);
     }
 }
