@@ -69,8 +69,12 @@ global $post;
 		    <div></div>
 		</div>
 
-		<?php if (is_object($post) && is_single($post->ID)) : ?>
-			<div id="map-canvas" data-adress="Stortorget 8, Helsingborg, Sweden" class="map-canvas"></div>
+		<?php
+		if (is_object($post) && is_single($post->ID)) :
+			$address = get_post_meta($post->ID, 'poi-address', true);
+			$city = get_post_meta($post->ID, 'poi-city', true);
+		?>
+			<div id="map-canvas" data-adress="<?php echo $address; ?>, <?php echo $city; ?>, Sweden" class="map-canvas"></div>
 		<?php endif; ?>
 
 		<?php
