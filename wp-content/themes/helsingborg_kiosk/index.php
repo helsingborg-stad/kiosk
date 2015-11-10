@@ -18,7 +18,7 @@ $categories = get_categories(array(
 	    		$iconSvg = file_get_contents($icon['url']);
 	    	?>
 				<li class="metro-grid-item">
-		            <a href="/poi/">
+		            <a href="/category/<?php echo $category->slug; ?>">
 		                <div class="metro-grid-item-image" style="background-image:url('<?php echo $background['url']; ?>');"></div>
 		                <div class="metro-grid-item-content">
 		                    <?php echo $iconSvg; ?>
