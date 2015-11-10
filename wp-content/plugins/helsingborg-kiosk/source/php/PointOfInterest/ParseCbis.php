@@ -80,6 +80,7 @@ class ParseCbis
 
     public function addPost($data)
     {
+        // Check if this poi already exist
         $poi = CustomPostType::get(1, array(
             array(
                 'key' => 'poi-id',
@@ -90,6 +91,7 @@ class ParseCbis
 
         $postId = (isset($poi[0]->ID)) ? $poi[0]->ID : null;
 
+        // Decide if we're updating an existing post or if creating a new one
         if ($postId !== null) {
             echo "UPDATING POST<br>";
             wp_update_post(array(
@@ -109,6 +111,7 @@ class ParseCbis
             ));
         }
 
+        // Update post meta
         update_post_meta($postId, 'poi-id', $data->id);
         update_post_meta($postId, 'poi-city', $data->cityAddress);
         update_post_meta($postId, 'poi-address', $data->streetAddress1);
@@ -121,6 +124,25 @@ class ParseCbis
         update_post_meta($postId, 'poi-image', $data->image);
         update_post_meta($postId, 'poi-occations', $data->occations);
 
-        wp_set_post_terms($postId, $data->categories, 'cbisCategories', true);
+        // Update CBIS-categories taxonomy
+        wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
+
+        $postCategories = get_categories(array(
+            'type' => 'hbgkioskpoi'
+        ));
+
+        $cbisCategories = array_map('trim', explode(',', $data->categories));
+
+        foreach ($postCategories as $postCategory) {
+            $mapCategories = get_field('poi-category-map', $postCategory);
+
+            if (is_array($mapCategories)) {
+                foreach ($mapCategories as $mapCategory) {
+                    if (in_array($mapCategory->name, $cbisCategories)) {
+                        wp_set_post_terms($postId, $postCategory->name, 'hbgkioskpoi', $append = false);
+                    }
+                }
+            }
+        }
     }
 }
