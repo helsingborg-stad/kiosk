@@ -14,13 +14,13 @@
 		.logo {
 			display: block;
 			width: 280px;
-			position: relative; 
-			color: #1D1D1B; 
-			
+			position: relative;
+			color: #1D1D1B;
+
 			&:after {
-				content: attr(data-subtitle); 
-				text-transform: uppercase; 
-				position: absolute; 
+				content: attr(data-subtitle);
+				text-transform: uppercase;
+				position: absolute;
 				left: 73px;
 			    top: 49px;
 			    font-size: .8em;
@@ -125,22 +125,21 @@
 			}
 
 		}
-		
+
 		.metro-grid-item {
-			@include fillall; 
-			color: #fff; 
-			
+			@include fillall;
+			color: #fff;
+
 			.metro-grid-item-content {
-				font-size: 4em; 
-				text-align: center; 
-				line-height: 120%; 
-			
-				i {
-					line-height: 120%; 
-					font-size: 8em; 
+				font-size: 4em;
+				text-align: center;
+				line-height: 120%;
+
+				svg {
+					width: 50%;
 				}
 			}
-			
+
 		}
 
 	}
