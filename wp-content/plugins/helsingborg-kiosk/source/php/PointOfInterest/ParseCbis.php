@@ -93,7 +93,7 @@ class ParseCbis
 
         // Decide if we're updating an existing post or if creating a new one
         if ($postId !== null) {
-            echo "UPDATING POST<br>";
+            echo "<strong>Updating post</strong><br>";
             wp_update_post(array(
                 'ID'           => $postId,
                 'post_title'   => $data->name,
@@ -102,7 +102,7 @@ class ParseCbis
                 'post_type'    => 'hbgKioskPOI'
             ));
         } else {
-            echo "CREATING POST<br>";
+            echo "<strong>Creating post</strong><br>";
             $postId = wp_insert_post(array(
                 'post_title'   => $data->name,
                 'post_content' => $data->introduction . ' ' . $data->description,
@@ -136,20 +136,20 @@ class ParseCbis
         wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
 
         // Map categories
-        $postCategories = get_categories(array(
-            'type' => 'hbgkioskpoi'
-        ));
 
         $cbisCategories = array_map('trim', explode(',', $data->categories));
+        $postCategories = get_categories(array('hide_empty' => false));
 
         foreach ($postCategories as $postCategory) {
-            $mapCategories = get_field('poi-category-map', $postCategory);
+            $mapTheseCategories = get_field('poi-category-map', 'category_' . $postCategory->term_id);
 
-            if (is_array($mapCategories)) {
-                foreach ($mapCategories as $mapCategory) {
-                    if (in_array($mapCategory->name, $cbisCategories)) {
+            if (is_array($mapTheseCategories)) {
+                foreach ($mapTheseCategories as $map) {
+
+                    if (in_array(html_entity_decode($map->name), $cbisCategories)) {
                         wp_set_post_categories($postId, array($postCategory->term_id), true);
                     }
+
                 }
             }
         }
