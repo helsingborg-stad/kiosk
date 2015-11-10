@@ -87,7 +87,7 @@ class CustomPostType
             'hierarchical'          => false,
             'labels'                => $labels,
             'show_ui'               => false,
-            'show_admin_column'     => true,
+            'show_admin_column'     => false,
             'query_var'             => true,
             'rewrite'               => array('slug' => 'cbis'),
         );
