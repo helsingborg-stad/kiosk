@@ -13,6 +13,9 @@ define('HBG_KIOSK_URL', plugins_url('', __FILE__));
 require_once HBG_KIOSK_PATH . 'source/php/Vendor/Psr4ClassLoader.php';
 require_once HBG_KIOSK_PATH . 'public.php';
 
+require_once HBG_KIOSK_PATH . 'source/acf/PoiCustomPostType.php';
+require_once HBG_KIOSK_PATH . 'source/acf/PoiCategory.php';
+
 // Instantiate and register the autoloader
 $loader = new HbgKiosk\Vendor\Psr4ClassLoader();
 $loader->addPrefix('HbgKiosk', HBG_KIOSK_PATH);
