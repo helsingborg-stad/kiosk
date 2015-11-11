@@ -70,27 +70,36 @@ global $post;
 		</div>
 
 		<?php
-		if (is_object($post) && is_single($post->ID)) :
-			$address = get_post_meta($post->ID, 'poi-address', true);
-			$city = get_post_meta($post->ID, 'poi-city', true);
+			
+			//Single page map 			
+			if (is_object($post) && is_single($post->ID)) {
+				
+				$latitude 		= get_post_meta($post->ID, 'poi-latitude', true); 
+				$longitude		= get_post_meta($post->ID, 'poi-longitude', true); 
+				
+				echo '<div id="map-canvas" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '" class="map-canvas"></div>'; 
+				
+			}
+			
+			//Archive page visual representation 
+			if ( is_archive() ) {
+				
+				$background 	= get_field('poi-category-bg', 'category_' . $cat);
+				$icon 			= get_field('poi-category-icon', 'category_' . $cat);
+				$iconSvg 		= file_get_contents($icon['url']);
+				
+				echo '<div class="metro-grid-item metro-grid-color-2">'; 
+				echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['url'] . '\');"</div>'; 
+		        echo '    <div class="metro-grid-item-content">'; 
+		        echo '       	'. $iconSvg; 
+		        echo '        	'. single_cat_title('', true); 
+		        echo '    </div>'; 
+				echo '</div>'; 
+				
+				
+			} 
+			
 		?>
-			<div id="map-canvas" data-adress="<?php echo $address; ?>, <?php echo $city; ?>, Sweden" class="map-canvas"></div>
-		<?php endif; ?>
-
-		<?php
-		if (is_archive()) :
-			$background = get_field('poi-category-bg', 'category_' . $cat);
-    		$icon = get_field('poi-category-icon', 'category_' . $cat);
-    		$iconSvg = file_get_contents($icon['url']);
-		?>
-			<div class="metro-grid-item metro-grid-color-2">
-				<div class="metro-grid-item-image" style="background-image:url('<?php echo $background['url']; ?>');"></div>
-	            <div class="metro-grid-item-content">
-	                <?php echo $iconSvg; ?>
-	                <?php single_cat_title('', true); ?>
-	            </div>
-			</div>
-		<?php endif; ?>
 
 	</section>
 

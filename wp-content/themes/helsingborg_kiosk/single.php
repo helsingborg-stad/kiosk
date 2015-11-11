@@ -3,13 +3,17 @@ get_header();
 
 the_post();
 
-$imageUrl = get_post_meta($post->ID, 'poi-image', true);
+$imageUrl 		= get_post_meta($post->ID, 'poi-image', true);
 
-$address = get_post_meta($post->ID, 'poi-address', true);
-$postalCode = get_post_meta($post->ID, 'poi-postalcode', true);
-$city = get_post_meta($post->ID, 'poi-city', true);
+$address		= get_post_meta($post->ID, 'poi-address', true);
+$postalCode 	= get_post_meta($post->ID, 'poi-postalcode', true);
+$city 			= get_post_meta($post->ID, 'poi-city', true);
 
-$phone = get_post_meta($post->ID, 'poi-phone', true);
+$phone 			= get_post_meta($post->ID, 'poi-phone', true);
+
+$latitude 		= get_post_meta($post->ID, 'poi-latitude', true); 
+$longitude		= get_post_meta($post->ID, 'poi-longitude', true); 
+
 ?>
 
 	<h1 id="content-headline"><?php the_title(); ?></h1>
