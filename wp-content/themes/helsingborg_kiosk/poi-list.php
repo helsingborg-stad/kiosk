@@ -19,13 +19,14 @@
             echo '</div>';
 
             foreach ( $places as $page_data ) {
+                $tabindex++;
 
                 echo '<ul class="list-section-places page-with-places list-item">';
 
                     foreach ( $page_data as $list_item ) {
 
-                        echo' <li class="btn">';
-                        echo'   <a href="'.$list_item['post_link'].'">';
+                        echo' <li>';
+                        echo'   <a href="'.$list_item['post_link'].'" tabindex="' . $tabindex . '">';
                         echo'       <span class="image" style="background-image: url(\''.$list_item['post_image'].'\');"></span>';
                         echo'       <span class="title">'.$list_item['post_title'].'</span>';
                         echo'       <span class="action"><i class="fa fa-arrow-circle-o-right"></i></span>';
