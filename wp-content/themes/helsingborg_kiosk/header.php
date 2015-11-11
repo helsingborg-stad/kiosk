@@ -103,24 +103,6 @@ $tabindex = 0;
 
 		?>
 
-			<div id="map-canvas" data-adress="<?php echo $address; ?>, <?php echo $city; ?>, Sweden" class="map-canvas"></div>
-		<?php endif; ?>
-
-		<?php
-		if (is_archive() || is_category()) :
-			$background = get_field('poi-category-bg', 'category_' . $cat);
-    		$icon = get_field('poi-category-icon', 'category_' . $cat);
-    		$iconSvg = file_get_contents($icon['url']);
-		?>
-			<div class="metro-grid-item metro-grid-color-2">
-				<div class="metro-grid-item-image" <?php if (isset($background['url'])) : ?>style="background-image:url('<?php echo $background['url']; ?>');"<?php endif; ?>></div>
-	            <div class="metro-grid-item-content">
-	                <?php echo $iconSvg; ?>
-	                <?php single_cat_title('', true); ?>
-	            </div>
-			</div>
-		<?php endif; ?>
-
 	</section>
 
 	<section id="content">
