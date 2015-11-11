@@ -68,10 +68,10 @@
 
 		/* Map */
 		.map-canvas {
-			width: 110%;
-			height: 110%;
+			width: auto;
+			height: 100%;
 			z-index: 15;
-			margin: -5%;
+			margin: 0 -28px; 
 
 			//Disable map scroll
 			&:before {
