@@ -89,6 +89,10 @@
 
                 svg {
                     fill: $text-default;
+
+                    * {
+                        fill: $text-default !important;
+                    }
                 }
             }
         }
@@ -105,8 +109,13 @@
         display: block;
         margin: 0 auto 10px auto;
         width: 70%;
+        height: 100%;
         max-height: 100px;
         fill: #fff;
+
+        * {
+            fill: #fff !important;
+        }
     }
 }
 

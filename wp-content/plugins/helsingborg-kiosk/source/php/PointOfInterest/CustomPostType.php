@@ -86,7 +86,7 @@ class CustomPostType
         $args = array(
             'hierarchical'          => false,
             'labels'                => $labels,
-            'show_ui'               => false,
+            'show_ui'               => true,
             'show_admin_column'     => false,
             'query_var'             => true,
             'rewrite'               => array('slug' => 'cbis'),
