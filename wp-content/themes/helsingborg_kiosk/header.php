@@ -80,7 +80,7 @@ $tabindex = 0;
 		<?php endif; ?>
 
 		<?php
-		if (is_archive()) :
+		if (is_archive() || is_category()) :
 			$background = get_field('poi-category-bg', 'category_' . $cat);
     		$icon = get_field('poi-category-icon', 'category_' . $cat);
     		$iconSvg = file_get_contents($icon['url']);
