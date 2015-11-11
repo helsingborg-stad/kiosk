@@ -86,7 +86,7 @@ $tabindex = 0;
     		$iconSvg = file_get_contents($icon['url']);
 		?>
 			<div class="metro-grid-item metro-grid-color-2">
-				<div class="metro-grid-item-image" style="background-image:url('<?php echo $background['url']; ?>');"></div>
+				<div class="metro-grid-item-image" <?php if (isset($background['url'])) : ?>style="background-image:url('<?php echo $background['url']; ?>');"<?php endif; ?>></div>
 	            <div class="metro-grid-item-content">
 	                <?php echo $iconSvg; ?>
 	                <?php single_cat_title('', true); ?>
