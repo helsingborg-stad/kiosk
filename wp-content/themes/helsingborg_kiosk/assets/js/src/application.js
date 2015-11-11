@@ -105,7 +105,7 @@
 	 
 	 //Docs: https://github.com/jhuckaby/webcamjs
 	
-	Webcam.set({
+	/*Webcam.set({
         width: 1080,
         height: 1080,
         dest_width: 640,
@@ -123,4 +123,4 @@
         Webcam.snap( function(data_uri) {
             document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
         } );
-    }
+    }*/ 
