@@ -9308,6 +9308,7 @@ return jQuery;
 		});
 	});
 
+
 HbgKiosk = HbgKiosk || {};
 HbgKiosk.Joystick = HbgKiosk.Joystick || {};
 

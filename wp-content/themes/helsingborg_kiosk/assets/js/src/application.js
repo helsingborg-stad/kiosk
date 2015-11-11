@@ -96,3 +96,4 @@
 			window.history.back();
 		});
 	});
+

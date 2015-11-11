@@ -117,7 +117,7 @@ class CustomPostType
      */
     public function pageGetNewData()
     {
-        new ParseCbis('/www/sites/kiosk/CSV_CBIS_Sync_Export.csv');
+        new ParseCbis( plugin_dir_path( __DIR__ ) . '../../data/CSV_CBIS_Sync_Export.csv');
     }
 
     /**

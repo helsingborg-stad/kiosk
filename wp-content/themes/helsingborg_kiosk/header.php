@@ -94,11 +94,6 @@ $tabindex = 0;
 			</div>
 		<?php endif; ?>
 
-		<?php if (is_page_template( 'selfie.php')) : ?>
-			<div id="my_camera" style="width:320px; height:240px;"></div>
-		    <div id="my_result"></div>
-		<?php endif; ?>
-
 	</section>
 
 	<section id="content">
