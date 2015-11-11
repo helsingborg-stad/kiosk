@@ -36,6 +36,7 @@
 					background-size: cover;
 					margin: 5px;
 					height: ($wrapper_height/$number_of_items) - $margin_height - 12;
+					border: 1px solid $creamy-darker; 
 				}
 
 				&.title {
@@ -64,6 +65,9 @@
 				border-color: darken($palette-red-2, 10%);
 				apperance: none;
 				outline: none;
+				span.image {
+					border-color: #cb0050; 
+				}
 			}
 		}
 	}

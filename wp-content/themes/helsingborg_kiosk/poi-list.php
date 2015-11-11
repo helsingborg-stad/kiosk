@@ -1,4 +1,8 @@
 <?php
+	
+	if ( !isset( $tabindex ) ) {
+		$tabindex = 0; 
+	} 
 
     //Get places
     $HelsingborgKioskFrontend   = new HelsingborgKioskFrontend;
@@ -19,6 +23,7 @@
             echo '</div>';
 
             foreach ( $places as $page_data ) {
+                
                 $tabindex++;
 
                 echo '<ul class="list-section-places page-with-places list-item">';
