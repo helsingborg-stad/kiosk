@@ -6,7 +6,7 @@
     width: 100%;
     background-color: $creamy;
     border-top: 1px solid $creamy-darker;
-    z-index: 40; 
+    z-index: 40;
 
     .btn {
         display: table-cell;
@@ -16,9 +16,10 @@
     .btn-home {
         @include center-x;
         bottom: 8px;
-        font-weight: 300; 
-		> span {
-			animation-delay: 1s;
+        font-weight: 300;
+
+		&:not(#center-button-select) > span {
+			//animation-delay: 1s;
 		}
     }
 

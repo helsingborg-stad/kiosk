@@ -1,6 +1,8 @@
 <?php
 global $post;
 
+$tabindex = 0;
+
 ?><!DOCTYPE html>
 <!--[if lt IE 8]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -47,7 +49,7 @@ global $post;
 	<header class="main-header">
 
         <span class="brand text-left pull-left">
-            <a class="logo animated fadeIn" href="/">
+            <a class="logo animated fadeIn" href="/" tabindex="-1">
 	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad">
             </a>
         </span>

@@ -24,6 +24,7 @@ var bower_components = 'bower_components/';
  * Compiles jQuery
  */
 
+/*
 gulp.task('jquery-core', function () {
     return gulp.src([
                 bower_components + 'jquery/dist/jquery.min.js'
@@ -33,6 +34,7 @@ gulp.task('jquery-core', function () {
 });
 
 gulp.task('jquery', ['jquery-core']);
+*/
 
 /**
  * Compiles the SASS for distribution
@@ -87,12 +89,9 @@ gulp.task('sass-admin-dist', function () {
  */
 gulp.task('scripts-dev', function () {
     return gulp.src([
-    			'assets/js/src/lib/jquery-2.1.4.js',
-    			'assets/js/src/lib/flickity.pkgd.min.js',  
-    			'assets/js/src/lib/bootstrap.js',
-    			'assets/js/src/lib/gmaps.js',
-    			'assets/js/src/lib/webcam.js',
-    			'assets/js/src/*.js' 
+                'assets/js/src/lib/jquery-2.1.4.js',
+    			'assets/js/src/**/*.js',
+    			'assets/js/src/*.js'
     		])
             .pipe(concat('app.js'))
             .pipe(gulp.dest('assets/js/dist'))
@@ -117,4 +116,4 @@ gulp.task('watch', function () {
  * Default task
  * Compiles sass, js and starts the watch task
  */
-gulp.task('default', ['jquery', 'sass-dist', 'sass-admin-dist', 'scripts-dist', 'watch']);
+gulp.task('default', ['sass-dist', 'sass-admin-dist', 'scripts-dist', 'watch']);

@@ -1,57 +1,64 @@
 		</section>
-		
-		<?php global $post; ?> 
-		
+
+		<?php global $post; ?>
+
 		<form> <!-- Form for action buttons -->
 			<footer class="navbar animated fadeInUp">
-				
-				<button class="btn btn-plain btn-prev pull-left" <?php if ( is_single( $post ) ) { echo 'style="visibility: hidden;"'; } ?>>
-					<?php 
-						echo ' <i class="ion-chevron-left"></i>'; 
-						_e("Föregående", 'kiosk'); 
+
+				<button tabindex="-1" class="btn btn-plain btn-prev pull-left" <?php if ( is_single( $post ) ) { echo 'style="visibility: hidden;"'; } ?> data-joystick="previous">
+					<?php
+						echo ' <i class="ion-chevron-left"></i>';
+						_e("Föregående", 'kiosk');
 					?>
 				</button>
-				
+
+				<button tabindex="-1" id="center-button-select" class="btn btn-badge-icon btn-home" formaction="/selfie/" style="display:none;">
+						<span class="animated bounceIn"><!-- Animationwrapper -->
+							<i class="ion-arrow-up-c"></i>
+						</span>
+						<span class="animated fadeIn">Välj</span>
+					</button>
+
 				<?php if (is_front_page() ) { ?>
-				
-					<button class="btn btn-badge-icon btn-home" formaction="/selfie/">
+
+					<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home" formaction="/selfie/">
 						<span class="animated bounceIn"><!-- Animationwrapper -->
 							<i class="ion-ios-camera"></i>
 						</span>
 						<span class="animated fadeIn">Ta en selfie</span>
 					</button>
-					
+
 				<?php } else { ?>
-				
-					<?php if ( is_single( $post ) ) { ?> 
-						
-						<button class="btn btn-badge-icon btn-home one-step-back" formaction="/">
+
+					<?php if ( is_single( $post ) ) { ?>
+
+						<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home one-step-back" formaction="/">
 							<span class="animated bounceIn"><!-- Animationwrapper -->
 								<i class="ion-ios-list"></i>
 							</span>
 							<span class="animated fadeIn">Tillbaka till kategori</span>
 						</button>
-						
-					<?php } else { ?> 
-						
-						<button class="btn btn-badge-icon btn-home" formaction="/">
+
+					<?php } else { ?>
+
+						<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home" formaction="/">
 							<span class="animated bounceIn"><!-- Animationwrapper -->
 								<i class="ion-ios-home"></i>
 							</span>
 							<span class="animated fadeIn">Tillbaka till startsidan</span>
 						</button>
-						
-					<?php } ?> 
-				
-				<?php } ?> 
-	
-				<button class="btn btn-plain btn-next pull-right" <?php if ( is_single( $post ) ) { echo 'style="visibility: hidden;"'; } ?>>
-					<?php 
-						_e("Nästa", 'kiosk'); 
-						echo ' <i class="ion-chevron-right"></i>'; 
-					?> 
+
+					<?php } ?>
+
+				<?php } ?>
+
+				<button tabindex="-1" class="btn btn-plain btn-next pull-right" <?php if ( is_single( $post ) ) { echo 'style="visibility: hidden;"'; } ?> data-joystick="next">
+					<?php
+						_e("Nästa", 'kiosk');
+						echo ' <i class="ion-chevron-right"></i>';
+					?>
 				</button>
-			
+
 			</footer>
 		</form>
 
@@ -65,6 +72,6 @@
 		<![endif]-->
 
 		<?php wp_footer(); ?>
-		
+
 	</body>
 </html>
