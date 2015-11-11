@@ -7,12 +7,12 @@
     if ( is_array( $places ) && !empty( $places ) ) {
 
         if( count( $places ) > 1 ) {
-            $class = "paged-content js-flickity";
+            $class = "paged-content flickity-swipe";
         } else {
             $class = "not-paged";
         }
 
-        echo '<div class= "' . $class . '" data-flickity-options=\'{ "cellAlign": "left", "contain": true, "wrapAround": true, "prevNextButtons": false, "cellSelector": ".list-item" }\'>';
+        echo '<div class= "' . $class . '" tabindex="-1">';
 
             echo '<div id="helperGesture" class="hand-gestrure-swipe">';
                 echo '<i class="fa fa-hand-pointer-o animated fadeOutLeft"></i>';

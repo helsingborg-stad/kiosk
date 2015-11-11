@@ -32,7 +32,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
      * @return {void}
      */
     browseUi.prototype.findTabindex = function () {
-        focusableElements = $('[tabindex]:not([tabindex="-1"])');
+        focusableElements = $('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])');
     };
 
     /**
@@ -40,13 +40,28 @@ HbgKiosk.Joystick.browseUi = (function ($) {
      * @return {void}
      */
     browseUi.prototype.focusNext = function () {
+        var prevFocusedIndex = currentFocusedIndex;
         currentFocusedIndex++;
 
         if (currentFocusedIndex > focusableElements.length-1) {
+            prevFocusedIndex = focusableElements.length-1;
             currentFocusedIndex = 0;
         }
 
-        focusableElements[currentFocusedIndex].focus();
+        var prevElement = $(focusableElements[prevFocusedIndex]);
+        var nextElement = $(focusableElements[currentFocusedIndex]);
+
+        // If next element is in a the next flicity container make sure to switch page
+
+        // prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')
+
+        if (prevElement.parents('ul').first().index() !== 0 && prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')) {
+            flickity.flickity('next', true);
+        } else if (nextElement.parents('ul').first().index() !== 0 && nextElement.parents('ul').first().hasClass('list-section-places') && nextElement.parent('li').index() === 0) {
+            flickity.flickity('next', true);
+        }
+
+        nextElement.focus();
 
         $('#center-button-select').show();
         $('#center-button').hide();
@@ -57,13 +72,23 @@ HbgKiosk.Joystick.browseUi = (function ($) {
      * @return {void}
      */
     browseUi.prototype.focusPrev = function () {
+        var prevFocusedIndex = currentFocusedIndex;
         currentFocusedIndex--;
 
         if (currentFocusedIndex < 0) {
+            prevFocusedIndex = 0;
             currentFocusedIndex = focusableElements.length-1;
         }
 
-        focusableElements[currentFocusedIndex].focus();
+        var prevElement = $(focusableElements[prevFocusedIndex]);
+        var nextElement = $(focusableElements[currentFocusedIndex]);
+
+        // If next element is in a the next flicity container make sure to switch page
+        if (nextElement.parents('ul').first().hasClass('list-section-places') && prevElement.parent('li').index() === 0) {
+            flickity.flickity('previous', true);
+        }
+
+        nextElement.focus();
 
         $('#center-button-select').show();
         $('#center-button').hide();
@@ -104,7 +129,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
             }
         }.bind(this));
 
-        $(document).on('mouseenter.joystick-hover', '[tabindex]:not([tabindex="-1"])', function (e) {
+        $(document).on('mouseenter.joystick-hover', '[tabindex]:not([tabindex="-1"]):not([tabindex="0"])', function (e) {
             this.resetFocus();
         }.bind(this));
 
