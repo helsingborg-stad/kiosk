@@ -147,7 +147,7 @@ class ParseCbis
                 foreach ($mapTheseCategories as $map) {
 
                     if (in_array(html_entity_decode($map->name), $cbisCategories)) {
-                        wp_set_post_categories($postId, array($postCategory->term_id), true);
+                        wp_set_post_categories($postId, array($postCategory->term_id), false);
                     }
 
                 }
