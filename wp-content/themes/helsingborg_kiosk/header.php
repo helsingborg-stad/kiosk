@@ -47,7 +47,7 @@ global $post;
 	<header class="main-header">
 
         <span class="brand text-left pull-left">
-            <a class="logo animated fadeIn" data-subtitle="Info" href="/">
+            <a class="logo animated fadeIn" href="/">
 	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad">
             </a>
         </span>
