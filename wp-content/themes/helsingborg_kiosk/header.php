@@ -97,8 +97,6 @@ global $post;
 		    <div id="my_result"></div>
 		<?php endif; ?>
 
-    <a href="javascript:void(take_snapshot())">Take Snapshot</a>
-
 	</section>
 
 	<section id="content">
