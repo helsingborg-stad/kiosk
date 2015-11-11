@@ -80,19 +80,11 @@ $tabindex = 0;
 		<?php endif; ?>
 
 		<?php
-		if (is_archive() || is_category()) :
+		if (is_archive()) :
 			$background = get_field('poi-category-bg', 'category_' . $cat);
     		$icon = get_field('poi-category-icon', 'category_' . $cat);
     		$iconSvg = file_get_contents($icon['url']);
 		?>
-			<div class="metro-grid-item metro-grid-color-2">
-				<div class="metro-grid-item-image" style="background-image:url('<?php echo $background['url']; ?>');"></div>
-	            <div class="metro-grid-item-content">
-	                <?php echo $iconSvg; ?>
-	                <?php single_cat_title('', true); ?>
-	            </div>
-			</div>
-		<?php endif; ?>
 
 	</section>
 
