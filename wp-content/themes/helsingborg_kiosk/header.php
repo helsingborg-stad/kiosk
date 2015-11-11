@@ -91,7 +91,11 @@ $tabindex = 0;
 				$iconSvg 		= isset( $icon['url'] ) ? file_get_contents($icon['url']) : "";
 
 				echo '<div class="metro-grid-item metro-grid-color-2">';
-				echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['url'] . '\');"</div>';
+				if (isset($background['url'])) {
+					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['url'] . '\');"></div>';
+				} else {
+					echo '	<div class="metro-grid-item-image"></div>';
+				}
 		        echo '    <div class="metro-grid-item-content">';
 		        echo '       	'. $iconSvg;
 		        echo '        	'. single_cat_title('', true);
