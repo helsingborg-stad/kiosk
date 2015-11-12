@@ -14038,7 +14038,7 @@ return GMaps;
 		var map 					= ""; 
 		var mapObject 				= ""; 
 		var geoLocationCookieName 	= "kioskGetLocationCookie"; 
-		var timeToSaveLocation 		= 7; //Number of days (erase by assigning val -1)
+		var timeToSaveLocation 		= 1; //Number of days (erase by assigning val -1)
 		
 		function VisualMap() {
 	        jQuery(function(){
@@ -14067,30 +14067,8 @@ return GMaps;
 				        lng: poiLongitude
 				    });
 				    
-				    //Use stored value if defined, else use new val and store
-				    if ( !this.GetCookie(geoLocationCookieName + "_lat") && !this.GetCookie(geoLocationCookieName + "_long") ) {
-					    
-					    GMaps.geolocate({
-						    
-							success: function(position) {
-
-								//Set cookie data 
-								HbgKiosk.VisualMap.VisualMap.SetCookie(geoLocationCookieName + "_lat" , position.coords.latitude, timeToSaveLocation); 
-								HbgKiosk.VisualMap.VisualMap.SetCookie(geoLocationCookieName + "_long" , position.coords.longitude, timeToSaveLocation); 
-								
-								//Draw map 
-								HbgKiosk.VisualMap.VisualMap.DrawMap(poiLatitude, poiLongitude, position.coords.latitude, position.coords.longitude ); 
-								
-							}
-							
-						});	
-					    
-				    } else {
-						
-						//Draw map 
-						this.DrawMap(poiLatitude, poiLongitude, this.GetCookie(geoLocationCookieName + "_lat"), this.GetCookie(geoLocationCookieName + "_long") ); 
-						
-				    }
+					//Get location from db or maps 
+					HbgKiosk.VisualMap.VisualMap.GetLocation(poiLatitude, poiLongitude);
 								      
 		        }
 		        
@@ -14146,6 +14124,66 @@ return GMaps;
 		    var expires = "expires="+d.toUTCString();
 		    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
 		}
+		
+		VisualMap.prototype.SaveLocation = function (latitude,longitude) {
+			
+			var data = {
+				'action': 		'set_kiosk_location',
+				'latitude': 	latitude,
+				'longitude': 	longitude
+			};
+	
+			jQuery.post(ajaxurl, data, function(response) {
+				
+				response = jQuery.parseJSON( response ); 
+				
+				if ( response.json_result == true ) {
+					console.log("Error, could not save location of this box."); 
+				} else {
+					console.log("Successfully saved location of this box."); 
+				}
+				
+			});
+		
+		}
+		
+		VisualMap.prototype.GetLocation = function (poiLatitude, poiLongitude) {
+			
+			var data = {
+				'action': 'get_kiosk_location'
+			};
+	
+			jQuery.post(ajaxurl, data, function(response) {
+				
+				response = jQuery.parseJSON( response ); 
+				
+				if ( response.json_result == false ) {
+
+					//Get and save new location 
+					GMaps.geolocate({
+						    
+						success: function(position) {
+
+							//Set location data 
+							HbgKiosk.VisualMap.VisualMap.SaveLocation(position.coords.latitude, position.coords.longitude); 
+							
+							//Draw map 
+							HbgKiosk.VisualMap.VisualMap.DrawMap(poiLatitude, poiLongitude, position.coords.latitude, position.coords.longitude ); 
+							
+						}
+						
+					});	
+					
+				} else {
+					
+					//Draw map
+					HbgKiosk.VisualMap.VisualMap.DrawMap(poiLatitude, poiLongitude, response.kiosk_lat, response.kiosk_long ); 
+
+				}
+				
+			});
+			
+		} 
 	
 		return new VisualMap();
 		

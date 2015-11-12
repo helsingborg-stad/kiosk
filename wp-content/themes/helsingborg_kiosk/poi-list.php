@@ -35,7 +35,7 @@
                         echo'       <span class="image" style="background-image: url(\''.$list_item['post_image'].'\');"></span>';
                         echo'       <span class="title">'.$list_item['post_title'].'</span>';
                         echo'       <span class="action"><i class="fa fa-arrow-circle-o-right"></i></span>';
-                        echo'       <span class="distance"><i class="ion-android-walk"></i> '.$list_item['post_distance'].' KM</span>';
+						echo'		<span class="distance"><i class="ion-android-walk"></i> '. ( ( $list_item['post_distance'] != "0.0" ) ? $list_item['post_distance'] . " KM" : __("I närheten") ) .'</span>';
                         echo'   </a>';
                         echo' </li>';
 
