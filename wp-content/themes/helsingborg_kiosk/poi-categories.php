@@ -25,7 +25,12 @@ $categories = get_categories($args);
 
                 $background = get_field('poi-category-bg', $category);
                 $icon = get_field('poi-category-icon', $category);
-                $iconSvg = file_get_contents($icon['url']);
+                
+                if ( isset( $icon['url'] ) && !empty( $icon['url'] ) ) {
+	                $iconSvg = file_get_contents($icon['url']);
+                } else {
+	                $iconSvg = ""; 
+                }
 
                 $href = get_category_link($category->term_id);
                 if (strtolower(get_cat_name($category->term_id)) == 'evenemang') {
