@@ -28,6 +28,9 @@ $categories = get_categories($args);
                 $iconSvg = file_get_contents($icon['url']);
 
                 $href = get_category_link($category->term_id);
+                if (strtolower(get_cat_name($category->term_id)) == 'evenemang') {
+                    $href = '/event';
+                }
             ?>
                 <li class="metro-grid-item">
                     <a href="<?php echo $href; ?>" tabindex="<?php echo $tabindex; ?>">
