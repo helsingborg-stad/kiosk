@@ -1,0 +1,74 @@
+.event-item {
+    display: block;
+    position: relative;
+    background-color: #fff;
+    color: $text-default;
+    text-decoration: none;
+    letter-spacing: .5px;
+    font-weight: bold;
+    border: 1px solid $creamy-darker;
+    padding: 5px;
+    margin-bottom: 30px;
+    transition: 100ms all;
+
+    .btn {
+        font-size: .8em;
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: $text-default;
+        transform: scale(1.1);
+        z-index: $level-top;
+        box-shadow: 0 0 50px rgba(#000, .8);
+        apperance: none;
+        outline: none;
+    }
+}
+
+.event-image {
+    width: 100%;
+    padding-top: 50%;
+    background-size: cover;
+    background-position: center center;
+}
+
+.index-container {
+    display: block;
+    position: relative;
+    padding: 10px;
+    max-height: 240px;
+    overflow: hidden;
+
+    &::after {
+        @include gradient(rgba(#fff, 0), rgba(#fff, 1));
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+    }
+}
+
+.index-description {
+    display: block;
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: .7em;
+    white-space: break-word;
+}
+
+.index-date {
+    font-size: .7em;
+    letter-spacing: 0;
+    font-weight: normal;
+}
+
+.index-caption {
+    display: block;
+    line-height: 130%;
+    color: $palette-red-4;
+}
