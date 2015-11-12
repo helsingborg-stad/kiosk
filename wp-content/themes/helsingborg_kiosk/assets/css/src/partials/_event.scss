@@ -1,6 +1,20 @@
-.event-item {
-    display: block;
+.event-list {
     position: relative;
+}
+
+.event-item {
+    $width: 320px;
+    $height: 405px;
+
+    $post-left-start: 14px;
+    $pos-left: $post-left-start;
+    $pos-top: 0;
+
+    display: block;
+    width: $width;
+    height: $height;
+    max-height: $height;
+    position: absolute;
     background-color: #fff;
     color: $text-default;
     text-decoration: none;
@@ -9,7 +23,53 @@
     border: 1px solid $creamy-darker;
     padding: 5px;
     margin-bottom: 30px;
+    text-align: left;
     transition: 100ms all;
+
+    &:nth-child(6n + 1) {
+        left: $pos-left;
+        top: $pos-top;
+    }
+
+    &:nth-child(6n + 2) {
+        $pos-left: $pos-left + $width + 20;
+        $pos-top: 0;
+
+        left: $pos-left;
+        top: $pos-top;
+    }
+
+    &:nth-child(6n + 3) {
+        $pos-left: $pos-left + $width + 20;
+        $pos-top: 0;
+
+        left: $pos-left;
+        top: $pos-top;
+    }
+
+    &:nth-child(6n + 4) {
+        $pos-left: $post-left-start;
+        $pos-top: $height + 20;
+
+        left: $pos-left;
+        top: $pos-top;
+    }
+
+    &:nth-child(6n + 5) {
+        $pos-left: $pos-left + $width + 20;
+        $pos-top: $height + 20;
+
+        left: $pos-left;
+        top: $pos-top;
+    }
+
+    &:nth-child(6n + 6) {
+        $pos-left: $pos-left + $width + 20;
+        $pos-top: $height + 20;
+
+        left: $pos-left;
+        top: $pos-top;
+    }
 
     .btn {
         font-size: .8em;
@@ -25,6 +85,65 @@
         apperance: none;
         outline: none;
     }
+}
+
+.event-item-open {
+    z-index: $level-top;
+    height: auto;
+    animation: 200ms event-item-open ease forwards;
+
+    &:hover,
+    &:focus {
+        transform: none !important;
+        box-shadow: none !important;
+        apperance: none;
+        outline: none;
+    }
+
+    .event-image {
+        width: 40%;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .index-date {
+        font-size: 1em;
+    }
+
+    .index-container {
+        max-height: none;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .index-caption {
+        font-size: 1.5em;
+    }
+
+    .index-description {
+        font-size: 0.8em;
+    }
+}
+
+@keyframes event-item-open {
+    to {
+        left: 14px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        max-height: 1000px;
+    }
+}
+
+.event-backdrop {
+    background-color: rgba(#000, .8);
+    @include fillall;
+    top: 217px;
+    z-index: $level-9;
+    display: none;
 }
 
 .event-image {

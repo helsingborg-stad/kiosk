@@ -12,12 +12,20 @@
 					?>
 				</button>
 
-				<button tabindex="-1" id="center-button-select" class="btn btn-badge-icon btn-home" formaction="/selfie/" style="display:none;">
-						<span class="animated bounceIn"><!-- Animationwrapper -->
-							<i class="ion-arrow-up-c"></i>
-						</span>
-						<span class="animated fadeIn">Välj</span>
-					</button>
+				<button tabindex="-1" id="center-button-select" class="btn btn-badge-icon btn-home" style="display:none;">
+					<span class="animated bounceIn"><!-- Animationwrapper -->
+						<i class="ion-arrow-up-c"></i>
+					</span>
+					<span class="animated fadeIn">Välj</span>
+				</button>
+
+				<button tabindex="-1" id="center-button-exit-event" class="btn btn-badge-icon btn-home" style="display:none;">
+					<span class="animated bounceIn"><!-- Animationwrapper -->
+						<i class="ion-close-round"></i>
+					</span>
+					<span class="animated fadeIn">Stäng</span>
+				</button>
+
 
 				<?php if (is_front_page() ) { ?>
 

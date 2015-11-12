@@ -129,12 +129,14 @@ HbgKiosk.Joystick.browseUi = (function ($) {
             }
         }.bind(this));
 
-        $(document).on('mouseenter.joystick-hover', '[tabindex]:not([tabindex="-1"]):not([tabindex="0"])', function (e) {
+        $(document).on('mouseenter.joystick-hover', '[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)', function (e) {
             this.resetFocus();
         }.bind(this));
 
         $('#center-button-select').on('click', function (e) {
             e.preventDefault();
+
+            $(focusableElements[currentFocusedIndex]).trigger('click');
 
             if ($(focusableElements[currentFocusedIndex]).is('a')) {
                 location.href = $(focusableElements[currentFocusedIndex]).attr('href');

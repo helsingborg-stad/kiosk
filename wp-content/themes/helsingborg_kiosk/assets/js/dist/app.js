@@ -9230,7 +9230,7 @@ return jQuery;
 
 	jQuery(function(){
 		jQuery(".one-step-back").click(function(event){
-			event.preventDefaul();
+			event.preventDefault();
 			window.history.back();
 		});
 	});
@@ -9246,6 +9246,44 @@ return jQuery;
 			"prevNextButtons": false,
 			"cellSelector": ".list-item"
 		});
+	});
+
+	$('.event-list .event-item').on('click', function (e) {
+		e.preventDefault();
+
+		if ($(this).hasClass('event-item-open')) {
+			// CLOSE
+			$(this).removeClass('event-item-open');
+			$('.event-backdrop').fadeOut(200);
+
+			$('#center-button').show();
+			$('#center-button-exit-event').hide();
+
+			$('[data-joystick]').show();
+
+			$(this).blur();
+		} else {
+			// OPEN
+			$(this).addClass('event-item-open');
+			$('.event-backdrop').fadeIn(200);
+
+			$('#center-button-select, #center-button').hide();
+			$('#center-button-exit-event').show();
+
+			$('[data-joystick]').hide();
+
+			$(this).blur();
+		}
+	});
+
+	$('#center-button-exit-event').on('click', function (e) {
+		e.preventDefault();
+		$('.event-item-open').trigger('click');
+	});
+
+	$('.event-backdrop').on('click', function (e) {
+		e.preventDefault();
+		$('.event-item-open').trigger('click');
 	});
 
 
@@ -9407,12 +9445,14 @@ HbgKiosk.Joystick.browseUi = (function ($) {
             }
         }.bind(this));
 
-        $(document).on('mouseenter.joystick-hover', '[tabindex]:not([tabindex="-1"]):not([tabindex="0"])', function (e) {
+        $(document).on('mouseenter.joystick-hover', '[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)', function (e) {
             this.resetFocus();
         }.bind(this));
 
         $('#center-button-select').on('click', function (e) {
             e.preventDefault();
+
+            $(focusableElements[currentFocusedIndex]).trigger('click');
 
             if ($(focusableElements[currentFocusedIndex]).is('a')) {
                 location.href = $(focusableElements[currentFocusedIndex]).attr('href');
