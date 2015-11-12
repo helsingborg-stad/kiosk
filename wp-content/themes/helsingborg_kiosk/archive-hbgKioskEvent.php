@@ -35,6 +35,7 @@
 
             <div class="index-container">
                 <div class="index-date"><?php echo dateToDay($item->Date); ?> kl. <?php echo $item->Time; ?></div>
+                <div class="index-date"><?php echo $item->Location; ?></div>
                 <div class="index-caption"><?php echo $item->Name; ?></div>
                 <div class="index-description"><?php echo wpautop($item->Description, true); ?></div>
             </div>
