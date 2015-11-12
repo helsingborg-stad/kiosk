@@ -9,6 +9,7 @@ class App
         add_filter('upload_mimes', array($this, 'allowSvg'));
 
         new PointOfInterest\CustomPostType();
+        new Event\CustomPostType();
         new Screensaver\Screensaver();
     }
 
