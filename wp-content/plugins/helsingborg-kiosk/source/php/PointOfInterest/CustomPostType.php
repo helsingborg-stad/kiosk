@@ -43,7 +43,6 @@ class CustomPostType
         $args = array(
             'labels'               => $labels,
             'description'          => 'Points of interest',
-            'has_archive'          => true,
             'menu_icon'            => $icon,
             'public'               => true,
             'publicly_queriable'   => true,
