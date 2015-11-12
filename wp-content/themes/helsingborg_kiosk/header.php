@@ -86,6 +86,10 @@ $tabindex = 0;
 			//Archive page visual representation
 			if ( is_archive() ) {
 
+				if (preg_match('/archive-hbgkioskevent.php/', get_post_type_archive_template()) == true) {
+					$cat = get_cat_id('evenemang');
+				}
+
 				$background 	= get_field('poi-category-bg', 'category_' . $cat);
 				$icon 			= get_field('poi-category-icon', 'category_' . $cat);
 				$iconSvg 		= isset( $icon['url'] ) ? file_get_contents($icon['url']) : "";
@@ -98,7 +102,7 @@ $tabindex = 0;
 				}
 		        echo '    <div class="metro-grid-item-content">';
 		        echo '       	'. $iconSvg;
-		        echo '        	'. single_cat_title('', true);
+		        echo '        	'. get_cat_name($cat);
 		        echo '    </div>';
 				echo '</div>';
 
