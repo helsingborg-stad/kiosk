@@ -95,13 +95,17 @@
 		e.preventDefault();
 		var selector = $(this).data('selector');
 		var scrollPos = $(this).scrollTop();
-		$(selector).scrollTop(scrollPos + 200);
+		$(selector).animate({
+			scrollTop: scrollPos + 200
+		}, 200);
 	});
 
 	$('[data-action="scroll-up"]').on('click', function (e) {
 		e.preventDefault();
 		var selector = $(this).data('selector');
 		var scrollPos = $(this).scrollTop();
-		$(selector).scrollTop(scrollPos - 200);
+		$(selector).animate({
+			scrollTop: scrollPos - 200
+		}, 200);
 	});
 
