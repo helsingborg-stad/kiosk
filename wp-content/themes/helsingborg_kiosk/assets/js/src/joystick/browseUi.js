@@ -7,6 +7,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
     // Example: "joystick" => data-joystick
     var dataAttr = 'joystick';
 
+    var hasDragged = false;
     var currentFocusedIndex = -1;
     var focusableElements = [];
 
@@ -51,11 +52,11 @@ HbgKiosk.Joystick.browseUi = (function ($) {
         var prevElement = $(focusableElements[prevFocusedIndex]);
         var nextElement = $(focusableElements[currentFocusedIndex]);
 
-        // If next element is in a the next flicity container make sure to switch page
+        // If next element is in a the next flickity container make sure to switch page
 
         // prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')
 
-        if (flickity) {
+        if (flickity && !hasDragged) {
             if (prevElement.parents('ul').first().index() !== 0 && prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')) {
                 flickity.flickity('next', true);
             } else if (nextElement.parents('ul').first().index() !== 0 && nextElement.parents('ul').first().hasClass('list-section-places') && nextElement.parent('li').index() === 0) {
@@ -67,6 +68,8 @@ HbgKiosk.Joystick.browseUi = (function ($) {
 
         $('#center-button-select').show();
         $('#center-button').hide();
+
+        hasDragged = false;
     };
 
     /**
@@ -86,7 +89,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
         var nextElement = $(focusableElements[currentFocusedIndex]);
 
         // If next element is in a the next flicity container make sure to switch page
-        if (flickity) {
+        if (flickity && !hasDragged) {
             if (nextElement.parents('ul').first().hasClass('list-section-places') && prevElement.parent('li').index() === 0) {
                 flickity.flickity('previous', true);
             }
@@ -96,6 +99,8 @@ HbgKiosk.Joystick.browseUi = (function ($) {
 
         $('#center-button-select').show();
         $('#center-button').hide();
+
+        hasDragged = false;
     };
 
     /**
@@ -146,6 +151,19 @@ HbgKiosk.Joystick.browseUi = (function ($) {
                 location.href = $(focusableElements[currentFocusedIndex]).attr('href');
             }
         });
+
+        // What to do if the user first uses the next/prev controls and then swipes with hand gestures
+        if (flickity) {
+            flickity.on('dragStart', function (e) {
+                this.resetFocus();
+            }.bind(this));
+
+            flickity.on('dragEnd', function (e) {
+                var index = $('.list-section-places.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
+                hasDragged = true;
+                currentFocusedIndex = index-2;
+            }.bind(this));
+        }
     };
 
     return new browseUi();
