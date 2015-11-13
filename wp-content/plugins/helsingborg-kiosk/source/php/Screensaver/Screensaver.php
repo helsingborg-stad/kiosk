@@ -19,8 +19,8 @@ class Screensaver
 
         if (function_exists('acf_add_options_page')) {
             acf_add_options_page(array(
-                'page_title'    => 'Screensaver',
-                'menu_title'    => 'Screensaver',
+                'page_title'    => 'Skärmsläckare',
+                'menu_title'    => 'Skärmsläckare',
                 'menu_slug'     => 'screensaver',
                 'capability'    => 'edit_posts',
                 'icon_url'      => $icon,
