@@ -53,13 +53,15 @@ the_post();
 	<article>
 
 		<div class="scroll-wrapper">
-			<h1><?php the_title(); ?></h1>
-			<?php the_content(); ?>
+			<main>
+				<h1><?php the_title(); ?></h1>
+				<?php the_content(); ?>
+			</main>
 		</div>
 
 		<nav class="nav-scroll">
-			<button class="btn btn-plain btn-prev pull-left"><i class="ion-chevron-up"></i> Upp</button>
-			<button class="btn btn-plain btn-prev pull-right"><i class="ion-chevron-down"></i> Ner</button>
+			<button class="btn btn-plain btn-prev pull-left" data-action="scroll-up" data-selector=".scroll-wrapper"><i class="ion-chevron-up"></i> Upp</button>
+			<button class="btn btn-plain btn-prev pull-right" data-action="scroll-down" data-selector=".scroll-wrapper"><i class="ion-chevron-down"></i> Ner</button>
 		</nav>
 
 	</article>

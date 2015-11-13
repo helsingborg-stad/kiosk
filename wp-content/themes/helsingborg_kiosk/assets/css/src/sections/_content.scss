@@ -57,8 +57,11 @@ $number-of-visible-items: 10;
 		.scroll-wrapper {
 			@include fillall;
 			overflow: auto;
-			padding: 40px;
 			bottom: 49px;
+
+			main {
+				padding: 40px;
+			}
 		}
 
 		h1,h2,h3,h4,h5,h6,h7 {
