@@ -80,6 +80,11 @@ class ParseCbis
 
     public function addPost(&$data)
     {
+        // If this is an event, skip it
+        if (!empty($data->occasions)) {
+            return;
+        }
+
         // Check if this poi already exist
         $poi = CustomPostType::get(1, array(
             array(
