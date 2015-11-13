@@ -127,14 +127,7 @@ acf_add_local_field_group(array (
                 'operator' => '==',
                 'value' => 'category',
             ),
-        ),
-        array (
-            array (
-                'param' => 'post_type',
-                'operator' => '==',
-                'value' => 'hbgkioskpoi',
-            ),
-        ),
+        )
     ),
     'menu_order' => 0,
     'position' => 'normal',

@@ -1,4 +1,6 @@
 <?php
+	
+	
 
 namespace HbgKiosk\PointOfInterest;
 
@@ -93,8 +95,8 @@ class ParseCbis
         $post_status = 'publish';
         if (
                (!is_numeric($data->id)) // ID is numeric
-            || (!empty($data->longitude)) // longitude is float
-			|| (!empty($data->latitude)) // latitude is float
+            || (empty($data->longitude)) // longitude is float
+			|| (empty($data->latitude)) // latitude is float
             || (!is_numeric($data->templateId)) // template id is numeric
             || (!is_numeric($data->supplierId)) // supplier id is numeric
         ) {
@@ -130,14 +132,7 @@ class ParseCbis
         update_post_meta($postId, 'poi-longitude', $data->longitude);
         update_post_meta($postId, 'poi-phone', $data->phoneNumber);
         update_post_meta($postId, 'poi-price', $data->price);
-
-        // Map image
-        // Url: http://images.citybreak.com/image.aspx?ImageId=3974570 ProducedBy: CopyrightBy: Keywords:
-        
-        $image = explode(" ",trim($data->image)); 
-        if ( isset( $image[1] ) && !filter_var($image[1], FILTER_VALIDATE_URL) === false ) {
-	        update_post_meta($postId, 'poi-image', $image[1]);
-        }
+        update_post_meta($postId, 'poi-image', $data->image);
 
         // Update CBIS-categories taxonomy
         wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
