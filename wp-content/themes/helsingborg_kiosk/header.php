@@ -44,7 +44,7 @@ $tabindex = 0;
 	<?php wp_head(); ?>
 
 </head>
-<body class="<?php echo body_class(); ?>">
+<body <?php echo body_class(); ?>>
 
 	<header class="main-header">
 

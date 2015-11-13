@@ -167,7 +167,7 @@ $number-of-visible-items: 10;
 		.nav-scroll {
 			background-color: $creamy;
 			border-top: 1px solid $creamy-darker;
-			display: block;
+			display: none;
 			width: 100%;
 			overflow: hidden;
 			position: absolute;
@@ -300,6 +300,6 @@ $number-of-visible-items: 10;
     font-size: 55px;
 }
 
-#content {
+.single #content {
 	top: 58%;
 }
