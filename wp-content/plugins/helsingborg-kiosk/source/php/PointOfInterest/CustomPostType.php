@@ -126,7 +126,7 @@ class CustomPostType
      * @param  array   $metaQuery Optional meta query array
      * @return object             Object with POI posts
      */
-    public static function get($count = 10, $metaQuery = null)
+    public static function get($count = 10, $metaQuery = null, $includeDrafts = false)
     {
         $args = array(
             'posts_per_page' => $count,
@@ -135,6 +135,10 @@ class CustomPostType
             'orderby'        => 'date',
             'order'          => 'DESC'
         );
+
+        if ($includeDrafts) {
+            $args['post_status'] = array('publish', 'draft');
+        }
 
         if (is_array($metaQuery)) {
             $args['meta_query'] = $metaQuery;
