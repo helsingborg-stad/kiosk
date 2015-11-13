@@ -4,6 +4,11 @@
 		$tabindex = 0;
 	}
 
+    // Update click stats
+    $impressions = get_field('poi-category-impressions', 'category_' . $cat);
+    $impressions++;
+    update_field('poi-category-impressions', $impressions,'category_' . $cat);
+
     //Get places
     $HelsingborgKioskFrontend   = new HelsingborgKioskFrontend;
     $places                     = $HelsingborgKioskFrontend->get_places($cat);

@@ -3,6 +3,11 @@ get_header();
 
 the_post();
 
+	// Update click stats
+    $impressions = get_field('poi-impressions', $post->ID);
+    $impressions++;
+    update_field('poi-impressions', $impressions, $post->ID);
+
 	//Get the image
 	$imageUrl 		= get_post_meta($post->ID, 'poi-image', true);
 
