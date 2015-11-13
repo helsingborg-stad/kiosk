@@ -13,6 +13,9 @@ class ParseCbis
 
     public function __construct($path)
     {
+	    
+	    set_time_limit ( 600 ); 
+	    
         $this->path = $path;
         $this->data = $this->getData($this->path);
         $this->save($this->data);
@@ -82,20 +85,18 @@ class ParseCbis
                 'value' => $data->id,
                 'compare' => '='
             )
-        ));
-
+        ),true);
++
         $postId = (isset($poi[0]->ID)) ? $poi[0]->ID : null;
 
         // Check if required item values exist and is correct formatted, else set post as draft
         $post_status = 'publish';
         if (
-            (!is_string($data->name) && !empty($data->name)) // name is string and not empty
-            && (!is_numeric($data->id)) // ID is numeric
-            && (!is_float($data->longitude)) // longitude is float
-            && (!is_float($data->latitude)) // latitude is float
-            && (!is_numeric($data->templateId)) // template id is numeric
-            && (!is_numeric($data->supplierId)) // supplier id is numeric
-            && (filter_var($data->trackingPixelUrl, FILTER_VALIDATE_URL) === false) // tackingpixelurl is url
+               (!is_numeric($data->id)) // ID is numeric
+            || (!empty($data->longitude)) // longitude is float
+			|| (!empty($data->latitude)) // latitude is float
+            || (!is_numeric($data->templateId)) // template id is numeric
+            || (!is_numeric($data->supplierId)) // supplier id is numeric
         ) {
             $post_status = 'draft';
         }
@@ -130,16 +131,13 @@ class ParseCbis
         update_post_meta($postId, 'poi-phone', $data->phoneNumber);
         update_post_meta($postId, 'poi-price', $data->price);
 
-        update_post_meta($postId, 'poi-occations', $data->occations);
-
         // Map image
         // Url: http://images.citybreak.com/image.aspx?ImageId=3974570 ProducedBy: CopyrightBy: Keywords:
-        $image = preg_split('/( )?([A-Za-z]+):( )?/i', $data->image);
-        $imageUrl = (strlen($image[2]) > 0) ? 'http:' . $image[2] : null;
-        $imageByline = (strlen($image[3]) > 0) ? 'http:' . $image[3] : null;
-
-        update_post_meta($postId, 'poi-image', $imageUrl);
-        update_post_meta($postId, 'poi-image-by', $imageByline);
+        
+        $image = explode(" ",trim($data->image)); 
+        if ( isset( $image[1] ) && !filter_var($image[1], FILTER_VALIDATE_URL) === false ) {
+	        update_post_meta($postId, 'poi-image', $image[1]);
+        }
 
         // Update CBIS-categories taxonomy
         wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
