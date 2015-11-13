@@ -11,6 +11,9 @@ if (isset($cat) && is_numeric($cat)) {
 }
 
 $categories = get_categories($args);
+
+$tabindex = 0; 
+
 ?>
 
     <h1 id="content-headline">&nbsp;</h1>
