@@ -86,6 +86,20 @@ class ParseCbis
 
         $postId = (isset($poi[0]->ID)) ? $poi[0]->ID : null;
 
+        // Check if required item values exist and is correct formatted, else set post as draft
+        $post_status = 'publish';
+        if (
+            (!is_string($data->name) && !empty($data->name)) // name is string and not empty
+            && (!is_numeric($data->id)) // ID is numeric
+            && (!is_float($data->longitude)) // longitude is float
+            && (!is_float($data->latitude)) // latitude is float
+            && (!is_numeric($data->templateId)) // template id is numeric
+            && (!is_numeric($data->supplierId)) // supplier id is numeric
+            && (filter_var($data->trackingPixelUrl, FILTER_VALIDATE_URL) === false) // tackingpixelurl is url
+        ) {
+            $post_status = 'draft';
+        }
+
         // Decide if we're updating an existing post or if creating a new one
         if ($postId !== null) {
             echo "<strong>Updating post</strong><br>";
@@ -93,7 +107,7 @@ class ParseCbis
                 'ID'           => $postId,
                 'post_title'   => $data->name,
                 'post_content' => $data->introduction . "\n\n" . $data->description,
-                'post_status'  => 'publish',
+                'post_status'  => $post_status,
                 'post_type'    => 'hbgKioskPOI'
             ));
         } else {
@@ -101,7 +115,7 @@ class ParseCbis
             $postId = wp_insert_post(array(
                 'post_title'   => $data->name,
                 'post_content' => $data->introduction . "\n\n" . $data->description,
-                'post_status'  => 'publish',
+                'post_status'  => $post_status,
                 'post_type'    => 'hbgKioskPOI'
             ));
         }
