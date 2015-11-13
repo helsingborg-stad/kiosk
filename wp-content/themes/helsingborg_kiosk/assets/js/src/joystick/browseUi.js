@@ -55,10 +55,12 @@ HbgKiosk.Joystick.browseUi = (function ($) {
 
         // prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')
 
-        if (prevElement.parents('ul').first().index() !== 0 && prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')) {
-            flickity.flickity('next', true);
-        } else if (nextElement.parents('ul').first().index() !== 0 && nextElement.parents('ul').first().hasClass('list-section-places') && nextElement.parent('li').index() === 0) {
-            flickity.flickity('next', true);
+        if (flickity) {
+            if (prevElement.parents('ul').first().index() !== 0 && prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')) {
+                flickity.flickity('next', true);
+            } else if (nextElement.parents('ul').first().index() !== 0 && nextElement.parents('ul').first().hasClass('list-section-places') && nextElement.parent('li').index() === 0) {
+                flickity.flickity('next', true);
+            }
         }
 
         nextElement.focus();
@@ -84,8 +86,10 @@ HbgKiosk.Joystick.browseUi = (function ($) {
         var nextElement = $(focusableElements[currentFocusedIndex]);
 
         // If next element is in a the next flicity container make sure to switch page
-        if (nextElement.parents('ul').first().hasClass('list-section-places') && prevElement.parent('li').index() === 0) {
-            flickity.flickity('previous', true);
+        if (flickity) {
+            if (nextElement.parents('ul').first().hasClass('list-section-places') && prevElement.parent('li').index() === 0) {
+                flickity.flickity('previous', true);
+            }
         }
 
         nextElement.focus();
