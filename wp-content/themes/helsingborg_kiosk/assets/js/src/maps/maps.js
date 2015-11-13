@@ -52,14 +52,14 @@
 			map.addMarker({
 		        lat: kioskLatitude,
 		        lng: kioskLongitude,
-		        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABVElEQVRIS72Vy1HDQBBE37jEGREBygD7AFeUAUsEmAwgA8jAzoAQ5AiQr+hgheAMMGdcHmpkuUoyH8mylrmp1Nu90z27K3gu8cyPLHDRGu58CAUwlTdcLnDhQwBIJcNphXzeUigCzttgqwLPlyRPbRYtcOEa3g0bwNmIZFVdV3Wlk4CR7TpXMItrAsAQCA13tEBTx30IPAosTUhhJRAqTHYZHS2gcG+kQKyQCLjSnuteLFIYlbuOTiD9hFhgDPQvAOQWcK8CArcKkcJwAMkGnICdk28dJIpYOI01KAj1pfAYMTvYoCFIDmojOpbtqNbGtJG4C2D/qujC8eeaqsAH2/ltU9b+TQmcleEWnwphGfJpzSKF6RXJQxv2DBcDr7/dRRku/Slkw9uPxrKpKSfFdrzcneRKB0XA/xOy5wdnbk+m3e2tvG/0bg8QwMT/o3/org7FfwFKNovMT1YG0wAAAABJRU5ErkJggg=='
+		        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB5ElEQVRYR82X31HCQBDGf+eQZ7ECsQJhxvAqdnBUoB1IB0IFQgd0wFmB+ArOABUoHcAzjnE2XJiABBJCCPuUP3e73+3u7X6rSCCfaO3BPVD2oKigLNs9GCuYAWNQfZfeW1y1at/CEbq4gFcFGijuW2//C5huAVoVjDxHyk4AQ3QTeE5geNOQGG+7mFYUgq0A7KnfAxfHPHXkMgmRAw/bvPEPwAAtce0pKKU1HN7vwTdQr2LG4e9rAOzJR8c2HhgUEA5Uwp5YAzBASzbfHvPkm7okHFVMJfi+AmAT7iVL4yHdLRcjCY4PQFz/A18psj0p7lkBbiQUPoABuqvgMamWNOs96FQxDR/AEC339TKNwgP2zlzMlbLltXeAgtRbFNRVHu4PXcuOGqL7LBtMHvIhHsj87kedzO+iQ6TD5if5A8g5BJOzSMK2WpKOk4tUw/wLUY6leO5ihNieQTOy7Vgo06ka0rwApVU7tmEQgpAPIQnS/xQ1wYNJFeMPNCtGFLzYUAhrvc7oTk4LUI4kpTYhywpMBiCmHuidtDzsiQX0j8WQxe0O1GINJmHXW6bcSHE75nY08xnwNok7nDYVPCUAMveg60Az1XC6iVj44y/UZGa047k/xIiLZTwXgnEB/TuM5FAs+QObUqUKVhMNPQAAAABJRU5ErkJggg=='
 		    });
 		      
 			//Add destionation pin
 			map.addMarker({
 		        lat: poiLatitude,
 		        lng: poiLongitude,
-		        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACTklEQVRIS7WWwXEaQRBFX1twlhyBcQSCKi1X4wg8RGAcgZWBQ7AcgVEEDBEYXcFVoAiMMoAzyOP6y6y0rHaX1cFTRRVD9Ux3///7D0aDNceNDD4D3Ri+Mmx8xeT21HGrC1jiOjuY2PPFR+EBVm0Y9vDrqnsqEyxxFztYGnTqigiwbkOvh9+UxVUmmOPGERad2xqMrvBem984F2AMnGsf4Ecff/2qBAucKkovMBiewewR+6T9GWG6A2fwM166SfBvGydY4AbAr+xAgrdIdHphgC99/HiBGnlaHxP8rJikFKL/nkDq2cOfrJqsYmGv38RFviP91oL3ZWqqJDnPAbAx7DrT/QInQr8BF7GIbYLPvh+h1FRFtfMU4LaPHzUmWYFFHk5MbCnBUYHVRxc4qeLDicvvErxUV7pqraJhF5XVn+wgQqXpTQesuOqwz2JrO1BQlOwqm+pckm0LunVG16iD2IVk+T3fQTYbJ/iRzbxcBye1yzepk4atBmuBy0M1TfDuMHh2/jd11HBf5qhPCea4rtwzwKDo/wF6bVjvQVBpars76JgQzC29DwazyE0aa6p2DxPgSGoB7g30kOjQKtpD+qL18atoFXoruuGQ7LKAxawFQ8tpfSuPN/BlrngK68jVIBxsXFMtq58pgap8pw3YTcJk2uSyqpj4GH2NiDzI54W9CFSSbGmCheUGLMXyAM3k7rlSi29B0HkZnSDOw/wQu0m1Lh5GAfTvoYjlqxqK3I1bMJaqXshUyR5BWIpQfTIbLnpS2o2sPBOCntWiVP8BnyndZ58uGu4AAAAASUVORK5CYII'
+		        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEZElEQVR4Xu2bwXFTMRCGP804Z0IFhArAMzxfEypAqSChAkgFQAVABSQVRFRAcrUzk1ABUAHOGWbELJEZxxPb2pX0nAO6ep9W+2v31+5KdvQ0xuzvOuIesBdh28HTedURrhx8B64i7mzE6XkfS3MtlVzid37DqwjewY5GV4TvDsIAPg4JAkyT0QSAS/z2L3jv4LDGqiMcb8HRkDCtMd/8HNUBGOMPHbwHtisvdhrhaEQ4rjlvVQDG+E+1dn2ZkeINI8LLWiBUASC5/JdFYqu1yMV5hDC34HmNkCgGoG/jZ2AICCPCsBTkYgD6cPuW4VAEwAT/mhvC29iI8LKEGM0ApDP+sgHba8GcDmBozRXMAIzxxw4OtKttIR/hZEQw5RwmANLufzMacx0hAGcp9SXeZIl7DjzwwDLvAB5bvMAEgHH3r4G3HeHDKgMTr7zVAmH1AhMAE/xPTexH+LoFPneHxngplCTEnii8YdoRHirk/4qqAbjA+winCkU/BvBUm7RIfvH7pjrMDgkH+88IEl7ZQw3AGP/BwatsDfC8I5wp5P+JTvBSPn/J/TbCxxFBjubsoQZgghdjdnM0WONyfm4l35x3BAEte1gA0MS/efdnFii9QM0DFgBiJrzXHaFKSTzBSx8giws6gsomlbAYPkE4MGuo3XHZrJqw+w/Afw+4PyGgJqQVIZBLvGreUXPAGC/t66wMLcJwRLjKYowlQpIVOpCqM2eoeUcNgIaQ+s4D+kqEpFB5k7MdIlPiBcrdF13q5ojaA7S1gLWBmXqNl5oLFUtJrAbA0gvQgiA6fsGpssv8oyOobp/EQ9UApGRIqrRHuWGQ5KYO9/oZpyervrtg/yASpWegyiIt8W8GQFmg3LJ3ducXcbfKVkeUFFN9hzg3uanuMHmAlgeUnmIRV5//MyUmAFIYZBcoFos035Qct2YASsJAY1yObMlRawbgvoSB9BtHhFuPLXJAKw6BgtNAs74c2aN1neZVk5g9QCY19AdzDNLIXA9gR9twnVdQBIAlKdJYt062hPyqhEAKg+wm6TqDtL9bUt9FHUUekABQta61Rq6Q/9wR5CqtaBQDsEEyNGV+1T0gkaE8jPpUtBW6j9WNj2XTV/GADXhBld2XdVcDID2Pa+4FpYlPkxCYTTrBW8pknfMX3DXepaiaB/TEBdViv1oesIhqYy+oFvvNAGjIBdV3vyoJznuCpnWuIIDqu98SgNrZYZWsrzkJLniB9PxeKHZ4qWiNnL95IrSooFalWKPiW7UJVY/BO04E1S3SHQstrvfXeWBTANJLL7kc1d4hzNb9riMIiM1GUwBk1QW9Q9NNjxap5gCkQsnSNGly7DWtBZahnwhRQiHroRPQJOnp9Ri8gxCz/1vQ8tjbiAfMlGZmiM2Jbx6EXjhgpjDjwYPpXbGW+DYGQCLEVblBL8S3UQBE+ZKHVs3y/Y1lgopToXnG13stsC4uF/5xVnS/t07XvfOAOVKUf4XsaJ+4lxi8+O0f+ACVUHPnE1EAAAAASUVORK5CYII='
 		    });
 		    
 		    //Draw route 
@@ -67,9 +67,9 @@
 		        origin: [kioskLatitude, kioskLongitude],
 		        destination: [poiLatitude, poiLongitude],
 		        travelMode: 'walking',
-		        strokeColor: '#ae0b05', 
+		        strokeColor: '#cb0050', 
 		        strokeOpacity: 1,
-		        strokeWeight: 3
+		        strokeWeight: 6
 		    });
 		    
 		    //Zoom
