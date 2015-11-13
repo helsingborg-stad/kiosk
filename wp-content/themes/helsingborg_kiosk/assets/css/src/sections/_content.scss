@@ -2,126 +2,126 @@
 $panel-height: 600px;
 $number-of-visible-items: 10;
 
-section#content {
+#content {
 	@include fillall();
 	top: 46%;
-	height: 959px; 
+	height: 959px;
 	bottom: 205px;
 	z-index: 25;
 	padding: 40px;
-	
-	/* SINGLE PAGE */ 
-	
+
+	/* SINGLE PAGE */
+
 	article, aside {
-		border: 1px solid $creamy-darker; 
-		background: #fff; 
+		border: 1px solid $creamy-darker;
+		background: #fff;
 	}
-	
+
 	aside + article {
-		width: 66%;  
+		width: 66%;
 	}
-	
+
 	article {
-		height: 84%; 
-		width: 100%; 
-		float: right; 
+		height: 68%;
+		width: 100%;
+		float: right;
 		padding: 40px;
-		position: relative; 
-		
+		position: relative;
+
 		&:after {
-		    content: ""; 
+		    content: "";
 		    @include gradient(rgba(#fff,0), rgba(#fff,1));
-		    position: absolute; 
-		    top: auto; 
-		    right: 0; 
-		    bottom: 49px; 
-		    left: 0; 
-		    height: 50px; 
-		    margin-bottom: 0; 
-		    z-index: 40; 
+		    position: absolute;
+		    top: auto;
+		    right: 0;
+		    bottom: 49px;
+		    left: 0;
+		    height: 50px;
+		    margin-bottom: 0;
+		    z-index: 40;
 	    }
-	    
+
 	    &:before {
-		    content: ""; 
+		    content: "";
 		    @include gradient(rgba(#fff,1), rgba(#fff,0));
-		    position: absolute; 
-		    top: 0; 
-		    right: 0; 
-		    bottom: auto; 
-		    left: 0; 
-		    height: 50px; 
-		    margin-bottom: 0; 
-		    z-index: 40; 
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    bottom: auto;
+		    left: 0;
+		    height: 50px;
+		    margin-bottom: 0;
+		    z-index: 40;
 	    }
-		
+
 		.scroll-wrapper {
-			@include fillall; 
+			@include fillall;
 			overflow: auto;
-			padding: 40px;  
-			bottom: 49px; 
+			padding: 40px;
+			bottom: 49px;
 		}
 
 		h1,h2,h3,h4,h5,h6,h7 {
 			line-height: 140%;
 			padding-bottom: .5em;
 			margin: 0;
-	
+
 			&.heading {
 				line-height: 120%;
 				color: #cb0050;
 				font-size: 2.4em;
 			}
 		}
-	
+
 		ul,ol,p {
 			line-height: 150%;
 			font-size: 1.02em;
 			padding-bottom: 1em;
 			margin-bottom: 0;
-			font-weight: 300; 
+			font-weight: 300;
 			&:first-child {
-				font-weight: 400; 
+				font-weight: 400;
 			}
 			&:last-child {
 				padding-bottom: 0;
 			}
 		}
-	
+
 		p + h2, p + h3,p + h4, p + h5, p + h6, p + h7,
 		ol + h2, ol + h3,ol + h4, ol + h5, ol + h6, ol + h7,
 		ul + h2, ul + h3,ul + h4, ul + h5, ul + h6, ul + h7,
 		blockquote +  h2, blockquote +  h3,blockquote +  h4, blockquote +  h5, blockquote +  h6, blockquote +  h7 {
 			padding-top: 15px*2;
 		}
-	
+
 		h1 {
 			font-size: 1.8em;
 		}
-	
+
 		h2 {
 			font-size: 1.4em;
 		}
-	
+
 		h3 {
 			font-size: 1.3em;
 		}
-	
+
 		h4 {
 			font-size: 1.2em;
 		}
-	
+
 		h5 {
 			font-size: 1.1em;
 		}
-	
+
 		h6 {
 			font-size: 1.1em;
 		}
-	
+
 		h7 {
 			font-size: 1.1em;
 		}
-	
+
 		blockquote {
 			border-left: 3px solid #ccc;
 			margin-bottom: 15px;
@@ -136,7 +136,7 @@ section#content {
 			margin-right: 0.25em;
 			vertical-align: -0.4em;
 		}
-	
+
 		blockquote:after {
 			color: #ccc;
 			content: close-quote;
@@ -145,12 +145,12 @@ section#content {
 			margin-left: 0.25em;
 			vertical-align: -0.4em;
 		}
-	
+
 		blockquote p {
 			display: inline;
 			margin: 0;
 		}
-	
+
 		.row {
 			[class*=' col-'] {
 				&:first-child {
@@ -161,52 +161,52 @@ section#content {
 					}
 				}
 			}
-	
+
 		}
-		
+
 		.nav-scroll {
 			background-color: $creamy;
 			border-top: 1px solid $creamy-darker;
-			display: block; 
-			width: 100%; 
-			overflow: hidden; 
-			position: absolute; 
-			top: auto; 
-			right: 0; 
-			bottom: 0; 
-			left: 0; 
-			z-index: 50; 
-			
+			display: block;
+			width: 100%;
+			overflow: hidden;
+			position: absolute;
+			top: auto;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 50;
+
 			.btn {
 		        display: block;
 		        width: 50%;
-		        float: left; 
-		        padding: 10px; 
-		        text-indent: -5px; 
+		        float: left;
+		        padding: 10px;
+		        text-indent: -5px;
 		        &:last-child {
-			        border-right: none; 
+			        border-right: none;
 		        }
 		    }
-			
+
 			.btn-up,
 		    .btn-down {
 		        padding: 2.3rem;
 		        font-size: 2.2rem;
 		    }
 		}
-	
+
 	}
-	
+
 	aside {
-		width: 30%; 
-	 	margin: 0; 
-	 	float: left;  
+		width: 30%;
+	 	margin: 0;
+	 	float: left;
 	 	ul {
-		 	list-style: none; 
-		 	padding: 15px; 
-		 	margin: 0; 
+		 	list-style: none;
+		 	padding: 15px;
+		 	margin: 0;
 	 	}
- 	}  
+ 	}
 
 	.page-main-slider {
 		@include fillall();
@@ -219,15 +219,15 @@ section#content {
 			padding: 40px;
 			opacity: 1;
 			transition: opacity 400ms ease;
-			
+
 			&:not(.is-selected) {
 				opacity: 0;
 			}
-			
-			
-			
 
-			/* List item */ 
+
+
+
+			/* List item */
 			.list-group {
 				border: 1px solid #eee;
 				border-radius: 0 !important;
@@ -298,4 +298,8 @@ section#content {
 	text-shadow: 0 0 30px rgba(#000,.6);
 	margin: 0 0 40px 0;
     font-size: 55px;
+}
+
+#content {
+	top: 58%;
 }

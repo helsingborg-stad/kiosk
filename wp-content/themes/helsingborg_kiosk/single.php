@@ -3,11 +3,11 @@ get_header();
 
 the_post();
 
-	//Get the image 
+	//Get the image
 	$imageUrl 		= get_post_meta($post->ID, 'poi-image', true);
-	
+
 	//Get avabile data (filter out all blank data)
-	$sidebar_data = array_filter( 
+	$sidebar_data = array_filter(
 						array(
 							'adress' 	=> get_post_meta($post->ID, 'poi-address', true),
 							'postal' 	=> get_post_meta($post->ID, 'poi-postalcode', true),
@@ -15,47 +15,45 @@ the_post();
 							'phone' 	=> get_post_meta($post->ID, 'poi-phone', true)
 						)
 					);
-	
-	//Get position 
-	$latitude 		= get_post_meta($post->ID, 'poi-latitude', true); 
-	$longitude		= get_post_meta($post->ID, 'poi-longitude', true); 
+
+	//Get position
+	$latitude 		= get_post_meta($post->ID, 'poi-latitude', true);
+	$longitude		= get_post_meta($post->ID, 'poi-longitude', true);
 
 ?>
-
-	<h1 id="content-headline"><?php the_title(); ?></h1>
-
 	<aside>
-		
+
 		<img src="<?php echo $imageUrl; ?>" style="width: 100%;" />
-		
-		<?php 
-		 	
+
+		<?php
+
 			if ( is_array( $sidebar_data ) && !empty( $sidebar_data ) ) {
-				
-				echo '<ul>'; 
-					
+
+				echo '<ul>';
+
 					foreach ( $sidebar_data as $sidebar_id => $sidebar_item ) {
-						
+
 						switch ($sidebar_id) {
 						    case 'phone':
-						        if ( strlen( $sidebar_item ) > 4 ) { echo '+46 (0)' . ltrim( $sidebar_item, '0' ); }  
+						        if ( strlen( $sidebar_item ) > 4 ) { echo '+46 (0)' . ltrim( $sidebar_item, '0' ); }
 						        break;
 						    default:
-						       echo '<li>'.$sidebar_item.'</li>'; 
+						       echo '<li>'.$sidebar_item.'</li>';
 						}
-						
-					}
-				
-				echo '</ul>'; 
 
-			} 
-		?> 
-		
+					}
+
+				echo '</ul>';
+
+			}
+		?>
+
 	</aside>
 
 	<article>
 
 		<div class="scroll-wrapper">
+			<h1><?php the_title(); ?></h1>
 			<?php the_content(); ?>
 		</div>
 
@@ -63,7 +61,7 @@ the_post();
 			<button class="btn btn-plain btn-prev pull-left"><i class="ion-chevron-up"></i> Upp</button>
 			<button class="btn btn-plain btn-prev pull-right"><i class="ion-chevron-down"></i> Ner</button>
 		</nav>
-		
+
 	</article>
 
 <?php get_footer(); ?>
