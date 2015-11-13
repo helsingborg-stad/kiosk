@@ -138,7 +138,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
 
             $(focusableElements[currentFocusedIndex]).trigger('click');
 
-            if ($(focusableElements[currentFocusedIndex]).is('a')) {
+            if ($(focusableElements[currentFocusedIndex]).is('a') && $(focusableElements[currentFocusedIndex]).attr('href') != '#') {
                 location.href = $(focusableElements[currentFocusedIndex]).attr('href');
             }
         });

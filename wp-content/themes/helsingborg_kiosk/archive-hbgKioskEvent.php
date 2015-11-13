@@ -27,7 +27,7 @@
     foreach ($json as $item) :
         $tabindex++;
 ?>
-    <button tabindex="<?php echo $tabindex; ?>" class="event-item">
+    <a href="#" tabindex="<?php echo $tabindex; ?>" class="event-item">
         <?php if (isset($item->ImagePath) && $item->ImagePath != '') : ?>
             <div class="event-image" style="background-image:url('<?php echo $item->ImagePath; ?>');"></div>
         <?php endif; ?>
@@ -38,7 +38,7 @@
             <div class="index-caption"><?php echo $item->Name; ?></div>
             <div class="index-description"><?php echo wpautop($item->Description, true); ?></div>
         </div>
-    </button>
+    </a>
 <?php endforeach; ?>
 </div>
 
