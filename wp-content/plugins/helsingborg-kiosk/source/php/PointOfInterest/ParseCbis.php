@@ -1,6 +1,6 @@
 <?php
-	
-	
+
+
 
 namespace HbgKiosk\PointOfInterest;
 
@@ -15,9 +15,9 @@ class ParseCbis
 
     public function __construct($path)
     {
-	    
-	    set_time_limit ( 600 ); 
-	    
+
+	    set_time_limit ( 600 );
+
         $this->path = $path;
         $this->data = $this->getData($this->path);
         $this->save($this->data);
@@ -78,7 +78,7 @@ class ParseCbis
         }
     }
 
-    public function addPost($data)
+    public function addPost(&$data)
     {
         // Check if this poi already exist
         $poi = CustomPostType::get(1, array(
@@ -88,19 +88,35 @@ class ParseCbis
                 'compare' => '='
             )
         ),true);
-+
+
         $postId = (isset($poi[0]->ID)) ? $poi[0]->ID : null;
 
         // Check if required item values exist and is correct formatted, else set post as draft
         $post_status = 'publish';
         if (
                (!is_numeric($data->id)) // ID is numeric
-            || (empty($data->longitude)) // longitude is float
-			|| (empty($data->latitude)) // latitude is float
+            //|| (empty($data->longitude)) // longitude is float
+			//|| (empty($data->latitude)) // latitude is float
             || (!is_numeric($data->templateId)) // template id is numeric
             || (!is_numeric($data->supplierId)) // supplier id is numeric
         ) {
             $post_status = 'draft';
+        }
+
+        // If coordinates missing, try to get them from Google API
+        if (empty($data->longitude) || empty($data->latitude)) {
+            $coordinates = false;
+
+            if (!empty($data->streetAddress1) && !empty($data->cityAddress)) {
+                $coordinates = $this->getCoordinates($data->streetAddress1 . ' ' . $data->cityAddress);
+            }
+
+            if ($coordinates) {
+                $data->latitude = $coordinates->lat;
+                $data->longitude = $coordinates->lng;
+            } else {
+                $post_status = 'draft';
+            }
         }
 
         // Decide if we're updating an existing post or if creating a new one
@@ -138,7 +154,6 @@ class ParseCbis
         wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
 
         // Map categories
-
         $cbisCategories = array_map('trim', explode(',', $data->categories));
         $postCategories = get_categories(array('hide_empty' => false));
 
@@ -154,6 +169,22 @@ class ParseCbis
 
                 }
             }
+        }
+    }
+
+    /**
+     * Get coordinates from address
+     * @param  string $address Address
+     * @return array          Lat and long
+     */
+    public function getCoordinates($address)
+    {
+        $data = json_decode(file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address)));
+
+        if ($data->status == 'OK') {
+            return $data->results[0]->geometry->location;
+        } else {
+            return false;
         }
     }
 }
