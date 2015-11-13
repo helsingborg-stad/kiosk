@@ -20,19 +20,19 @@
 			));
 
 			foreach ($posts as $post) {
-				
-				//Get distance 
+
+				//Get distance
 				$full_distance = 	HelsingborgKiosk\Locations\HelsingborgKioskLocation::distance_kiosk(
 										get_post_meta($post->ID, 'poi-latitude', true),
 										get_post_meta($post->ID, 'poi-longitude', true)
-									); 
-									
+									);
+
 				//Filter out further than 10 km
 				if ( $full_distance >= 10 ) {
-					unset( $items[$post->ID ] ); 
+					unset( $items[$post->ID ] );
 				} else {
 
-					//Get more data if valid 
+					//Get more data if valid
 					$items[$post->ID] = array(
 						'post_image'	=> get_post_meta($post->ID, 'poi-image', true),
 						'post_title' 	=> $post->post_title,
@@ -40,15 +40,23 @@
 						'post_distance'	=> number_format( $full_distance , 1 ),
 						'full_distance'	=> $full_distance
 					);
-					
+
 				}
-			
+
 			}
-			
-			//Sort array 
+
+			//Sort array
 			usort($items, function ($a, $b) {
 				return ( $a["full_distance"] < $b["full_distance"] ) ? -1 : 1;
-			}); 
+			});
+
+			$max_distance_category = get_field('poi-category-max-distance', 'category_' . $category);
+
+			if ($max_distance_category > -1) {
+				$items = array_filter($items, function ($post) use ($max_distance_category) {
+					return $post["post_distance"] <= $max_distance_category;
+				});
+			}
 
 			//Return chunked
 			return array_chunk($items, $items_per_page);
