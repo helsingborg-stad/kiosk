@@ -116,7 +116,8 @@ class CustomPostType
      */
     public function pageGetNewData()
     {
-        new ParseCbis( plugin_dir_path( __DIR__ ) . '../../data/CSV_CBIS_Sync_Export.csv');
+        //new ParseCbis( plugin_dir_path( __DIR__ ) . '../../data/CSV_CBIS_Sync_Export.csv');
+        new ParseCbis('http://familjenhelsingborg.se/cbisexport.csv');
     }
 
     /**

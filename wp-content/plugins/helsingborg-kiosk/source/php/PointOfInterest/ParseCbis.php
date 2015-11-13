@@ -47,11 +47,6 @@ class ParseCbis
             if (is_array($rowData)) {
                 foreach ($rowData as $key => $value) {
                     $key = lcfirst($this->header[$key]);
-
-                    if (is_string($value)) {
-                        $value = utf8_encode($value);
-                    }
-
                     $modifiedKeys[$rowKey][$key] = $value;
                 }
             }
