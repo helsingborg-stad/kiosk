@@ -1,8 +1,22 @@
 <?php
-global $post;
 
-$tabindex = 0;
+	//Globals
+	global $post;
 
+	//Default tabindex 
+	$tabindex = 0;
+
+	//Get image for header 
+	$header_image = get_field('front_page_header_image','options');
+	if ( is_array( $header_image ) && !empty( $header_image ) ) {
+		$header_image = isset($header_image['url']) ? $header_image['url'] : ""; 
+	}
+	
+	//Fallback 
+	if (filter_var($header_image, FILTER_VALIDATE_URL) === false) { 
+		$header_image = get_template_directory_uri() ."/assets/images/header.jpg"; 
+	}
+	
 ?><!DOCTYPE html>
 <!--[if lt IE 8]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -74,7 +88,7 @@ $tabindex = 0;
 
 	</header>
 
-	<section id="hero" class="animated fadeIn <?php if ( is_object( $post ) && is_single($post->ID) ) { ?>map-area<?php } ?> <?php if ( is_archive() ) { ?>no-gradient<?php } ?>" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/header.jpg');">
+	<section id="hero" class="animated fadeIn <?php if ( is_object( $post ) && is_single($post->ID) ) { ?>map-area<?php } ?> <?php if ( is_archive() ) { ?>no-gradient<?php } ?>" style="background-image: url('<?php echo $header_image; ?>');">
 
 		<div class="stripe animated slideInLeft">
 		    <div></div>
