@@ -40,7 +40,7 @@
 	
 	//Add notice on admin panel for points
 	add_action( 'admin_notices', function () {
-		if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == "hbgkioskpoi" ) {
+		if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == "hbgkioskpoi" && !isset( $_GET['taxonomy'] ) && !isset( $_GET['page'] ) ) {
 		    echo '<div class="updated" style="padding: 10px;">'; 
 		    	_e("Denna data hanteras i första hand av CBIS. Information som sparas här kommer att skrivas över av systemet när uppdatering sker i CBIS. Det kan ta en stund innan ny information når kiosksystemet från CBIS."); 
 		    echo '</div>'; 
