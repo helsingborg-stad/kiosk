@@ -2,6 +2,13 @@
 
 	namespace HelsingborgKiosk\Locations;
 
+	//if(!is_admin()) {
+		
+		$_SERVER['HTTP_USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'] . " HBGKIOSK-1152"; 
+		
+		//var_dump( $_SERVER['HTTP_USER_AGENT'] ); 
+	//}
+
 	Class HelsingborgKioskLocation {
 
 		public static $kiosk_id;
@@ -30,13 +37,12 @@
 			if ( is_array( $user_agent_array ) && !empty( $user_agent_array ) ) {
 				
 				foreach ( $user_agent_array as $user_agent_id ) {
-					
+
 					if ( strpos($user_agent_id, "HBGKIOSK-" ) === 0 ) {
 						return $user_agent_id; 
 					}
 					
 				} 
-				
 				
 			}
 			
