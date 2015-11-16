@@ -1,0 +1,24 @@
+
+	/* Profile page, simplify */ 
+
+	#profile-page {
+		
+		.user-rich-editing-wrap, 
+		.user-admin-color-wrap,
+		.user-comment-shortcuts-wrap,
+		.user-admin-bar-front-wrap,
+		.user-display-name-wrap,
+		.user-url-wrap,
+		.user-description-wrap,
+		.user-sessions-wrap,
+		.description {
+			display: none !important; 
+		}
+		
+		#your-profile {
+			h3 {
+				display: none !important; 
+			}
+		}
+		
+	} 
