@@ -4,12 +4,12 @@
 
 	Class HelsingborgKioskLocation {
 
-		public static $kiosk_ip;
+		public static $kiosk_id;
 
 		function __construct() {
 
 			//ID
-			self::$kiosk_ip = $_SERVER['REMOTE_ADDR'];
+			self::$kiosk_id = self::get_kiosk_id();
 
 			//Hooks
 			add_action('init', 'HelsingborgKiosk\Locations\HelsingborgKioskLocation::register_options_page');
@@ -21,6 +21,27 @@
 			add_action( 'wp_ajax_set_kiosk_location', 'HelsingborgKiosk\Locations\HelsingborgKioskLocation::set_kiosk_location' );
 			add_action( 'wp_ajax_nopriv_set_kiosk_location', 'HelsingborgKiosk\Locations\HelsingborgKioskLocation::set_kiosk_location' );
 
+		}
+		
+		private static function get_kiosk_id () {
+			
+			$user_agent_array = array_map('trim', explode(" ", $_SERVER['HTTP_USER_AGENT'] ) ); 
+			
+			if ( is_array( $user_agent_array ) && !empty( $user_agent_array ) ) {
+				
+				foreach ( $user_agent_array as $user_agent_id ) {
+					
+					if ( strpos($user_agent_id, "HBGKIOSK-" ) === 0 ) {
+						return $user_agent_id; 
+					}
+					
+				} 
+				
+				
+			}
+			
+			return $_SERVER['REMOTE_ADDR']; 
+			
 		}
 
 		public static function set_kiosk_location () {
@@ -43,7 +64,7 @@
 			//Look for kiosk
 			if ( !empty( $saved_kiosks ) ) {
 				foreach ( $saved_kiosks as $saved_kiosk ) {
-					if ($saved_kiosk['kiosk_ip']==self::$kiosk_ip) {
+					if ($saved_kiosk['kiosk_ip']==self::$kiosk_id) {
 						$has_kiosk = true;
 						break;
 					}
@@ -58,7 +79,7 @@
 				}
 
 				//Add missing kiosk
-				$saved_kiosks[] = array('kiosk_ip' => self::$kiosk_ip, 'kiosk_lat' => $latitude, 'kiosk_long' => $longitude );
+				$saved_kiosks[] = array('kiosk_ip' => self::$kiosk_id, 'kiosk_lat' => $latitude, 'kiosk_long' => $longitude );
 
 				//Update all
 				foreach ( $saved_kiosks as $kiosk_location_id => $kiosk_location ) {
@@ -89,7 +110,7 @@
 
 				foreach ( $saved_kiosks as $saved_kiosk ) {
 
-					if( $saved_kiosk['kiosk_ip'] == self::$kiosk_ip ) {
+					if( $saved_kiosk['kiosk_ip'] == self::$kiosk_id ) {
 						$saved_kiosk['json_result'] = true;
 
 						if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
