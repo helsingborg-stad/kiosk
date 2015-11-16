@@ -16,48 +16,72 @@ $tabindex = 0;
 
 ?>
 
-    <h1 id="content-headline">&nbsp;</h1>
-    <div class="js-flickity----INACTIVE" data-flickity-options='{ "cellAlign": "left", "contain": true }'>
-        <ul class="metro-grid">
+    <h1 id="content-headline">
+		<?php 
+			if( is_front_page() && function_exists( 'get_field' ) ) {
+				echo get_field('front_page_title', 'option');		
+			} else {
+				echo "&nbsp";
+			}
+		?>
+	</h1>
 
-            <?php
-            if (count($categories) > 0) :
-            foreach ($categories as $category) :
-                $tabindex++;
-                if ($category->name == 'Okategoriserade') continue;
+    <ul class="metro-grid">
+	    
+	    <?php 
+		    
+		    if ( function_exists( 'get_field' ) ) { 
+		    
+			    if ( count( $categories ) ) {
+				    
+				    foreach ($categories as $category) {
+				     
+				     	//Skip hidden 
+				     	$is_hidden = get_field('poi-category-inactive', $category); 
+			            if ( $is_hidden ) continue;
+			
+						//Counter for tabindex 
+						$tabindex++;
+						
+						//Get data 
+			            $background 	= get_field('poi-category-bg', 		$category);
+			            $icon 			= get_field('poi-category-icon', 	$category);
+			
+						//Filter icon
+			            if ( isset( $icon['url'] ) && !empty( $icon['url'] ) ) {
+			                $iconSvg = file_get_contents($icon['url']);
+			            } else {
+			                $iconSvg = "";
+			            }
+			
+						//Get url for event page 
+			            $href 	= get_category_link($category->term_id);
+			            if (strtolower(get_cat_name($category->term_id)) == 'evenemang') {
+			                $href = '/event';
+			            }
+			            
+			             ?>
+				            <li class="metro-grid-item">
+				                <a href="<?php echo $href; ?>" tabindex="<?php echo $tabindex; ?>">
+				                    <div class="metro-grid-item-image" <?php if (isset($background['url'])) : ?>style="background-image:url('<?php echo $background['url']; ?>');"<?php endif; ?>></div>
+				                    <div class="metro-grid-item-content">
+				                        <?php echo $iconSvg; ?>
+				                        <?php echo $category->name; ?>
+				                    </div>
+				                </a>
+				            </li>
+				        <?php
+					        
+					}
 
-                $background = get_field('poi-category-bg', $category);
-                $icon = get_field('poi-category-icon', $category);
+			    } else {
+		       		echo '<li class="metro-grid-item">Inga kategorier att visa</li>'; 
+		        }
 
-                if ( isset( $icon['url'] ) && !empty( $icon['url'] ) ) {
-	                $iconSvg = file_get_contents($icon['url']);
-                } else {
-	                $iconSvg = "";
-                }
-
-                $href = get_category_link($category->term_id);
-                if (strtolower(get_cat_name($category->term_id)) == 'evenemang') {
-                    $href = '/event';
-                }
-            ?>
-                <li class="metro-grid-item">
-                    <a href="<?php echo $href; ?>" tabindex="<?php echo $tabindex; ?>">
-                        <div class="metro-grid-item-image" <?php if (isset($background['url'])) : ?>style="background-image:url('<?php echo $background['url']; ?>');"<?php endif; ?>></div>
-                        <div class="metro-grid-item-content">
-                            <?php echo $iconSvg; ?>
-                            <?php echo $category->name; ?>
-                        </div>
-                    </a>
-                </li>
-            <?php
-            endforeach;
-            else :
-            ?>
-            <li class="metro-grid-item">
-                Inga kategorier att visa
-            </li>
-            <?php endif; ?>
-
-        </ul>
-
-    </div>
+		    } else {
+			    echo "ACF missing."; 
+		    }
+	    
+		?>
+		
+    </ul>
