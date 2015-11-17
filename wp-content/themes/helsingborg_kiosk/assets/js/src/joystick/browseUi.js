@@ -73,7 +73,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
 
          setTimeout(function () {
             nextElement.focus();
-        }, 1);
+        }, 50);
 
         $('#center-button-select').show();
         $('#center-button').hide();
