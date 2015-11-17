@@ -47,7 +47,7 @@ class Twitter
             'grant_type' => 'client_credentials'
         );
 
-        $response = HbgSocialMedia\Helper\Curl::request('POST', $endpoint, $params, NULL, $headers);
+        $response = Helper::curl('POST', $endpoint, $params, NULL, $headers);
         $response = json_decode($response);
 
         // Set the access token
@@ -85,7 +85,7 @@ class Twitter
         );
 
         // Curl
-        $tweets = HbgCurl::request('GET', $endpoint, $data, 'JSON', $headers);
+        $tweets = Helper::curl('GET', $endpoint, $data, 'JSON', $headers);
 
         return json_decode($tweets);
     }
