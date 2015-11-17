@@ -32,7 +32,11 @@ class Panel
     {
     	$instagram = new \HbgSocialMedia\Curl\Instagram;
     	$instagram->auth();
-    	var_dump($instagram->getHashtag('helsingborg'));
+    	$data = $instagram->getHashtag('helsingborg');
+
+    	$result = \HbgSocialMedia\Normalizer::normalize('instagram', $data);
+
+    	var_dump($result);
     }
 
     public function registerTwitterFields()
