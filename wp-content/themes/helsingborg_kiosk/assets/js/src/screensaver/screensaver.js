@@ -6,6 +6,7 @@ HbgKiosk.Screensaver.Screensaver = (function ($) {
     var delay = 7000;
     var slideItemSelector = '.screensaver-slide';
     var slideItemActiveSelector = '.screensaver-slide.active';
+    var ctaSelector = '.screensaver-cta';
 
     function Screensaver() {
         $(function(){
@@ -25,6 +26,13 @@ HbgKiosk.Screensaver.Screensaver = (function ($) {
         $(slideItemSelector).first().addClass('active');
 
         var delay = $(slideItemSelector).first().data('timeout');
+        var cta = $(slideItemSelector).first().data('cta');
+
+        if (cta) {
+            $(ctaSelector).fadeIn();
+        } else {
+            $(ctaSelector).fadeOut();
+        }
 
         setTimeout(function () {
             this.nextSlide();
@@ -41,12 +49,17 @@ HbgKiosk.Screensaver.Screensaver = (function ($) {
         next.addClass('active').show();
 
         var delay = next.data('timeout');
+        var cta = next.data('cta');
+
+        if (cta) {
+            $(ctaSelector).fadeIn();
+        } else {
+            $(ctaSelector).fadeOut();
+        }
 
         setTimeout(function () {
             this.nextSlide();
         }.bind(this), delay);
-
-        //$(slideItemActiveSelector).hide().removeClass('active').next(slideItemSelector).addClass('active').show();
     };
 
 
