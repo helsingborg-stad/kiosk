@@ -4,11 +4,6 @@ namespace HbgSocialMedia;
 
 class Normalizer
 {
-    public function __construct()
-    {
-
-    }
-
     /**
      * Normalizes api response data to our own format of choise
      * @param  string $type Tells what type of data we are receiving
@@ -38,12 +33,18 @@ class Normalizer
         return json_decode(json_encode($normalized));
     }
 
+    /**
+     * Normalize instagram response
+     * @param  object $data The data
+     * @return object       The normalized data
+     */
     public static function instagram($data)
     {
         $normalized = array();
 
         foreach ($data as $item) {
             $normalized[] = array(
+                'id' => $item->id,
                 'user' => $item->user->username,
                 'created_time' => $item->created_time,
                 'image' => $item->images->standard_resolution->url
