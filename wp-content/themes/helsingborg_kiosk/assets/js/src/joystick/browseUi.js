@@ -66,11 +66,14 @@ HbgKiosk.Joystick.browseUi = (function ($) {
         }
         */
 
+
         if (flickity && !hasDragged && prevElement.parent('li').is(':last-child') && nextElement.parents('ul').first().hasClass('list-section-places')) {
             flickity.flickity('next', true);
         }
 
-        nextElement.focus();
+         setTimeout(function () {
+            nextElement.focus();
+        }, 1);
 
         $('#center-button-select').show();
         $('#center-button').hide();
