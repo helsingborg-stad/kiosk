@@ -44,7 +44,7 @@ class CustomPostType
                 'slug' => 'event',
                 'with_front' => false
             ),
-            'exclude_from_search'  => false
+            'exclude_from_search'  => true
         );
 
         register_post_type('hbgKioskEvent', $args);

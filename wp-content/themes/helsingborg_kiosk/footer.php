@@ -14,7 +14,7 @@
 
 				<button tabindex="-1" id="center-button-select" class="btn btn-badge-icon btn-home" style="display:none;">
 					<span class="animated bounceIn"><!-- Animationwrapper -->
-						<i class="ion-arrow-up-c"></i>
+						<i class="ion-ok">OK</i>
 					</span>
 					<span class="animated fadeIn">Välj</span>
 				</button>
@@ -42,7 +42,7 @@
 
 						<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home one-step-back" formaction="/">
 							<span class="animated bounceIn"><!-- Animationwrapper -->
-								<i class="ion-ios-list"></i>
+								<i class="ion-android-list"></i>
 							</span>
 							<span class="animated fadeIn">Tillbaka till kategori</span>
 						</button>
