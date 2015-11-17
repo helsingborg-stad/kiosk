@@ -45,6 +45,7 @@ class Normalizer
         foreach ($data as $item) {
             $normalized[] = array(
                 'id' => $item->id,
+                'type' => 'instagram',
                 'user' => $item->user->username,
                 'created_time' => $item->created_time,
                 'image' => $item->images->standard_resolution->url
@@ -72,6 +73,7 @@ class Normalizer
             if (!is_null($image)) {
                 $normalized[] = array(
                     'id' => $item->id,
+                    'type' => 'twitter',
                     'user' => $item->user->screen_name,
                     'created_time' => strtotime($item->created_at),
                     'image' => $image

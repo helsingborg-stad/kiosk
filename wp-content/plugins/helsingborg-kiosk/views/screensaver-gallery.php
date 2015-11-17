@@ -1,4 +1,4 @@
-<div class="screensaver-slide padding-1x" data-timeout="<?php echo $media->{'screensaver-gallery-timeout'}; ?>" data-cta="<?php echo $media->{'screensaver-hide-cta'}; ?>">
+<div class="screensaver-slide padding-1x" data-timeout="<?php echo $media->{'screensaver-slide-timeout'}; ?>" data-cta="<?php echo $media->{'screensaver-hide-cta'}; ?>">
     <ul class="screensaver-gallery">
         <?php foreach ($media->{'screensaver-gallery-images'} as $item) : ?>
             <li class="screensaver-item">
