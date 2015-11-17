@@ -7,19 +7,22 @@ class Instagram
     /**
      * Api keys and secrets
      * @var $key      Api key
-     * @var $secret   Api secret
      */
     private $key = null;
-    private $secret = null;
 
     public function __construct()
     {
 
     }
 
+    /**
+     * Authorizes with the api
+     * @return boolean Always true
+     */
     public function auth()
     {
-
+        $this->key = null;
+        return true;
     }
 
     /**

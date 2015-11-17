@@ -6,18 +6,17 @@ class Twitter
 {
     /**
      * Api keys and secrets
-     * @var $key      Api key
-     * @var $secret   Api secret
+     * @var string $key      Api key
+     * @var string $secret   Api secret
      */
     private $key = null;
     private $secret = null;
 
+    /**
+     * Holds the access token when authorized
+     * @var string
+     */
     private $accessToken = nul;
-
-    public function __construct()
-    {
-
-    }
 
     /**
      * Authorize with the api
