@@ -8,12 +8,7 @@ class Instagram
      * Api keys and secrets
      * @var $key      Api key
      */
-    private $key = null;
-
-    public function __construct()
-    {
-
-    }
+    private $secret = null;
 
     /**
      * Authorizes with the api
@@ -21,7 +16,7 @@ class Instagram
      */
     public function auth()
     {
-        $this->key = null;
+        $this->key = get_option('instagram_key_secret');
         return true;
     }
 

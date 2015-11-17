@@ -16,7 +16,7 @@ class Twitter
      * Holds the access token when authorized
      * @var string
      */
-    private $accessToken = nul;
+    private $accessToken = null;
 
     /**
      * Authorize with the api
@@ -25,8 +25,8 @@ class Twitter
     public function auth()
     {
         // Get the consumer key and secret from options
-        $this->key = null;
-        $this->secret = null;
+        $this->key = get_option('twitter_key');
+        $this->secret = get_option('twitter_key_secret');
 
         // Create bearer token
         $bearerToken = $this->key . ':' . $this->secret;
