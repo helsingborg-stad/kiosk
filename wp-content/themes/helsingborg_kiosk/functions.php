@@ -26,3 +26,22 @@
             return false;
         }
     }
+
+    function dateToDay($date) {
+        $today = date('Y-m-d');
+        $tomorrow = date('Y-m-d', strtotime('tomorrow'));
+
+        switch ($date) {
+            case $today:
+                return 'Idag';
+                break;
+
+            case $tomorrow:
+                return 'Imorgon';
+                break;
+
+            default:
+                return $data;
+                break;
+        }
+    }

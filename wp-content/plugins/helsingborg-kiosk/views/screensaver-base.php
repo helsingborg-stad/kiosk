@@ -15,6 +15,10 @@
                 case 'screensaver-poster':
                     require \HbgKiosk\Helper\Wp::getTemplate('screensaver-poster');
                     break;
+
+                case 'screensaver-events':
+                    require \HbgKiosk\Helper\Wp::getTemplate('screensaver-events');
+                    break;
             }
         }
         ?>

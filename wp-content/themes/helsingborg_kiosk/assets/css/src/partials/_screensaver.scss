@@ -30,6 +30,22 @@ html {
     padding: 5%;
 }
 
+h1 {
+    color: #fff;
+    opacity: 0;
+    animation: 1000ms fadeIn forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 // Container element
 //
 
@@ -235,8 +251,87 @@ html {
     animation: slideInFromRight 800ms forwards ease-in-out;
 }
 
+// Events
+//
+
+.screensaver-events {
+    color: #fff;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        background-color: rgba(#000, .1);
+        padding: 15px 20px;
+        opacity: 0;
+
+        animation-name: dropDown;
+        animation-duration: 700ms;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1;
+
+        &:nth-child(1) {
+            animation-delay: 0;
+        }
+
+        &:nth-child(2) {
+            animation-delay: 200ms;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 400ms;
+        }
+
+        &:nth-child(4) {
+            animation-delay: 600ms;
+        }
+
+        &:nth-child(5) {
+            animation-delay: 800ms;
+        }
+
+        &:nth-child(6) {
+            animation-delay: 1000ms;
+        }
+
+        & + li {
+            margin-top: 20px;
+        }
+    }
+
+    span {
+        display: block;
+    }
+}
+
+.event-date {
+    font-size: 1em;
+}
+
+.event-name {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
 // Animation keyframes
 //
+
+@keyframes dropDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-200%) scale(.8);
+    }
+
+    80% {
+        transform: translateY(10%) scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%) scale(1);
+    }
+}
 
 @keyframes slideInFromRight {
     to {

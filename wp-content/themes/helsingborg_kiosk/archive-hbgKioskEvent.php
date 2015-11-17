@@ -1,25 +1,6 @@
 <?php
     get_header();
     $json = json_decode(file_get_contents('http://www.helsingborg.se/wp-content/plugins/helsingborg-widgets/helsingborg-event/json.php?count=6'));
-
-    function dateToDay($date) {
-        $today = date('Y-m-d');
-        $tomorrow = date('Y-m-d', strtotime('tomorrow'));
-
-        switch ($date) {
-            case $today:
-                return 'Idag';
-                break;
-
-            case $tomorrow:
-                return 'Imorgon';
-                break;
-
-            default:
-                return $data;
-                break;
-        }
-    }
 ?>
 
 <div class="row event-list">
