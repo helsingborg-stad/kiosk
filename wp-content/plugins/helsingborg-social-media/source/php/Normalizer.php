@@ -53,4 +53,32 @@ class Normalizer
 
         return $normalized;
     }
+
+    public static function twitter($data)
+    {
+        $normalized = array();
+
+        foreach ($data as $item) {
+            $image = null;
+
+            if (is_array($item->entities->media)) {
+                foreach ($item->entities->media as $media) {
+                    if ($media->type == 'photo') {
+                        $image = $media->media_url;
+                    }
+                }
+            }
+
+            if (!is_null($image)) {
+                $normalized[] = array(
+                    'id' => $item->id,
+                    'user' => $item->user->screen_name,
+                    'created_time' => strtotime($item->created_at),
+                    'image' => $image
+                );
+            }
+        }
+
+        return $normalized;
+    }
 }

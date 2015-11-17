@@ -25,8 +25,8 @@ class Twitter
     public function auth()
     {
         // Get the consumer key and secret from options
-        $this->key = get_option('twitter_key');
-        $this->secret = get_option('twitter_key_secret');
+        $this->key = get_option('options_twitter_key');
+        $this->secret = get_option('options_twitter_key_secret');
 
         // Create bearer token
         $bearerToken = $this->key . ':' . $this->secret;
@@ -52,7 +52,6 @@ class Twitter
 
         // Set the access token
         $this->accessToken = $response->access_token;
-
         return true;
     }
 
@@ -88,5 +87,34 @@ class Twitter
         $tweets = Helper::curl('GET', $endpoint, $data, 'JSON', $headers);
 
         return json_decode($tweets);
+    }
+
+    public function getHashtag($hashtag, $length = 20)
+    {
+        $endpoint = 'https://api.twitter.com/1.1/search/tweets.json';
+
+        // Postdata
+        $params = array(
+            'access_token'     => $this->accessToken,
+            'q'                => '#' . $hashtag,
+            'count'            => $length,
+            'result_type'      => 'recent',
+            'exclude_replies ' => true,
+            'include_rts '     => false
+        );
+
+        // Request headers
+        $headers = array(
+            "GET /1.1/search/tweets.json" . http_build_query($params) . " HTTP/1.1",
+            "Host: api.twitter.com",
+            "User-Agent: jonhurlock Twitter Application-only OAuth App v.1",
+            "Authorization: Bearer " . $this->accessToken
+        );
+
+        // Curl
+        $tweets = Helper::curl('GET', $endpoint, $params, 'JSON', $headers);
+        $tweets = json_decode($tweets);
+
+        return $tweets->statuses;
     }
 }

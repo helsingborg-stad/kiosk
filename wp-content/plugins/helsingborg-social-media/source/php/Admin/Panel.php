@@ -30,13 +30,7 @@ class Panel
 
     public function pageInstagramTest()
     {
-    	$instagram = new \HbgSocialMedia\Curl\Instagram;
-    	$instagram->auth();
-    	$data = $instagram->getHashtag('helsingborg');
-
-    	$result = \HbgSocialMedia\Normalizer::normalize('instagram', $data);
-
-    	var_dump($result);
+    	var_dump(get_twitter_hashtag('sweden'));
     }
 
     public function registerTwitterFields()

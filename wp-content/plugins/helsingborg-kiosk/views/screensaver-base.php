@@ -12,6 +12,14 @@
                     require \HbgKiosk\Helper\Wp::getTemplate('screensaver-instagram-feed');
                     break;
 
+                case 'screensaver-twitter':
+                    require \HbgKiosk\Helper\Wp::getTemplate('screensaver-twitter-feed');
+                    break;
+
+                case 'screensaver-facebook':
+                    require \HbgKiosk\Helper\Wp::getTemplate('screensaver-facebook-feed');
+                    break;
+
                 case 'screensaver-poster':
                     require \HbgKiosk\Helper\Wp::getTemplate('screensaver-poster');
                     break;
