@@ -11,6 +11,10 @@
                 case 'screensaver-gallery':
                     require \HbgKiosk\Helper\Wp::getTemplate('screensaver-instagram-feed');
                     break;
+
+                case 'screensaver-poster':
+                    require \HbgKiosk\Helper\Wp::getTemplate('screensaver-poster');
+                    break;
             }
         }
         ?>

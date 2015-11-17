@@ -24,7 +24,9 @@ HbgKiosk.Screensaver.Screensaver = (function ($) {
     Screensaver.prototype.startSlider = function () {
         $(slideItemSelector).first().addClass('active');
 
-        setInterval(function () {
+        var delay = $(slideItemSelector).first().data('timeout');
+
+        setTimeout(function () {
             this.nextSlide();
         }.bind(this), delay);
     };
@@ -37,6 +39,12 @@ HbgKiosk.Screensaver.Screensaver = (function ($) {
 
         $(slideItemActiveSelector).removeClass('active').fadeOut();
         next.addClass('active').show();
+
+        var delay = next.data('timeout');
+
+        setTimeout(function () {
+            this.nextSlide();
+        }.bind(this), delay);
 
         //$(slideItemActiveSelector).hide().removeClass('active').next(slideItemSelector).addClass('active').show();
     };
