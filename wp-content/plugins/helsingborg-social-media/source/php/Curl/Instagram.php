@@ -16,7 +16,7 @@ class Instagram
      */
     public function auth()
     {
-        $this->key = get_option('instagram_key_secret');
+        $this->key = get_option('options_instagram_key_secret');
         return true;
     }
 
@@ -34,7 +34,7 @@ class Instagram
             'client_id' => $this->key
         );
 
-        $users = HbgCurl::request('GET', $endpoint, $data);
+        $users = Helper::curl('GET', $endpoint, $data);
         $users = json_decode($users);
 
         $userId = null;
@@ -52,7 +52,7 @@ class Instagram
             'client_id' => $this->key
         );
 
-        $result = HbgSocialMedia\Helper\Curl::request('GET', $endpoint, $params);
+        $result = Helper::curl('GET', $endpoint, $params);
         $result = json_decode($result);
 
         return $result->data;
@@ -70,7 +70,7 @@ class Instagram
             'client_id' => $this->key
         );
 
-        $result = HbgSocialMedia\Helper\Curl::request('GET', $endpoint, $params);
+        $result = Helper::curl('GET', $endpoint, $params);
         $result = json_decode($result);
 
         return $result->data;

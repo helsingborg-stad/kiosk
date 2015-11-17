@@ -1,8 +1,8 @@
 <?php
 
-namespace HbgSocialMedia\Helper;
+namespace HbgSocialMedia\Curl;
 
-class Curl
+class Helper
 {
     /**
      * Curl request
@@ -13,7 +13,7 @@ class Curl
      * @param  array $headers      Request headers
      * @return string              The request response
      */
-    public static function request($type, $url, $data = NULL, $contentType = 'json', $headers = NULL)
+    public static function curl($type, $url, $data = NULL, $contentType = 'json', $headers = NULL)
     {
         $arguments = null;
 
