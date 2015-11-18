@@ -13,7 +13,7 @@ class Panel
 
 		add_action('init', array($this, 'registerTwitterFields'));
 		add_action('init', array($this, 'registerInstagramFields'));
-		add_action('init', array($this, 'registerFacebookFields'));
+		//add_action('init', array($this, 'registerFacebookFields'));
     }
 
     public function registerInstagramTestpage()
