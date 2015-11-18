@@ -33,12 +33,15 @@ class Takeover
     public function outputTakeover()
     {
         $takeovers = get_field('takeovers', 'option');
-        $takeovers = json_encode($takeovers);
 
-        echo '
-            <script>
-                var takeovers = ' . $takeovers . ';
-            </script>
-        ';
+        if (count($takeovers) > 0) {
+            $takeovers = json_encode($takeovers);
+
+            echo '
+                <script>
+                    var takeovers = ' . $takeovers . ';
+                </script>
+            ';
+        }
     }
 }
