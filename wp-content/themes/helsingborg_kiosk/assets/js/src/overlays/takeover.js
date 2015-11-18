@@ -73,6 +73,10 @@ HbgKiosk.Overlays.Takeover = (function ($) {
             video.onended = function (e) {
                  $(takeoverSelector).html('').fadeOut();
             };
+        } else {
+            setTimeout(function () {
+                this.hide();
+            }.bind(this), item.takeover_timeout);
         }
 
         this.setPlayed(item.takeover_id);
