@@ -1,4 +1,5 @@
 <?php
+	$tabindex = 0; 
     get_header();
     $json = json_decode(file_get_contents('http://www.helsingborg.se/wp-content/plugins/helsingborg-widgets/helsingborg-event/json.php?count=6'));
 ?>
