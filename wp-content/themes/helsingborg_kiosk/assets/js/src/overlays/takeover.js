@@ -33,12 +33,25 @@ HbgKiosk.Overlays.Takeover = (function ($) {
     Takeover.prototype.run = function () {
         $.each(takeovers, function (index, item) {
             var current_date = new Date();
-            var takeover_datetime = new Date(item.takeover_date + 'T' + item.takeover_time);
+
+            var date = item.takeover_date.split('-');
+            var time = item.takeover_time.split(':');
+
+            var dateParts = {
+                year: parseInt(date[0]),
+                month: parseInt(date[1])-1,
+                day: parseInt(date[2]),
+                hours: parseInt(time[0]),
+                minutes: parseInt(time[1])
+            };
+
+            var takeover_datetime = new Date(dateParts.year, dateParts.month, dateParts.day, dateParts.hours, dateParts.minutes);
 
             if (current_date > takeover_datetime) {
                 if (!this.isPlayed(item.takeover_id)) {
                     this.show(item);
                     clearInterval(timer);
+                    return false;
                 }
             }
         }.bind(this));
