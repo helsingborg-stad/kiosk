@@ -11,6 +11,7 @@ class App
         new PointOfInterest\CustomPostType();
         new Event\CustomPostType();
         new Screensaver\Screensaver();
+        new Takeover\Takeover();
     }
 
     public function allowSvg($mimes)

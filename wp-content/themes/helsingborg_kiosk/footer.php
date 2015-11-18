@@ -70,6 +70,8 @@
 			</footer>
 		</form>
 
+		<div id="takeover"></div>
+
 		<!--[if lt IE 10]>
 			<script src="http://jamesallardice.github.io/Placeholders.js/assets/js/placeholders.min.js"></script>
 		<![endif]-->

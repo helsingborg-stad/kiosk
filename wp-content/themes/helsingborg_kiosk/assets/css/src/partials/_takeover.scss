@@ -1,0 +1,6 @@
+#takeover {
+    @include fillall;
+    display: none;
+    z-index: $level-top;
+    background: #000;
+}
