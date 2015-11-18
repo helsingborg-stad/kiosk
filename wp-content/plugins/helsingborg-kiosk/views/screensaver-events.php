@@ -2,7 +2,7 @@
 $json = json_decode(file_get_contents('http://www.helsingborg.se/wp-content/plugins/helsingborg-widgets/helsingborg-event/json.php?count=' . $media->{'screensaver-events-show'}));
 
 ?>
-<div class="screensaver-slide padding-1x" data-timeout="<?php echo $media->{'screensaver-events-timeout'}; ?>" data-cta="<?php echo $media->{'screensaver-hide-cta'}; ?>">
+<div class="screensaver-slide padding-1x" data-timeout="<?php echo $media->{'screensaver-slide-timeout'}; ?>" data-cta="<?php echo $media->{'screensaver-hide-cta'}; ?>">
     <?php if (isset($media->{'screensaver-events-title'}) && strlen($media->{'screensaver-events-title'}) > 0) : ?>
         <h1><?php echo $media->{'screensaver-events-title'}; ?></h1>
     <?php endif; ?>
