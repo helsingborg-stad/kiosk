@@ -26,7 +26,7 @@ acf_add_local_field_group(array (
                 array (
                     'key' => '563b4e15498ab',
                     'name' => 'screensaver-instagram',
-                    'label' => 'Instagram-flöde',
+                    'label' => 'Instagram hashtag',
                     'display' => 'block',
                     'sub_fields' => array (
                         array (
@@ -96,7 +96,7 @@ acf_add_local_field_group(array (
                 array (
                     'key' => '564b38d15ccb0',
                     'name' => 'screensaver-twitter',
-                    'label' => 'Twitter-flöde',
+                    'label' => 'Twitter hashtag',
                     'display' => 'block',
                     'sub_fields' => array (
                         array (

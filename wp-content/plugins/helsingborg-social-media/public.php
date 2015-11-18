@@ -39,4 +39,3 @@ function get_twitter_hashtag($hashtag, $length = 8) {
         return false;
     }
 }
-

@@ -9,7 +9,7 @@ class Panel
     public function __construct()
     {
 		add_action('init', array($this, 'registerOptionsPage'));
-		add_action('admin_menu', array($this, 'registerInstagramTestpage'), 100);
+		//add_action('admin_menu', array($this, 'registerInstagramTestpage'), 100);
 
 		add_action('init', array($this, 'registerTwitterFields'));
 		add_action('init', array($this, 'registerInstagramFields'));
@@ -30,7 +30,7 @@ class Panel
 
     public function pageInstagramTest()
     {
-    	var_dump(get_twitter_hashtag('sweden'));
+    	var_dump(get_facebook_hashtag('sweden'));
     }
 
     public function registerTwitterFields()

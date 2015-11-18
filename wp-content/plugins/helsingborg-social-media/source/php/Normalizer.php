@@ -19,12 +19,6 @@ class Normalizer
                 $normalized = self::instagram($data);
                 break;
 
-            /*
-            case 'facebook':
-                $normalized = self::facebook($data);
-                break;
-            */
-
             case 'twitter':
                 $normalized = self::twitter($data);
                 break;
