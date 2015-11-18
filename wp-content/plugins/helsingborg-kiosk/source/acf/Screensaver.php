@@ -32,7 +32,7 @@ acf_add_local_field_group(array (
                         array (
                             'key' => 'field_563b4e18a647d',
                             'label' => 'Hashtag',
-                            'name' => 'screensaver-instagram-hashtag',
+                            'name' => 'screensaver-hashtag',
                             'type' => 'text',
                             'instructions' => '',
                             'required' => 0,
@@ -102,7 +102,7 @@ acf_add_local_field_group(array (
                         array (
                             'key' => 'field_564b38d15ccb1',
                             'label' => 'Hashtag',
-                            'name' => 'screensaver-twitter-hashtag',
+                            'name' => 'screensaver-hashtag',
                             'type' => 'text',
                             'instructions' => '',
                             'required' => 0,
