@@ -1,7 +1,7 @@
 <?php
 $items = false;
 if (function_exists('get_instagram_hashtag')) {
-    $items = get_twitter_hashtag($media->{'screensaver-hashtag'}, 8);
+    $items = get_twitter_hashtag($media->{'screensaver-hashtag'}, 8, get_option('social_media_blocked_ids'));
 }
 
 if ($items) :
