@@ -1,0 +1,62 @@
+.post-type-archive-hbgkioskselfie {
+    #content {
+        top: 59%;
+
+        .lead {
+            width: 80%;
+            margin: 0 auto;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+    }
+
+    counter-reset: numbered-list-item;
+}
+
+.numbered-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2.2rem;
+
+    li {
+        $size: 60px;
+        $padding: 20px;
+        position: relative;
+        padding-left: $size + $padding;
+        font-size: 1em;
+
+        & + li {
+            margin-top: 40px;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        &::before {
+            display: block;
+            width: $size;
+            height: $size;
+
+            position: absolute;
+            left: 0;
+            top: 5px;
+
+            counter-increment: numbered-list-item;
+            content: counter(numbered-list-item);
+
+            border: 5px solid $creamy-darker;
+            border-radius: 50%;
+
+            text-align: center;
+            line-height: $size - 10;
+            font-size: $size / 2;
+            font-weight: bold;
+            color: $text-default;
+        }
+    }
+}
