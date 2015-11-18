@@ -23,7 +23,7 @@ class Takeover
                 'page_title'    => 'Takeover',
                 'menu_title'    => 'Takeover',
                 'menu_slug'     => 'takeover',
-                'capability'    => 'administrator',
+                'capability'    => 'edit_posts',
                 'icon_url'      => $icon,
                 'position'      => 31.4,
                 'redirect'      => false
