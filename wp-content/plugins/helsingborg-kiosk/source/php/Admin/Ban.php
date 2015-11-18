@@ -24,6 +24,10 @@ class Ban
                 }
 
                 $blocked = get_option('social_media_blocked_ids');
+                
+                if ( !is_array( $blocked ) ) {
+	                $blocked = array(); 
+                } 
 
                 $hashtags = get_field('screensaver-media', 'option');
                 $hashtags = json_decode(json_encode(array_filter($hashtags, function ($item) {
@@ -39,16 +43,23 @@ class Ban
     public function save($post)
     {
         $blocked = get_option('social_media_blocked_ids');
+        
+         if ( !is_array( $blocked ) ) {
+	                $blocked = array(); 
+                } 
 
         $blocked = array_filter($blocked, function ($item) use ($post) {
             return !in_array($item, $post['ids']);
         });
 
         // Set blocked id's
-        foreach ($post['block'] as $id) {
-            $blocked[] = $id;
-
-            update_option('social_media_blocked_ids', $blocked);
+        if (isset($post['block']) && is_array($post['block']) ) { 
+	        foreach ($post['block'] as $id) {
+	            $blocked[] = $id;
+	        }
         }
+        
+        update_option('social_media_blocked_ids', $blocked);
+        
     }
 }
