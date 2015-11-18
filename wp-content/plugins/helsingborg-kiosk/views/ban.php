@@ -46,6 +46,7 @@
                                             <label style="display:block;background:#fff;border:1px solid #eee;padding:5px 8px;position: absolute; bottom: 10px; right: -5px;" <?php if (in_array($item->id, $blocked)) : ?>class="is-blocked"<?php endif; ?>>
                                                 <input type="checkbox" name="block[]" value="<?php echo $item->id; ?>" <?php if (in_array($item->id, $blocked)) : ?>checked<?php endif; ?>> Blockera
                                             </label>
+                                            <input type="hidden" name="ids[]" value="<?php echo $item->id; ?>">
                                         </li>
                                         <?php endforeach; ?>
                                     </ul>

@@ -38,8 +38,14 @@ class Ban
 
     public function save($post)
     {
+        $blocked = get_option('social_media_blocked_ids');
+
+        $blocked = array_filter($blocked, function ($item) use ($post) {
+            return !in_array($item, $post['ids']);
+        });
+
+        // Set blocked id's
         foreach ($post['block'] as $id) {
-            $blocked = get_option('social_media_blocked_ids');
             $blocked[] = $id;
 
             update_option('social_media_blocked_ids', $blocked);
