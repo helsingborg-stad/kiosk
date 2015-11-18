@@ -18,6 +18,13 @@ class Ban
             'administrator',
             'social-media-ban',
             function () {
+
+                if (isset($_POST['social-media-ban'])) {
+                    $this->save($_POST);
+                }
+
+                $blocked = get_option('social_media_blocked_ids');
+
                 $hashtags = get_field('screensaver-media', 'option');
                 $hashtags = json_decode(json_encode(array_filter($hashtags, function ($item) {
                     $allowed = array('screensaver-twitter', 'screensaver-instagram');
@@ -27,5 +34,15 @@ class Ban
                 require_once HBG_KIOSK_PATH . '/views/ban.php';
             }
         );
+    }
+
+    public function save($post)
+    {
+        foreach ($post['block'] as $id) {
+            $blocked = get_option('social_media_blocked_ids');
+            $blocked[] = $id;
+
+            update_option('social_media_blocked_ids', $blocked);
+        }
     }
 }

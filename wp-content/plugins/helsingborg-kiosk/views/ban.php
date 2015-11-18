@@ -1,7 +1,15 @@
+<style>
+    .is-blocked {
+        background: #B7102B !important;
+        color: #fff !important;
+        border-color: #630817 !important;
+    }
+</style>
+
 <div class="wrap acf-settings-wrap">
     <h2>Banna bilder</h2>
 
-    <form id="post" name="post" method="post">
+    <form id="post" method="post">
         <div id="poststuff">
             <div id="post-body" class="metabox-holder columns-2">
 
@@ -35,7 +43,9 @@
                                         <?php foreach ($media as $item) : ?>
                                         <li style="display:inline-block;border: 1px solid #EEEEEE;padding: 10px;margin: 10px;position: relative;">
                                             <img src="<?php echo $item->image; ?>" alt="" width="180" height="180">
-                                            <label style="display:block;background:#fff;border:1px solid #eee;padding:5px 8px;position: absolute; bottom: 10px; right: -5px;"><input type="checkbox" name="block" value="<?php echo $item->id; ?>">Blockera</label>
+                                            <label style="display:block;background:#fff;border:1px solid #eee;padding:5px 8px;position: absolute; bottom: 10px; right: -5px;" <?php if (in_array($item->id, $blocked)) : ?>class="is-blocked"<?php endif; ?>>
+                                                <input type="checkbox" name="block[]" value="<?php echo $item->id; ?>" <?php if (in_array($item->id, $blocked)) : ?>checked<?php endif; ?>> Blockera
+                                            </label>
                                         </li>
                                         <?php endforeach; ?>
                                     </ul>
@@ -52,11 +62,11 @@
                     <div class="meta-box-sortables ui-sortable" id="side-sortables">
                         <!-- Update -->
                         <div class="postbox" id="submitdiv">
-                            <h3 style="border-bottom:none;" class="hndle"><span>Publicera</span></h3>
+                            <h3 style="border-bottom:none;" class="hndle"><span>Spara</span></h3>
                             <div id="major-publishing-actions">
                                 <div id="publishing-action">
                                     <span class="spinner"></span>
-                                    <input type="submit" name="publish" id="publish" class="button button-primary button-large" value="Spara alternativ" accesskey="p">
+                                    <input type="submit" name="social-media-ban" id="publish" class="button button-primary button-large" value="Spara alternativ" accesskey="p">
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -72,20 +82,12 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $('input[name="block"]').on('change', function (e) {
+        $('input[name*="block"]').on('change', function (e) {
             console.log("HEJ");
             if ($(this).is(':checked')) {
-                $(this).parent('label').css({
-                    background: '#B7102B',
-                    borderColor: '#630817',
-                    color: '#fff'
-                });
+                $(this).parent('label').addClass('is-blocked');
             } else {
-                $(this).parent('label').css({
-                    background: '#fff',
-                    borderColor: '#eee',
-                    color: '#505050'
-                });
+                $(this).parent('label').removeClass('is-blocked');
             }
         });
     });
