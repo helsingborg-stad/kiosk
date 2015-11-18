@@ -1,0 +1,18 @@
+<?php 
+	
+	add_action('init', function() {
+		
+		if( function_exists('acf_add_options_page') ) {
+
+			acf_add_options_page(array(
+				'page_title' 	=> 'Inställningar för information på selfiesida',
+				'menu_title'	=> 'Selfie',
+				'menu_slug' 	=> 'kiosk-selfie-settings',
+				'capability'	=> 'edit_posts',
+				'redirect'		=> false,
+				'icon_url'		=> 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48Zz48cGF0aCBzdHlsZT0iZmlsbDojMDMwMTA0OyIgZD0iTTUwLDQwYy04LjI4NSwwLTE1LDYuNzE4LTE1LDE1YzAsOC4yODUsNi43MTUsMTUsMTUsMTVjOC4yODMsMCwxNS02LjcxNSwxNS0xNUM2NSw0Ni43MTgsNTguMjgzLDQwLDUwLDQweiBNOTAsMjVINzhjLTEuNjUsMC0zLjQyOC0xLjI4LTMuOTQ5LTIuODQ2bC0zLjEwMi05LjMwOUM3MC40MjYsMTEuMjgsNjguNjUsMTAsNjcsMTBIMzNjLTEuNjUsMC0zLjQyOCwxLjI4LTMuOTQ5LDIuODQ2bC0zLjEwMiw5LjMwOUMyNS40MjYsMjMuNzIsMjMuNjUsMjUsMjIsMjVIMTBDNC41LDI1LDAsMjkuNSwwLDM1djQ1YzAsNS41LDQuNSwxMCwxMCwxMGg4MGM1LjUsMCwxMC00LjUsMTAtMTBWMzVDMTAwLDI5LjUsOTUuNSwyNSw5MCwyNXogTTUwLDgwYy0xMy44MDcsMC0yNS0xMS4xOTMtMjUtMjVjMC0xMy44MDYsMTEuMTkzLTI1LDI1LTI1YzEzLjgwNSwwLDI1LDExLjE5NCwyNSwyNUM3NSw2OC44MDcsNjMuODA1LDgwLDUwLDgweiBNODYuNSw0MS45OTNjLTEuOTMyLDAtMy41LTEuNTY2LTMuNS0zLjVjMC0xLjkzMiwxLjU2OC0zLjUsMy41LTMuNWMxLjkzNCwwLDMuNSwxLjU2OCwzLjUsMy41QzkwLDQwLjQyNyw4OC40MzMsNDEuOTkzLDg2LjUsNDEuOTkzeiIvPjwvZz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PGc+PC9nPjxnPjwvZz48Zz48L2c+PC9zdmc+'
+			));
+
+		}
+		
+	}); 

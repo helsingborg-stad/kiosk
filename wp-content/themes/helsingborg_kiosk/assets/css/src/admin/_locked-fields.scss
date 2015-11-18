@@ -1,5 +1,5 @@
 
-	.wp-admin.post-type-hbgkioskpoi {
+	.wp-admin.post-type-hbgkioskpoi.is-locked-post {
 		
 		#post-body-content,
 		.acf-field-5641b9aaa4fbb .acf-input,
@@ -48,4 +48,8 @@
 			}
 		}
 		
-	}
+		.acf-field-5641b9aaa4fbb {
+			display: none; 
+		}
+		
+	}	
