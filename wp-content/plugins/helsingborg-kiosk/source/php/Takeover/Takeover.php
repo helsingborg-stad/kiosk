@@ -8,6 +8,7 @@ class Takeover
     {
         add_action('init', array($this, 'addSettingsPage'));
         add_action('wp_head', array($this, 'outputTakeover'));
+        add_action('wp_footer', array($this, 'outputTakeoverContainer'));
     }
 
     /**
@@ -43,5 +44,10 @@ class Takeover
                 </script>
             ';
         }
+    }
+
+    public function outputTakeoverContainer()
+    {
+        echo '<div id="takeover"></div>';
     }
 }
