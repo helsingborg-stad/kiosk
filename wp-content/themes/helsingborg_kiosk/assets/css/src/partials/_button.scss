@@ -85,10 +85,14 @@ $button-icon-margin: 8px;
 	    text-align: center;
 	    text-indent: -5px;
     }
+    
+    
 
     color: $text-default;
     font-weight: bold;
     text-align: center;
+
+	
 
     &:hover,
     &:focus {
@@ -96,4 +100,8 @@ $button-icon-margin: 8px;
             background-color: darken($palette-red-2, 10%);
         }
     }
+}
+
+#center-button-exit-event {
+	width: 100%; 
 }

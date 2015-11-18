@@ -38,7 +38,7 @@
     .index-date,
     .index-place {
 	    display: block; 
-	    padding: 10px; 
+	    padding: 10px 15px; 
 	    background: $creamy;
 	    border: 1px solid $creamy-darker; 
 	    position: absolute; 
@@ -48,7 +48,6 @@
 	    right: auto; 
 	    bottom: 0; 
 	    left: auto; 
-	    width: 100%; 
     }
     
     .index-date {
@@ -69,9 +68,9 @@
 		.event-inner {
 			text-decoration: none;
 	        color: $text-default;
-	        transform: scale(1.1);
+	        transform: scale(1.05);
 	        z-index: $level-top;
-	        box-shadow: 0 0 50px rgba(#000, .8);
+	        box-shadow: 0 0 30px rgba(#000, .6);
 	        apperance: none;
 	        outline: none;
 		}
@@ -128,16 +127,41 @@ $modal-header-height: 400px;
 	    font-size: .8em; 
 	    padding: 40px; 
 	    line-height: 140%; 
+	    height: 315px; 
+	    position: relative; 
+	    
+	    &:after {
+		    @include gradient(rgba(#fff,0),rgba(#fff,1)); 
+		    display: block; 
+		    content: ""; 
+		    position: absolute; 
+		    top: auto; 
+		    right: 0; 
+		    bottom: 0; 
+		    left: 0; 
+		    height: 100px; 
+	    }
     }
     
     .event-image {
 		position: absolute;
 		height: $modal-header-height;
 		padding-top: 0;
+		
+		 &:not(.image-missing) {
+		    filter: blur(3px);
+	    }
     }
     
     .index-container {
 	    height: inherit; 
+    }
+    
+    .index-date, 
+    .index-place {
+	    left: 40px; 
+	    right: 40px; 
+	    margin-bottom: 40px; 
     }
     
 }
@@ -157,6 +181,7 @@ $modal-header-height: 400px;
     background-position: center center;
     position: relative; 
     background-color: #eee; 
+    overflow: hidden; 
     
     &.image-missing:after {
 	    @include center(); 

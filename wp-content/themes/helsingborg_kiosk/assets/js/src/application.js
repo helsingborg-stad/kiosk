@@ -60,6 +60,10 @@
 		} else {
 			// OPEN
 			$(this).addClass('event-item-open');
+			$(".event-inner",this).addClass('animated zoomIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+				$(this).removeClass("animated zoomIn"); 
+			});
+			 
 			$('.event-backdrop').fadeIn(200);
 
 			$('#center-button-select, #center-button').hide();
@@ -71,16 +75,11 @@
 		}
 	});
 
-	$('#center-button-exit-event').on('click', function (e) {
+	$('#center-button-exit-event, .event-backdrop, footer, header, #hero').on('click', function (e) {
 		e.preventDefault();
 		$('.event-item-open').trigger('click');
 	});
-
-	$('.event-backdrop').on('click', function (e) {
-		e.preventDefault();
-		$('.event-item-open').trigger('click');
-	});
-
+	
 	/****************************************************
 	 *
 	 *	Single
