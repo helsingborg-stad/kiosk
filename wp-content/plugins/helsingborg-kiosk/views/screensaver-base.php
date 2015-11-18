@@ -8,8 +8,12 @@
                     require \HbgKiosk\Helper\Wp::getTemplate('screensaver-gallery');
                     break;
 
-                case 'screensaver-gallery':
+                case 'screensaver-instagram':
                     require \HbgKiosk\Helper\Wp::getTemplate('screensaver-instagram-feed');
+                    break;
+
+                case 'screensaver-twitter':
+                    require \HbgKiosk\Helper\Wp::getTemplate('screensaver-twitter-feed');
                     break;
 
                 case 'screensaver-poster':
