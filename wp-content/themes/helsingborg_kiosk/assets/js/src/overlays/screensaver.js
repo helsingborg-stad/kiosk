@@ -1,7 +1,7 @@
 HbgKiosk = HbgKiosk || {};
-HbgKiosk.Screensaver = HbgKiosk.Screensaver || {};
+HbgKiosk.Overlays = HbgKiosk.Overlays || {};
 
-HbgKiosk.Screensaver.Screensaver = (function ($) {
+HbgKiosk.Overlays.Screensaver = (function ($) {
 
     var delay = 7000;
     var slideItemSelector = '.screensaver-slide';
