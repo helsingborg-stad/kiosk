@@ -6,6 +6,7 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
     "compass": "^0.1.1",
+    "fastclick": "^1.0.6",
     "foundation": "^4.2.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",

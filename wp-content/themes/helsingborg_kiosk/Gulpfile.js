@@ -60,7 +60,7 @@ gulp.task('sass-dist', function () {
                 suffix: '.min'
             }))
             .pipe(minifycss())
-            .pipe(gulp.dest('assets/css/dist/'))
+            .pipe(gulp.dest('assets/css/dist/'));
 });
 
 gulp.task('sass-admin-dist', function () {
@@ -81,7 +81,7 @@ gulp.task('sass-admin-dist', function () {
                 suffix: '.min'
             }))
             .pipe(minifycss())
-            .pipe(gulp.dest('assets/css/dist/'))
+            .pipe(gulp.dest('assets/css/dist/'));
 });
 
 /**
@@ -89,6 +89,7 @@ gulp.task('sass-admin-dist', function () {
  */
 gulp.task('scripts-dev', function () {
     return gulp.src([
+                'node_modules/fastclick/lib/fastclick.js',
                 'assets/js/src/lib/jquery-2.1.4.js',
     			'assets/js/src/**/*.js',
     			'assets/js/src/*.js'
