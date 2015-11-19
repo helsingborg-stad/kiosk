@@ -7,7 +7,7 @@
 
 				<button tabindex="-1" class="btn btn-plain btn-prev pull-left" <?php if ( is_single( $post ) ) { echo 'style="visibility: hidden;"'; } ?> data-joystick="previous">
 					<?php
-						echo ' <i class="ion-chevron-left"></i>';
+						echo ' <i class="ion-arrow-left-b"></i>';
 						_e("Föregående", 'kiosk');
 					?>
 				</button>
@@ -63,7 +63,7 @@
 				<button tabindex="-1" class="btn btn-plain btn-next pull-right" <?php if ( is_single( $post ) ) { echo 'style="visibility: hidden;"'; } ?> data-joystick="next">
 					<?php
 						_e("Nästa", 'kiosk');
-						echo ' <i class="ion-chevron-right"></i>';
+						echo ' <i class="ion-arrow-right-b"></i>';
 					?>
 				</button>
 

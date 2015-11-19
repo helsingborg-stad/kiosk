@@ -1,8 +1,8 @@
-$dot-size: 40px;
+$dot-size: 30px;
 
 .flickity-page-dots {
 	counter-reset: numbered-list-item;
-	bottom: 23px;
+	bottom: -23px;
 
 	.dot {
 		position: relative;
@@ -10,6 +10,8 @@ $dot-size: 40px;
 		width: $dot-size;
 		line-height: $dot-size;
 		text-align: center;
+		font-size: $dot-size - 15;
+		margin: 0 3px;
 
 		&.is-selected {
 			background-color: $palette-red-3;
@@ -26,18 +28,27 @@ $dot-size: 40px;
 }
 
 .flickity-prev-next-button {
-	top: 95%;
+	top: 91%;
 	background: $palette-red-2;
-	height: $dot-size;
-	width: $dot-size;
+	height: 50px;
+	border-radius: 0;
+	width: 48%;
 
 	&:hover,
 	&:focus {
 		background: $palette-red-2;
 	}
 
-	&.previous svg {
-		margin-right: -2px;
+	&.previous {
+		left: -1px;
+
+		svg {
+			margin-right: -2px;
+		}
+	}
+
+	&.next {
+		right: -1px;
 	}
 
 	svg {
