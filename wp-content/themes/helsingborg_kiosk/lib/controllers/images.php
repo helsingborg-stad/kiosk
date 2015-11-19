@@ -6,8 +6,10 @@
 	 *
 	 ******************************************************/
 
+	 /* Add image sizes */ 
 	 add_action( 'init', function() {
-		add_image_size('hero-image-big', 350, 350, true );
+		add_image_size('header-image', 1080, 960, true );
+		add_image_size('puff-image', 225, 255, true );
 	 });
 	 
 	 /* Image conpression */ 

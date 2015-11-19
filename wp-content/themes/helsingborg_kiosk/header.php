@@ -9,7 +9,7 @@
 	//Get image for header
 	$header_image = get_field('front_page_header_image','options');
 	if ( is_array( $header_image ) && !empty( $header_image ) ) {
-		$header_image = isset($header_image['url']) ? $header_image['url'] : "";
+		$header_image = isset($header_image['sizes']['header-image']) ? header_image['sizes']['header-image'] : "";
 	}
 
 	//Fallback
@@ -123,7 +123,7 @@
 
 				echo '<div class="metro-grid-item metro-grid-color-2">';
 				if (isset($background['url'])) {
-					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['url'] . '\');"></div>';
+					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
 				} else {
 					echo '	<div class="metro-grid-item-image"></div>';
 				}
@@ -146,7 +146,7 @@
 
 				echo '<div class="metro-grid-item metro-grid-color-2">';
 				if (isset($background['url'])) {
-					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['url'] . '\');"></div>';
+					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
 				} else {
 					echo '	<div class="metro-grid-item-image"></div>';
 				}
