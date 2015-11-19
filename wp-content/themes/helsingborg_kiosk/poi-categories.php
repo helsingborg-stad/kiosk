@@ -63,7 +63,7 @@ $tabindex = 0;
 			             ?>
 				            <li class="metro-grid-item">
 				                <a href="<?php echo $href; ?>" tabindex="<?php echo $tabindex; ?>">
-				                    <div class="metro-grid-item-image" <?php if (isset($background['url'])) : ?>style="background-image:url('<?php echo $background['url']; ?>');"<?php endif; ?>></div>
+				                    <div class="metro-grid-item-image" <?php if (isset($background['sizes']['puff-image'])) : ?>style="background-image:url('<?php echo $background['sizes']['puff-image']; ?>');"<?php endif; ?>></div>
 				                    <div class="metro-grid-item-content">
 				                        <?php echo $iconSvg; ?>
 				                        <?php echo $category->name; ?>
