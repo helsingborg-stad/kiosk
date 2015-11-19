@@ -75,7 +75,7 @@
 		}
 	});
 
-	$('#center-button-exit-event, .event-backdrop, footer, header, #hero').on('click', function (e) {
+	$('.post-type-archive-hbgkioskevent #center-button-exit-event, .post-type-archive-hbgkioskevent .event-backdrop, .post-type-archive-hbgkioskevent header, .post-type-archive-hbgkioskevent #hero').on('click', function (e) {
 		e.preventDefault();
 		$('.event-item-open').trigger('click');
 	});
