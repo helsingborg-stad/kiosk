@@ -17,7 +17,7 @@ the_post();
 							'adress' 	=> get_post_meta($post->ID, 'poi-address', true),
 							'postal' 	=> get_post_meta($post->ID, 'poi-postalcode', true),
 							'city' 		=> get_post_meta($post->ID, 'poi-city', true),
-							'phone' 	=> get_post_meta($post->ID, 'poi-phone', true)
+							'phone' 	=> formatPhoneNumber(get_post_meta($post->ID, 'poi-phone', true))
 						)
 					);
 
@@ -40,7 +40,7 @@ the_post();
 
 						switch ($sidebar_id) {
 						    case 'phone':
-						        if ( strlen( $sidebar_item ) > 4 ) { echo '+46 (0)' . ltrim( $sidebar_item, '0' ); }
+						        if ( strlen( $sidebar_item ) > 4 ) { echo '+46 ' . ltrim( $sidebar_item, '0' ); }
 						        break;
 						    default:
 						       echo '<li>'.$sidebar_item.'</li>';

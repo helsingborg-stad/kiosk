@@ -1,5 +1,5 @@
-<?php 
-	
+<?php
+
 	function has_subcategories($cat) {
         $categories = get_categories(array(
             'hide_empty' => false,
@@ -30,4 +30,15 @@
                 return $date;
                 break;
         }
+    }
+
+    function formatPhoneNumber($num) {
+        if (is_null($num)) return;
+
+        // Check if first char is a zero
+        if (substr($num, 0, 3) !== '(0)') {
+            $num = '(0)' . $num;
+        }
+
+        return $num;
     }
