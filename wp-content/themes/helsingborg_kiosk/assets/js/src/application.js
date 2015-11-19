@@ -93,7 +93,7 @@
 	$('[data-action="scroll-down"]').on('click', function (e) {
 		e.preventDefault();
 		var selector = $(this).data('selector');
-		var scrollPos = $(this).scrollTop();
+		var scrollPos = $('.scroll-wrapper').scrollTop();
 		$(selector).animate({
 			scrollTop: scrollPos + 200
 		}, 200);
@@ -102,7 +102,7 @@
 	$('[data-action="scroll-up"]').on('click', function (e) {
 		e.preventDefault();
 		var selector = $(this).data('selector');
-		var scrollPos = $(this).scrollTop();
+		var scrollPos = $('.scroll-wrapper').scrollTop();
 		$(selector).animate({
 			scrollTop: scrollPos - 200
 		}, 200);
