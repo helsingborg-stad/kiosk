@@ -1,19 +1,25 @@
-<?php get_header(); ?>
+<?php
+get_header();
+
+$content = array(
+    'lead' => get_option('options_selfie_page_subtitle'),
+    'instructions' => get_field('selfie_instructions', 'options')
+);
+
+$content = array_filter($content);
+
+?>
 <div class="selfie">
-    <div class="lead">Dela med dig om dina bästa Helsingborgstips!</div>
+    <?php if (isset($content['lead'])) : ?><div class="lead"><?php echo $content['lead']; ?></div><?php endif; ?>
+    <?php if (isset($content['instructions'])) : ?>
     <ol class="numbered-list">
+        <?php foreach ($content['instructions'] as $item) : ?>
         <li>
-            <span class="title">Ta en selfie</span>
-            <p>Plocka fram din mobiltelefon ur fickan eller väskan och ta en selfie i härlig Helsingborgsanda.</p>
+            <span class="title"><?php echo $item['instr_title']; ?></span>
+            <p><?php echo $item['instr_text']; ?></p>
         </li>
-        <li>
-            <span class="title">Ladda upp på Instagram eller Twitter</span>
-            <p>Ladda upp din bild till ditt konto på Instagram eller Twitter. Tagga bilden #hbgkiosk</p>
-        </li>
-        <li>
-            <span class="title">Beskåda på skärmen</span>
-            <p>Om ditt konto på Instagram eller Twitter inte är privat så dyker din bild upp i skärmsläckaren.</p>
-        </li>
+        <?php endforeach; ?>
     </ol>
+    <?php endif; ?>
 </div>
 <?php get_footer(); ?>

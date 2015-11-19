@@ -61,9 +61,9 @@
 			// OPEN
 			$(this).addClass('event-item-open');
 			$(".event-inner",this).addClass('animated zoomIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-				$(this).removeClass("animated zoomIn"); 
+				$(this).removeClass("animated zoomIn");
 			});
-			 
+
 			$('.event-backdrop').fadeIn(200);
 
 			$('#center-button-select, #center-button').hide();
@@ -79,7 +79,7 @@
 		e.preventDefault();
 		$('.event-item-open').trigger('click');
 	});
-	
+
 	/****************************************************
 	 *
 	 *	Single

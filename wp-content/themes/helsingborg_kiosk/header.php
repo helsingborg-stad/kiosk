@@ -137,9 +137,12 @@
 
 			if (is_post_type_archive('hbgkioskselfie')) {
 
-				$background 	= null;
+				$background 	= get_field('selfie_page_header_image', 'option');
 				$icon 			= null;
 				$iconSvg 		= null;
+				$title 			= get_option('options_selfie_page_title');
+
+				var_dump($background);
 
 				echo '<div class="metro-grid-item metro-grid-color-2">';
 				if (isset($background['url'])) {
@@ -149,7 +152,7 @@
 				}
 		        echo '    <div class="metro-grid-item-content">';
 		        echo '       	'. $iconSvg;
-		        echo '        	Vad gör du i Helsingborg?';
+		        echo '        	'. $title;
 		        echo '    </div>';
 				echo '</div>';
 

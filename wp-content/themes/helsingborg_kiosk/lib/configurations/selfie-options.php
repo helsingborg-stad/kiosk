@@ -1,13 +1,13 @@
-<?php 
-	
+<?php
+
 	if( function_exists('acf_add_local_field_group') ):
-	
+
 	acf_add_local_field_group(array (
 		'key' => 'group_564c939744d9d',
 		'title' => 'Selfieinformation: Sidhuvud',
 		'fields' => array (
 			array (
-				'key' => 'field_5649e89e97760',
+				'key' => 'field_5649e89e9776x',
 				'label' => 'Titel på sidan',
 				'name' => 'selfie_page_title',
 				'type' => 'text',
@@ -28,7 +28,7 @@
 				'disabled' => 0,
 			),
 			array (
-				'key' => 'field_564c94bfa54c9',
+				'key' => 'field_564c94bfa54cx',
 				'label' => 'Underrubrik på sidan',
 				'name' => 'selfie_page_subtitle',
 				'type' => 'text',
@@ -49,7 +49,7 @@
 				'disabled' => 0,
 			),
 			array (
-				'key' => 'field_5649f1af7e957',
+				'key' => 'field_5649f1af7e95x',
 				'label' => 'Bild i sidhuvud',
 				'name' => 'selfie_page_header_image',
 				'type' => 'image',
@@ -91,7 +91,7 @@
 		'active' => 1,
 		'description' => '',
 	));
-	
+
 	acf_add_local_field_group(array (
 		'key' => 'group_564c94b41e32e',
 		'title' => 'Selfieinformation: Punktlista',
@@ -178,5 +178,5 @@
 		'active' => 1,
 		'description' => '',
 	));
-	
+
 	endif;
