@@ -1,53 +1,51 @@
+$dot-size: 40px;
 
-	.js-flickity {
-		
-		.flickity-slider {
-			
-			ul, div {
-				opacity: 0; 
-				transition: all 200ms ease; 
-			}
-			
-			> ul.is-selected, 
-			> div.is-selected {
-				opacity: 1; 
-			}
-			
+.flickity-page-dots {
+	counter-reset: numbered-list-item;
+	bottom: 23px;
+
+	.dot {
+		position: relative;
+		height: $dot-size;
+		width: $dot-size;
+		line-height: $dot-size;
+		text-align: center;
+
+		&.is-selected {
+			background-color: $palette-red-3;
 		}
-		
-		.flickity-page-dots {
-			
-			padding: 40px; 
-			
-			.dot {
-				transition: all 100ms ease; 
-				width: 15px; 
-				height: 15px; 
-				margin: 0 10px; 
-				
-				&.is-selected {
-					background-color: #cb0050; 
-					transform: scale(1.2); 
-				}	
-				
-			}
-		}
-		
-	}
-	
-	.hand-gestrure-swipe {
-		@include center; 
-		z-index: 60; 
-		font-size: 6em; 
-		margin-top: 1em; 
-		opacity: .8; 
-		
-		i {
-			animation-delay: 1s;
-			animation-iteration-count: 2;
-		}
-		
-		&.has-ended {
-			display: none !important; 
+
+		&::after {
+			counter-increment: numbered-list-item;
+            content: counter(numbered-list-item);
+
+            display: block;
+            color: #fff;
+            text-indent: 1px;
 		}
 	}
+}
+
+.flickity-prev-next-button {
+	top: 95%;
+	background: $palette-red-2;
+	height: $dot-size;
+	width: $dot-size;
+
+	&:hover,
+	&:focus {
+		background: $palette-red-2;
+	}
+
+	&.previous svg {
+		margin-right: -2px;
+	}
+
+	svg {
+		fill: #fff !important;
+
+		* {
+			fill: #fff !important;
+		}
+	}
+}

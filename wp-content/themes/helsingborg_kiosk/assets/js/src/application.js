@@ -28,11 +28,12 @@
 	if (jQuery('.flickity-swipe').length > 0) {
 		jQuery(function(){
 			flickity = jQuery('.flickity-swipe').flickity({
-				"cellAlign": "left",
-				"contain": true,
-				"wrapAround": true,
-				"prevNextButtons": false,
-				"cellSelector": ".list-item"
+				cellAlign: "left",
+				contain: true,
+				wrapAround: true,
+				prevNextButtons: true,
+				cellSelector: ".list-item",
+				draggable: false
 			});
 		});
 	}
