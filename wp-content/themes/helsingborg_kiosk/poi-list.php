@@ -23,10 +23,6 @@
 
         echo '<div class= "' . $class . '" tabindex="-1">';
 
-            echo '<div id="helperGesture" class="hand-gestrure-swipe">';
-                echo '<i class="fa fa-hand-pointer-o animated fadeOutLeft"></i>';
-            echo '</div>';
-
             foreach ( $places as $page_data ) {
 
                 echo '<ul class="list-section-places page-with-places list-item">';
