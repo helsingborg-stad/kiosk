@@ -15,7 +15,6 @@ class ParseCbis
 
     public function __construct($path)
     {
-
 	    set_time_limit ( 600 );
 
         $this->path = $path;
@@ -51,7 +50,9 @@ class ParseCbis
         foreach ($data as $rowKey => $rowData) {
             if (is_array($rowData)) {
                 foreach ($rowData as $key => $value) {
-                    $key = lcfirst($this->header[$key]);
+                    $key = utf8_encode($this->header[$key]);
+                    $key = preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)%&-]/s', '', $key);
+                    $key = lcfirst($key);
                     $modifiedKeys[$rowKey][$key] = $value;
                 }
             }
@@ -92,7 +93,7 @@ class ParseCbis
                 'value' => $data->id,
                 'compare' => '='
             )
-        ),true);
+        ), true);
 
         $postId = (isset($poi[0]->ID)) ? $poi[0]->ID : null;
 
