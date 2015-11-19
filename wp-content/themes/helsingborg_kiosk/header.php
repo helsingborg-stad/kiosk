@@ -9,7 +9,7 @@
 	//Get image for header
 	$header_image = get_field('front_page_header_image','options');
 	if ( is_array( $header_image ) && !empty( $header_image ) ) {
-		$header_image = isset($header_image['sizes']['header-image']) ? header_image['sizes']['header-image'] : "";
+		$header_image = isset($header_image['sizes']['header-image']) ? $header_image['sizes']['header-image'] : "";
 	}
 
 	//Fallback
