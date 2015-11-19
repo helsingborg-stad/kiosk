@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace HbgKiosk\PointOfInterest;
 
 use HbgKiosk\PointOfInterest\CustomPostType;
@@ -59,6 +57,7 @@ class ParseCbis
         }
 
         $modifiedKeys = json_decode(json_encode($modifiedKeys));
+        
         return $modifiedKeys;
     }
 
@@ -167,7 +166,7 @@ class ParseCbis
         update_post_meta($postId, 'poi-longitude', $data->longitude);
         update_post_meta($postId, 'poi-phone', $data->phoneNumber);
         update_post_meta($postId, 'poi-price', $data->price);
-        update_post_meta($postId, 'poi-image', $data->image);
+        update_post_meta($postId, 'poi-image', $data->imageUrl);
 
         // Update CBIS-categories taxonomy
         wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
