@@ -165,6 +165,8 @@ HbgKiosk.Joystick.browseUi = (function ($) {
             }.bind(this));
 
             $(document).on('click', '.flickity-prev-next-button', function (e) {
+                this.resetFocus();
+
                 setTimeout(function () {
                     var index = $('.list-section-places.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
                     hasDragged = true;
