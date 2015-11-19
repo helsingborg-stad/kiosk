@@ -52,21 +52,6 @@ HbgKiosk.Joystick.browseUi = (function ($) {
         var prevElement = $(focusableElements[prevFocusedIndex]);
         var nextElement = $(focusableElements[currentFocusedIndex]);
 
-        // If next element is in a the next flickity container make sure to switch page
-
-        // prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')
-
-        /*
-        if (flickity && !hasDragged) {
-            if (prevElement.parents('ul').first().index() !== 0 && prevElement.parents('ul').first().is(':last-child') && prevElement.parent('li').is(':last-child')) {
-                flickity.flickity('next', true);
-            } else if (nextElement.parents('ul').first().index() !== 0 && nextElement.parents('ul').first().hasClass('list-section-places') && nextElement.parent('li').index() === 0) {
-                flickity.flickity('next', true);
-            }
-        }
-        */
-
-
         if (flickity && !hasDragged && prevElement.parent('li').is(':last-child') && nextElement.parents('ul').first().hasClass('list-section-places')) {
             flickity.flickity('next', true);
         }
@@ -86,6 +71,10 @@ HbgKiosk.Joystick.browseUi = (function ($) {
      * @return {void}
      */
     browseUi.prototype.focusPrev = function () {
+        if (hasDragged) {
+            currentFocusedIndex++;
+        }
+
         var prevFocusedIndex = currentFocusedIndex;
         currentFocusedIndex--;
 
@@ -99,6 +88,10 @@ HbgKiosk.Joystick.browseUi = (function ($) {
 
         // If next element is in a the next flicity container make sure to switch page
         if (flickity && !hasDragged && nextElement.parents('ul').first().hasClass('list-section-places') && prevElement.parent('li').index() === 0) {
+            flickity.flickity('previous', true);
+        }
+
+        if (hasDragged) {
             flickity.flickity('previous', true);
         }
 
@@ -169,6 +162,14 @@ HbgKiosk.Joystick.browseUi = (function ($) {
                 var index = $('.list-section-places.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
                 hasDragged = true;
                 currentFocusedIndex = index-2;
+            }.bind(this));
+
+            $(document).on('click', '.flickity-prev-next-button', function (e) {
+                setTimeout(function () {
+                    var index = $('.list-section-places.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
+                    hasDragged = true;
+                    currentFocusedIndex = index-2;
+                }, 200);
             }.bind(this));
         }
     };
