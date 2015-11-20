@@ -21,9 +21,12 @@ body {
     height: 1920px;
 }
 
-html {
-	background: rgba(#000,.4);
+html:not(.logged-in) {
 	overflow: hidden; 
+}
+
+html {
+	background: rgba(#000,.4); 
 }
 
 // Site wrapper that should wrap the main site elements
