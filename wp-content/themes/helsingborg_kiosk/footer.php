@@ -29,7 +29,7 @@
 
 				<?php if (is_front_page() ) { ?>
 
-					<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home" formaction="/selfie/">
+					<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home" formaction="<?php echo get_post_type_archive_link("hbgkioskselfie"); ?>">
 						<span class="animated bounceIn"><!-- Animationwrapper -->
 							<i class="ion-ios-camera"></i>
 						</span>
@@ -40,7 +40,7 @@
 
 					<?php if ( is_single( $post ) ) { ?>
 
-						<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home one-step-back" formaction="/">
+						<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home one-step-back" formaction="<?php echo home_url(); ?>">
 							<span class="animated bounceIn"><!-- Animationwrapper -->
 								<i class="ion-android-list"></i>
 							</span>
@@ -49,7 +49,7 @@
 
 					<?php } else { ?>
 
-						<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home" formaction="/">
+						<button tabindex="-1" id="center-button" class="btn btn-badge-icon btn-home" formaction="<?php echo home_url(); ?>">
 							<span class="animated bounceIn"><!-- Animationwrapper -->
 								<i class="ion-ios-home"></i>
 							</span>

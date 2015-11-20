@@ -76,7 +76,7 @@
 	<header class="main-header">
 
         <span class="brand text-left pull-left">
-            <a class="logo animated fadeIn" href="/" tabindex="-1">
+            <a class="logo animated fadeIn" href="<?php echo home_url(); ?>" tabindex="-1">
 	            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/helsingborg.svg" alt="Helsingborg Stad">
             </a>
         </span>

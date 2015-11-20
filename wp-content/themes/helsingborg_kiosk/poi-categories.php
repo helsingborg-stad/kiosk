@@ -57,7 +57,7 @@ $tabindex = 0;
 						//Get url for event page 
 			            $href 	= get_category_link($category->term_id);
 			            if (strtolower(get_cat_name($category->term_id)) == 'evenemang') {
-			                $href = '/event';
+			                $href = get_post_type_archive_link('hbgkioskevent');
 			            }
 			            
 			             ?>

@@ -14,7 +14,7 @@ $HelsingborgKioskFrontend   = new HelsingborgKioskFrontend;
 $places                     = $HelsingborgKioskFrontend->get_places($cat);
 
 ?>
-
+<?php if (count($places)) { ?>
 <div class="slider flickity-swipe">
     <?php foreach ($places as $page) : ?>
     <ul class="slider-page list-item">
@@ -31,3 +31,6 @@ $places                     = $HelsingborgKioskFrontend->get_places($cat);
     </ul>
     <?php endforeach; ?>
 </div>
+<?php } else { ?>
+	<?php get_template_part('404');?>
+<?php } ?> 
