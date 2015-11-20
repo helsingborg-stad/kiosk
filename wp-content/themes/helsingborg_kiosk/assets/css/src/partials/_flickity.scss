@@ -1,8 +1,12 @@
 $dot-size: 30px;
 
+.flickity-viewport {
+	overflow: visible;
+}
+
 .flickity-page-dots {
 	counter-reset: numbered-list-item;
-	bottom: -23px;
+	bottom: -81px;
 
 	.dot {
 		position: relative;
@@ -28,19 +32,20 @@ $dot-size: 30px;
 }
 
 .flickity-prev-next-button {
-	top: 91%;
-	background: $palette-red-2;
-	height: 50px;
+	top: 80px;
+	background: rgba($palette-red-3, .8);
+	height: 432px;
 	border-radius: 0;
-	width: 48%;
+	width: 60px;
+	transform: none;
 
 	&:hover,
 	&:focus {
-		background: $palette-red-2;
+		background: rgba($palette-red-3, .9);
 	}
 
 	&.previous {
-		left: -1px;
+		left: 0;
 
 		svg {
 			margin-right: -2px;
@@ -48,11 +53,14 @@ $dot-size: 30px;
 	}
 
 	&.next {
-		right: -1px;
+		right: 0;
 	}
 
 	svg {
 		fill: #fff !important;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
 
 		* {
 			fill: #fff !important;
