@@ -56,7 +56,7 @@ class Normalizer
         foreach ($data as $item) {
             $image = null;
 
-            if (is_array($item->entities->media)) {
+            if (isset($item->entities->media) && is_array($item->entities->media)) {
                 foreach ($item->entities->media as $media) {
                     if ($media->type == 'photo') {
                         $image = $media->media_url;
