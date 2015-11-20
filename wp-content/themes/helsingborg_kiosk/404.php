@@ -1,1 +1,1 @@
-Hoppsan! Här var det tomt!
+<div style="text-align: center; padding: 100px 50px; font-size: 20px;">Det finns inga platser tillgängliga i denna kategori.</div>
