@@ -34,10 +34,12 @@
 
     function formatPhoneNumber($num) {
         if (is_null($num)) return;
+        
+        $num = ltrim($num,0); 
 
         // Check if first char is a zero
-        if (substr($num, 0, 3) !== '(0)') {
-            $num = '(0)' . $num;
+        if (substr(ltrim($num), 0, 3) !== '(0)' ) {
+            $num = '(0)' . ltrim($num);
         }
 
         return $num;
