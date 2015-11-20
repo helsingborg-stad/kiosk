@@ -21,6 +21,10 @@ body {
     height: 1920px;
 }
 
+.archive.category {
+	overflow: hidden; 
+}
+
 html:not(.logged-in) {
 	overflow: hidden; 
 }

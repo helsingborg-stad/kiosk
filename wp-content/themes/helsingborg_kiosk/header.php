@@ -5,16 +5,20 @@
 
 	//Default tabindex
 	$tabindex = 0;
-
-	//Get image for header
-	$header_image = get_field('front_page_header_image','options');
-	if ( is_array( $header_image ) && !empty( $header_image ) ) {
-		$header_image = isset($header_image['sizes']['header-image']) ? $header_image['sizes']['header-image'] : "";
-	}
-
-	//Fallback
-	if (filter_var($header_image, FILTER_VALIDATE_URL) === false) {
-		$header_image = get_template_directory_uri() ."/assets/images/header.jpg";
+	
+	if ( function_exists( 'get_field' ) ) { 
+	
+		//Get image for header
+		$header_image = get_field('front_page_header_image','options');
+		if ( is_array( $header_image ) && !empty( $header_image ) ) {
+			$header_image = isset($header_image['sizes']['header-image']) ? $header_image['sizes']['header-image'] : "";
+		}
+	
+		//Fallback
+		if (filter_var($header_image, FILTER_VALIDATE_URL) === false) {
+			$header_image = get_template_directory_uri() ."/assets/images/header.jpg";
+		}
+	
 	}
 
 ?><!DOCTYPE html>
@@ -99,63 +103,67 @@
 		</div>
 
 		<?php
+			
+			if ( function_exists('get_field') ) { 
 
-			//Single page map
-			if (is_object($post) && is_single($post->ID)) {
-
-				$latitude 		= get_post_meta($post->ID, 'poi-latitude', true);
-				$longitude		= get_post_meta($post->ID, 'poi-longitude', true);
-
-				echo '<div id="map-canvas" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '" class="map-canvas"></div>';
-
-			}
-
-			//Archive page visual representation
-			if ( is_archive() && !is_post_type_archive('hbgkioskselfie') ) {
-
-				if (preg_match('/archive-hbgkioskevent.php/', get_post_type_archive_template()) == true) {
-					$cat = get_cat_id('evenemang');
+				//Single page map
+				if (is_object($post) && is_single($post->ID)) {
+	
+					$latitude 		= get_post_meta($post->ID, 'poi-latitude', true);
+					$longitude		= get_post_meta($post->ID, 'poi-longitude', true);
+	
+					echo '<div id="map-canvas" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '" class="map-canvas"></div>';
+	
 				}
-
-				$background 	= get_field('poi-category-bg', 'category_' . $cat);
-				$icon 			= get_field('poi-category-icon', 'category_' . $cat);
-				$iconSvg 		= isset( $icon['url'] ) ? file_get_contents($icon['url']) : "";
-
-				echo '<div class="metro-grid-item metro-grid-color-2">';
-				if (isset($background['url'])) {
-					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
-				} else {
-					echo '	<div class="metro-grid-item-image"></div>';
+	
+				//Archive page visual representation
+				if ( is_archive() && !is_post_type_archive('hbgkioskselfie') ) {
+	
+					if (preg_match('/archive-hbgkioskevent.php/', get_post_type_archive_template()) == true) {
+						$cat = get_cat_id('evenemang');
+					}
+	
+					$background 	= get_field('poi-category-bg', 'category_' . $cat);
+					$icon 			= get_field('poi-category-icon', 'category_' . $cat);
+					$iconSvg 		= isset( $icon['url'] ) ? file_get_contents($icon['url']) : "";
+	
+					echo '<div class="metro-grid-item metro-grid-color-2">';
+					if (isset($background['url'])) {
+						echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
+					} else {
+						echo '	<div class="metro-grid-item-image"></div>';
+					}
+			        echo '    <div class="metro-grid-item-content">';
+			        echo '       	'. $iconSvg;
+			        echo '        	'. get_cat_name($cat);
+			        echo '    </div>';
+					echo '</div>';
+	
 				}
-		        echo '    <div class="metro-grid-item-content">';
-		        echo '       	'. $iconSvg;
-		        echo '        	'. get_cat_name($cat);
-		        echo '    </div>';
-				echo '</div>';
-
-			}
-
-			if (is_post_type_archive('hbgkioskselfie')) {
-
-				$background 	= get_field('selfie_page_header_image', 'option');
-				$icon 			= null;
-				$iconSvg 		= null;
-				$title 			= get_option('options_selfie_page_title');
-
-				var_dump($background);
-
-				echo '<div class="metro-grid-item metro-grid-color-2">';
-				if (isset($background['url'])) {
-					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
-				} else {
-					echo '	<div class="metro-grid-item-image"></div>';
+	
+				if (is_post_type_archive('hbgkioskselfie')) {
+	
+					$background 	= get_field('selfie_page_header_image', 'option');
+					$icon 			= null;
+					$iconSvg 		= null;
+					$title 			= get_option('options_selfie_page_title');
+	
+					var_dump($background);
+	
+					echo '<div class="metro-grid-item metro-grid-color-2">';
+					if (isset($background['url'])) {
+						echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
+					} else {
+						echo '	<div class="metro-grid-item-image"></div>';
+					}
+			        echo '    <div class="metro-grid-item-content">';
+			        echo '       	'. $iconSvg;
+			        echo '        	'. $title;
+			        echo '    </div>';
+					echo '</div>';
+	
 				}
-		        echo '    <div class="metro-grid-item-content">';
-		        echo '       	'. $iconSvg;
-		        echo '        	'. $title;
-		        echo '    </div>';
-				echo '</div>';
-
+				
 			}
 
 		?>
