@@ -70,8 +70,15 @@
 
 	</script>
 
+	<?php
+		$body_classes = array();
+		if (has_subcategories($cat)) {
+			$body_classes[] = 'has-subcategories';
+		}
+	?>
+
 </head>
-<body <?php echo body_class(); ?>>
+<body <?php echo body_class(implode(' ', $body_classes)); ?>>
 
 	<header class="main-header">
 
@@ -99,61 +106,66 @@
 		</div>
 
 		<?php
+			
+			if ( function_exists('get_field') ) { 
 
-			//Single page map
-			if (is_object($post) && is_single($post->ID)) {
-
-				$latitude 		= get_post_meta($post->ID, 'poi-latitude', true);
-				$longitude		= get_post_meta($post->ID, 'poi-longitude', true);
-
-				echo '<div id="map-canvas" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '" class="map-canvas"></div>';
-
-			}
-
-			//Archive page visual representation
-			if ( is_archive() && !is_post_type_archive('hbgkioskselfie') ) {
-
-				if (preg_match('/archive-hbgkioskevent.php/', get_post_type_archive_template()) == true) {
-					$cat = get_cat_id('evenemang');
+				//Single page map
+				if (is_object($post) && is_single($post->ID)) {
+	
+					$latitude 		= get_post_meta($post->ID, 'poi-latitude', true);
+					$longitude		= get_post_meta($post->ID, 'poi-longitude', true);
+	
+					echo '<div id="map-canvas" data-latitude="' . $latitude . '" data-longitude="' . $longitude . '" class="map-canvas"></div>';
+	
 				}
-
-				$background 	= get_field('poi-category-bg', 'category_' . $cat);
-				$icon 			= get_field('poi-category-icon', 'category_' . $cat);
-				$iconSvg 		= isset( $icon['url'] ) ? file_get_contents($icon['url']) : "";
-
-				echo '<div class="metro-grid-item metro-grid-color-2">';
-				if (isset($background['url'])) {
-					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
-				} else {
-					echo '	<div class="metro-grid-item-image"></div>';
+	
+				//Archive page visual representation
+				if ( is_archive() && !is_post_type_archive('hbgkioskselfie') ) {
+	
+					if (preg_match('/archive-hbgkioskevent.php/', get_post_type_archive_template()) == true) {
+						$cat = get_cat_id('evenemang');
+					}
+	
+					$background 	= get_field('poi-category-bg', 'category_' . $cat);
+					$icon 			= get_field('poi-category-icon', 'category_' . $cat);
+					$iconSvg 		= isset( $icon['url'] ) ? file_get_contents($icon['url']) : "";
+	
+					echo '<div class="metro-grid-item metro-grid-color-2">';
+					if (isset($background['url'])) {
+						echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
+					} else {
+						echo '	<div class="metro-grid-item-image"></div>';
+					}
+			        echo '    <div class="metro-grid-item-content">';
+			        echo '       	'. $iconSvg;
+			        echo '        	'. get_cat_name($cat);
+			        echo '    </div>';
+					echo '</div>';
+	
 				}
-		        echo '    <div class="metro-grid-item-content">';
-		        echo '       	'. $iconSvg;
-		        echo '        	'. get_cat_name($cat);
-		        echo '    </div>';
-				echo '</div>';
+	
+				if (is_post_type_archive('hbgkioskselfie')) {
+	
+					$background 	= get_field('selfie_page_header_image', 'option');
+					$icon 			= null;
+					$iconSvg 		= null;
+					$title 			= get_option('options_selfie_page_title');
 
-			}
-
-			if (is_post_type_archive('hbgkioskselfie')) {
-
-				$background 	= get_field('selfie_page_header_image', 'option');
-				$icon 			= null;
-				$iconSvg 		= null;
-				$title 			= get_option('options_selfie_page_title');
-
-				echo '<div class="metro-grid-item metro-grid-color-2">';
-				if (isset($background['url'])) {
-					echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
-				} else {
-					echo '	<div class="metro-grid-item-image"></div>';
+	
+					echo '<div class="metro-grid-item metro-grid-color-2">';
+					if (isset($background['sizes']['header-image'])) {
+						echo '	<div class="metro-grid-item-image" style="background-image:url(\'' . $background['sizes']['header-image'] . '\');"></div>';
+					} else {
+						echo '	<div class="metro-grid-item-image"></div>';
+					}
+			        echo '    <div class="metro-grid-item-content">';
+			        echo '       	'. $iconSvg;
+			        echo '        	'. $title;
+			        echo '    </div>';
+					echo '</div>';
+	
 				}
-		        echo '    <div class="metro-grid-item-content">';
-		        echo '       	'. $iconSvg;
-		        echo '        	'. $title;
-		        echo '    </div>';
-				echo '</div>';
-
+				
 			}
 
 		?>
