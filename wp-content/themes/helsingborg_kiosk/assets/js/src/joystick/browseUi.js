@@ -52,7 +52,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
         var prevElement = $(focusableElements[prevFocusedIndex]);
         var nextElement = $(focusableElements[currentFocusedIndex]);
 
-        if (flickity && !hasDragged && prevElement.parent('li').is(':last-child') && nextElement.parents('ul').first().hasClass('list-section-places')) {
+        if (flickity && !hasDragged && prevElement.parent('li').is(':last-child') && nextElement.parents('ul').first().hasClass('slider-page')) {
             flickity.flickity('next', true);
         }
 
@@ -87,7 +87,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
         var nextElement = $(focusableElements[currentFocusedIndex]);
 
         // If next element is in a the next flicity container make sure to switch page
-        if (flickity && !hasDragged && nextElement.parents('ul').first().hasClass('list-section-places') && prevElement.parent('li').index() === 0) {
+        if (flickity && !hasDragged && nextElement.parents('ul').first().hasClass('slider-page') && prevElement.parent('li').index() === 0) {
             flickity.flickity('previous', true);
         }
 
@@ -111,6 +111,12 @@ HbgKiosk.Joystick.browseUi = (function ($) {
         if (currentFocusedIndex > -1) {
             focusableElements[currentFocusedIndex].blur();
             currentFocusedIndex = -1;
+        }
+
+        if (flickity) {
+            var index = $('.slider-page.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
+            hasDragged = true;
+            currentFocusedIndex = index;
         }
 
         $('#center-button-select').hide();
@@ -159,7 +165,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
             }.bind(this));
 
             flickity.on('dragEnd', function (e) {
-                var index = $('.list-section-places.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
+                var index = $('.slider-page.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
                 hasDragged = true;
                 currentFocusedIndex = index-2;
             }.bind(this));
@@ -168,7 +174,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
                 this.resetFocus();
 
                 setTimeout(function () {
-                    var index = $('.list-section-places.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
+                    var index = $('.slider-page.is-selected li').first().find('[tabindex]:not([tabindex="-1"]):not([tabindex="0"]):not(.event-item-open)').attr('tabindex');
                     hasDragged = true;
                     currentFocusedIndex = index-2;
                 }, 200);

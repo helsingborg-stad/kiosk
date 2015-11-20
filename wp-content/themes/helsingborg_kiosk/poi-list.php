@@ -18,7 +18,7 @@ $places                     = $HelsingborgKioskFrontend->get_places($cat);
 <div class="slider flickity-swipe">
     <?php foreach ($places as $page) : ?>
     <ul class="slider-page list-item">
-        <?php foreach ($page as $item) : ?>
+        <?php foreach ($page as $item) : $tabindex++; ?>
         <li>
             <a class="slider-row" href="<?php echo $item['post_link']; ?>" tabindex="<?php echo $tabindex; ?>">
                 <span class="place-image"><span style="background-image: url('<?php echo $item['post_image']; ?>');"></span></span>
