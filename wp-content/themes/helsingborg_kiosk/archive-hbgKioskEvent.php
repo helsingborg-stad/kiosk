@@ -44,7 +44,7 @@
 	    
 	    echo '</div>'; 
 	    
-	    echo '<div class="event-backdrop"></div>'; 
+	    echo '<div id="event-backdrop" style="display: none;"></div>'; 
 	    
     }
     

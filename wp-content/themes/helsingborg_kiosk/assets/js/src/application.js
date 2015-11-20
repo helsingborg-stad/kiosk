@@ -12,17 +12,6 @@
 
 	/****************************************************
 	 *
-	 *	Hide  helpers after 3S
-	 *
-	 ****************************************************/
-	 if ( jQuery("#helperGesture").length ) {
-		 setTimeout(function(){
-		    document.getElementById('helperGesture').className = 'hand-gestrure-swipe has-ended';
-		 }, 3000);
-	 }
-
-	/****************************************************
-	 *
 	 *	Go one step back
 	 *
 	 ****************************************************/
@@ -56,38 +45,44 @@
 	 ****************************************************/
 
 	$('.event-list .event-item').on('click', function (e) {
+
 		e.preventDefault();
+		
+		var eventList = jQuery(".event-list"); 
+		var eventItem = jQuery(this); 
+
 
 		if ($(this).hasClass('event-item-open')) {
+			
 			// CLOSE
 			$(this).removeClass('event-item-open');
-			$('.event-backdrop').fadeOut(200);
 
 			$('#center-button').show();
 			$('#center-button-exit-event').hide();
 
 			$('[data-joystick]').show();
-
+			
+			$('#event-backdrop').fadeOut(300);
+			
 			$(this).blur();
+			
 		} else {
+			
 			// OPEN
-			$(this).addClass('event-item-open');
-			$(".event-inner",this).addClass('animated zoomIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-				$(this).removeClass("animated zoomIn");
-			});
-
-			$('.event-backdrop').fadeIn(200);
-
+			eventItem.addClass('event-item-open');
+			
 			$('#center-button-select, #center-button').hide();
 			$('#center-button-exit-event').show();
 
 			$('[data-joystick]').hide();
+			
+			$('#event-backdrop').fadeIn(300);
 
 			$(this).blur();
 		}
 	});
 
-	$('.post-type-archive-hbgkioskevent #center-button-exit-event, .post-type-archive-hbgkioskevent .event-backdrop, .post-type-archive-hbgkioskevent header, .post-type-archive-hbgkioskevent #hero').on('click', function (e) {
+	$('.post-type-archive-hbgkioskevent #center-button-exit-event, .post-type-archive-hbgkioskevent header, .post-type-archive-hbgkioskevent #hero,  .post-type-archive-hbgkioskevent #event-backdrop').on('click', function (e) {
 		e.preventDefault();
 		$('.event-item-open').trigger('click');
 	});
