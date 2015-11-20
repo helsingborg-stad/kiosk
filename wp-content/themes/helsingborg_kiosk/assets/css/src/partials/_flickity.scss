@@ -38,10 +38,15 @@ $dot-size: 30px;
 	border-radius: 0;
 	width: 60px;
 	transform: none;
+	transition: all 200ms;
 
 	&:hover,
 	&:focus {
 		background: rgba($palette-red-3, .9);
+	}
+
+	&:disabled {
+		background: rgba($palette-red-2, .1);
 	}
 
 	&.previous {

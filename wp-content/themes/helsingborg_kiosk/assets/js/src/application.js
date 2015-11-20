@@ -39,8 +39,8 @@
 		jQuery(function(){
 			flickity = jQuery('.flickity-swipe').flickity({
 				cellAlign: "center",
-				contain: true,
-				wrapAround: true,
+				contain: false,
+				wrapAround: false,
 				prevNextButtons: true,
 				cellSelector: ".list-item",
 				draggable: false,
