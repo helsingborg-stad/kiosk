@@ -34,7 +34,8 @@
 				        div: '#map-canvas',
 				        lat: poiLatitude,
 				        lng: poiLongitude,
-				        mapTypeControl: false
+				        disableDefaultUI: true,
+				        //zoomControl: true
 				    });
 
 					//Get location from db or maps

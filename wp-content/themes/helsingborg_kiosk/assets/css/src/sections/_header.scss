@@ -63,6 +63,7 @@
 			&:after {
 				@include gradient(rgba(#000,0),rgba(#000,.3));
 				top: 80%;
+				display: none;
 			}
 		}
 
@@ -71,7 +72,7 @@
 			width: auto;
 			height: 100%;
 			z-index: 15;
-			margin: 0 -28px; 
+			margin-left: 20px;
 
 			//Disable map scroll
 			&:before {
