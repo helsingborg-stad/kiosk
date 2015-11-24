@@ -39,7 +39,13 @@ class App
 	}
 
 	public function do_import_cbis_event () {
+		
+		//Do import 
 		new ParseCbis('http://familjenhelsingborg.se/cbisexport.csv');
+		
+		//Log when done 
+		file_put_contents(dirname(__FILE__)."/log/cron_import_places.log", "Last run: ".date("Y-m-d H:i:s"));
+		
 	}
 
 }

@@ -10,15 +10,23 @@ class ParseCbis
     public $csv;
     public $header;
     public $data;
+    public $db; 
 
     public function __construct($path)
     {
         set_time_limit(600);
 
+		//Get local wpdb object 
+		global $wpdb; 
+		$this->db = $wpdb; 
+
         $this->path = $path;
         $this->data = $this->getData($this->path);
         $this->save($this->data);
         echo '<br><span style="color:#5ec61a">PROCESSEN SLUTFÖRD!</span>';
+        
+        
+        
     }
 
     /**
@@ -73,9 +81,72 @@ class ParseCbis
 
     public function save($data)
     {
+		//Remove posts missing from this import
+        $this->deleteMissingPoi($this->getMissingPoi($data)); 
+        $this->remove_orphaned_meta(); 
+        	
         foreach ($data as $item) {
             $this->addPost($item);
         }
+        
+    }
+    
+    public function getMissingPoi( $data,$imported_ids = array(),$saved_ids = array()) { 
+	    
+	    //Get list of imported ids 
+	    if (count($data)) {
+		    foreach ( $data as $item ) {
+			    $imported_ids[] = $item->id; 
+		    } 
+		    $imported_ids = array_unique($imported_ids); 
+	    } 
+	    
+	    //Get list of saved ids 
+	    $saved_ids = $this->db->get_col("SELECT meta_value FROM ".$this->db->postmeta." WHERE meta_key = 'poi-id'"); 
+
+	    //Return differance id 
+	    if (is_array($imported_ids) && is_array($saved_ids) && !empty( $imported_ids ) && !empty( $saved_ids ) ) {
+		    return array_diff($saved_ids,$imported_ids);
+	    } else {
+		    return false; 
+	    }
+	    
+    }
+    
+    public function deleteMissingPoi($ids_to_delete, $deleted_ids = array()) {
+
+	    if (is_array($ids_to_delete) && !empty($ids_to_delete)) {
+		    foreach($ids_to_delete as $id ) {
+			    
+			    $post_id_to_delete = $this->db->get_col(
+				    $this->db->prepare("SELECT post_id FROM ".$this->db->postmeta." WHERE meta_key = 'poi-id' AND meta_value = %d LIMIT 1", $id)
+			    ); 
+
+			    //Single id 
+			    if ( is_array($post_id_to_delete) && count($post_id_to_delete) == 1 ) {
+	
+				    $post_id_to_delete = array_pop($post_id_to_delete); 
+
+				    if (is_numeric($post_id_to_delete) && wp_delete_post($post_id_to_delete,true)) {
+					   	
+					    $deleted_ids[] = $post_id_to_delete; 
+				  	}
+				  	
+				}
+			    
+		    }
+		    echo "Deleted ".count($deleted_ids)." posts: ".implode(",", $deleted_ids)." <br/>"; 
+	    }
+	    
+    }
+    
+    public function remove_orphaned_meta () {
+	    $this->db->query("
+			DELETE pm 
+			FROM ".$this->db->postmeta." pm
+			LEFT JOIN ".$this->db->posts." wp ON wp.ID = pm.post_id
+			WHERE wp.ID IS NULL
+		"); 
     }
 
     public function addPost(&$data)
@@ -154,6 +225,7 @@ class ParseCbis
 
         // Map categories
         $this->mapCategories($postId, $data);
+        
     }
 
     /**
