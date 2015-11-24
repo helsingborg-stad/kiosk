@@ -18,6 +18,7 @@ wp-content/plugins/*
 !wp-content/plugins/advanced-custom-fields-pro
 !wp-content/plugins/helsingborg-kiosk
 !wp-content/plugins/helsingborg-social-media
+!wp-content/plugins/acf-unique_id
 
 # Ignore everything in the "themes" directory, except the Kiosk theme
 wp-content/themes/*
