@@ -13,7 +13,7 @@ class ParseCbis
 
     public function __construct($path)
     {
-	    set_time_limit ( 600 );
+        set_time_limit(600);
 
         $this->path = $path;
         $this->data = $this->getData($this->path);
@@ -57,7 +57,7 @@ class ParseCbis
         }
 
         $modifiedKeys = json_decode(json_encode($modifiedKeys));
-        
+
         return $modifiedKeys;
     }
 
@@ -81,9 +81,9 @@ class ParseCbis
     public function addPost(&$data)
     {
         // If this is an event, skip it
-        if (strpos(strtolower( $data->categories ), 'evenemang') !== false ) {
+        if (strpos(strtolower($data->categories), 'evenemang') !== false) {
             return;
-        }  
+        }
 
         // Check if this poi already exist
         $poi = CustomPostType::get(1, array(
@@ -98,42 +98,34 @@ class ParseCbis
 
         // Check if required item values exist and is correct formatted, else set post as draft
         $post_status = 'publish';
-        if (
-               (!is_numeric($data->id)) // ID is numeric
-            || (empty($data->longitude)) // longitude is float
-			|| (empty($data->latitude)) // latitude is float
-            || (empty($data->streetAddress1)) // street address is empty
-            || (empty($data->cityAddress)) // city address is empty
-            || (!is_numeric($data->templateId)) // template id is numeric
-            || (!is_numeric($data->supplierId)) // supplier id is numeric
-        ) {
+        if (!$this->requiredValuesExist($data)) {
             $post_status = 'draft';
         }
 
         // If coordinates missing, try to get them from Google API
-        if (!empty($data->streetAddress1) && !empty($data->cityAddress) && (empty($data->longitude) || empty($data->latitude)))  { // if street adress and city is given but not lat lng
+        if (!$this->coordinatesExist($data)) {
             $coordinates = $this->getCoordinatesByAddress($data->streetAddress1 . ' ' . $data->cityAddress);
+
+            $post_status = 'draft';
 
             if ($coordinates) {
                 $data->latitude = $coordinates->lat;
                 $data->longitude = $coordinates->lng;
                 $post_status = 'publish';
-            } else {
-                $post_status = 'draft';
             }
         }
 
         // If address is missing and coordinates is given, try to get address from Google API
-        if (!empty($data->longitude) && !empty($data->latitude) && (empty($data->streetAddress1) || empty($data->cityAddress))) {
+        if (!$this->addressExist($data)) {
             $address = $this->getAddressByCoordinates($data->latitude, $data->longitude);
+
+            $post_status = 'draft';
 
             if ($address) {
                 $data->streetAddress1 = $address->street;
                 $data->cityAddress = $address->city;
                 $data->postalCode = $address->postalcode;
                 $post_status = 'publish';
-            } else {
-                $post_status = 'draft';
             }
         }
 
@@ -157,6 +149,48 @@ class ParseCbis
             ));
         }
 
+        // Set the posts metafields
+        $this->setPostMeta($postId, $data);
+
+        // Map categories
+        $this->mapCategories($postId, $data);
+    }
+
+    /**
+     * Maps the CBIS categories with the categories of the POI post type
+     * @param  integer $postId The current post id (which the categories should be mapped for)
+     * @param  object  $data   The cbis data
+     * @return void
+     */
+    private function mapCategories($postId, $data)
+    {
+        $matches = array();
+        $cbisCategories = array_map('trim', explode(',', $data->categories));
+        $postCategories = get_categories(array('hide_empty' => false));
+
+        foreach ($postCategories as $postCategory) {
+            $mapTheseCategories = get_field('poi-category-map', 'category_' . $postCategory->term_id);
+
+            if (is_array($mapTheseCategories)) {
+                foreach ($mapTheseCategories as $map) {
+                    if (in_array(html_entity_decode($map->name), $cbisCategories)) {
+                        $matches[] = $postCategory->term_id;
+                    }
+                }
+            }
+        }
+
+        wp_set_post_categories($postId, $matches, false);
+    }
+
+    /**
+     * Set a POI post's meta fields
+     * @param   integer $postId The post's id
+     * @param   object  $data   The cbis data
+     * @return  void
+     */
+    private function setPostMeta($postId, $data)
+    {
         // Update post meta
         update_post_meta($postId, 'poi-id', $data->id);
         update_post_meta($postId, 'poi-city', $data->cityAddress);
@@ -170,24 +204,61 @@ class ParseCbis
 
         // Update CBIS-categories taxonomy
         wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
+    }
 
-        // Map categories
-        $cbisCategories = array_map('trim', explode(',', $data->categories));
-        $postCategories = get_categories(array('hide_empty' => false));
-
-        foreach ($postCategories as $postCategory) {
-            $mapTheseCategories = get_field('poi-category-map', 'category_' . $postCategory->term_id);
-
-            if (is_array($mapTheseCategories)) {
-                foreach ($mapTheseCategories as $map) {
-
-                    if (in_array(html_entity_decode($map->name), $cbisCategories)) {
-                        wp_set_post_categories($postId, array($postCategory->term_id), false);
-                    }
-
-                }
-            }
+    /**
+     * Checks if required values exist in cbis item
+     * @param  object $data The cbis data
+     * @return boolean
+     */
+    private function requiredValuesExist($data)
+    {
+        if ((!is_numeric($data->id)) // ID is numeric
+            || (empty($data->longitude)) // longitude is float
+            || (empty($data->latitude)) // latitude is float
+            || (empty($data->streetAddress1)) // street address is empty
+            || (empty($data->cityAddress)) // city address is empty
+            || (!is_numeric($data->templateId)) // template id is numeric
+            || (!is_numeric($data->supplierId)) // supplier id is numeric
+        ) {
+            return false;
         }
+
+        return true;
+    }
+
+    /**
+     * Checks if cbis item includes valid coordinates
+     * @param  object $data The cbis data
+     * @return boolean
+     */
+    private function coordinatesExist($data)
+    {
+        if (!empty($data->streetAddress1)
+            && !empty($data->cityAddress)
+            && (empty($data->longitude)
+            || empty($data->latitude))
+        ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks if cbis item includes address
+     * @param  object $data The cbis data
+     * @return boolean
+     */
+    private function addressExist($data)
+    {
+        if (!empty($data->longitude) && !empty($data->latitude)
+            && (empty($data->streetAddress1) || empty($data->cityAddress))
+        ) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -197,7 +268,8 @@ class ParseCbis
      */
     public function getCoordinatesByAddress($address)
     {
-        $data = json_decode(file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address)));
+        $url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address);
+        $data = json_decode(file_get_contents($url));
 
         if ($data->status == 'OK') {
             return $data->results[0]->geometry->location;
@@ -217,13 +289,14 @@ class ParseCbis
         $lng = str_replace(',', '.', $lng);
         $coordinates = $lat . ',' . $lng;
 
-        $data = json_decode(file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?latlng=' . urlencode($coordinates)));
+        $url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . urlencode($coordinates);
+        $data = json_decode(file_get_contents($url));
 
         if ($data->status == 'OK') {
             return (object)array(
                 'street' => $data->results[0]->address_components[1]->long_name . ' ' . $data->results[0]->address_components[0]->long_name,
-                'city' => $data->results[0]->address_components[3]->long_name,
-                'postalcode' => $data->results[0]->address_components[6]->long_name
+                'city' => (isset($data->results[0]->address_components[3]->long_name)) ? $data->results[0]->address_components[3]->long_name : null,
+                'postalcode' => (isset($data->results[0]->address_components[6]->long_name)) ? $data->results[0]->address_components[6]->long_name : null
             );
         } else {
             return false;
