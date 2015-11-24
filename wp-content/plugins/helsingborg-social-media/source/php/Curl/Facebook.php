@@ -2,9 +2,11 @@
 
 namespace HbgSocialMedia\Curl;
 
-class Facebook
+use HbgSocialMedia\Curl\Provider;
+
+class Facebook implements Provider
 {
-     /**
+    /**
      * Api keys and secrets
      * @var string $key      Api key
      * @var string $secret   Api secret

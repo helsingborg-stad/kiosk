@@ -2,13 +2,15 @@
 
 namespace HbgSocialMedia\Curl;
 
-class Instagram
+use HbgSocialMedia\Curl\Provider;
+
+class Instagram implements Provider
 {
     /**
      * Api keys and secrets
      * @var $key      Api key
      */
-    private $secret = null;
+    private $key = null;
 
     /**
      * Authorizes with the api
@@ -59,7 +61,7 @@ class Instagram
     }
 
     /**
-     * Get a hashtag feed
+     * Get a hashtag feed (recent media)
      * @param  string $hashtag The hashtag to get
      * @return object          The hastag recent media object
      */

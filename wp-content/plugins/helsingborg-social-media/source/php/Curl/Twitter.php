@@ -47,7 +47,7 @@ class Twitter
             'grant_type' => 'client_credentials'
         );
 
-        $response = Helper::curl('POST', $endpoint, $params, NULL, $headers);
+        $response = Helper::curl('POST', $endpoint, $params, null, $headers);
         $response = json_decode($response);
 
         // Set the access token
@@ -89,6 +89,11 @@ class Twitter
         return json_decode($tweets);
     }
 
+    /**
+     * Get a hashtag feed (recent media)
+     * @param  string $hashtag The hashtag to get
+     * @return object          The hastag recent media object
+     */
     public function getHashtag($hashtag, $length = 20)
     {
         $endpoint = 'https://api.twitter.com/1.1/search/tweets.json';
