@@ -15,10 +15,6 @@ class App
 
         new Admin\Ban();
 
-        //Cron stuff
-        register_activation_hook(__FILE__, array($this,'add_cron_job'));
-        register_deactivation_hook(__FILE__, array($this,'remove_cron_job'));
-
         //Register hook
         add_action('import_cbis_event_hourly', array($this,'do_import_cbis_event'));
 
@@ -30,11 +26,11 @@ class App
         return $mimes;
     }
 
-	public function add_cron_job () {
+	public static function add_cron_job () {
 		wp_schedule_event(time(), 'hourly', 'import_cbis_event_hourly');
 	}
 
-	public function remove_cron_job () {
+	public static function remove_cron_job () {
 		wp_clear_scheduled_hook('import_cbis_event_hourly');
 	}
 

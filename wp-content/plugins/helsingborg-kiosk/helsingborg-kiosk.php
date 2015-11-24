@@ -28,3 +28,7 @@ $loader->register();
 
 // Start application
 new HbgKiosk\App();
+
+//Cron stuff
+register_activation_hook(plugin_basename(__FILE__), 'HbgKiosk\App::add_cron_job');
+register_deactivation_hook(plugin_basename(__FILE__), 'HbgKiosk\App::remove_cron_job');
