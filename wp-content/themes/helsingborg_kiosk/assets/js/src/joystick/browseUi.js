@@ -25,7 +25,12 @@ HbgKiosk.Joystick.browseUi = (function ($) {
      */
     browseUi.prototype.init = function () {
         this.findTabindex();
-        this.handleEvents();
+
+        if (focusableElements.length > 0) {
+            this.handleEvents();
+        } else {
+            $('[data-' + dataAttr + '="previous"], [data-' + dataAttr + '="next"]').hide();
+        }
     };
 
     /**
@@ -72,7 +77,7 @@ HbgKiosk.Joystick.browseUi = (function ($) {
      */
     browseUi.prototype.focusPrev = function () {
         if (hasDragged) {
-            currentFocusedIndex++;
+            currentFocusedIndex--;
         }
 
         var prevFocusedIndex = currentFocusedIndex;
