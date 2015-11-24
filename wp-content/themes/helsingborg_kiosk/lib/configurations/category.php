@@ -1,14 +1,14 @@
-<?php 
-	
+<?php
+
 	if( function_exists('acf_add_local_field_group') ):
-		
+
 		acf_add_local_field_group(array (
 			'key' => 'group_5649eecb6a066',
 			'title' => 'Aktiv kategori?',
 			'fields' => array (
 				array (
 					'key' => 'field_5649eef2dcd6c',
-					'label' => 'Aktiverad',
+					'label' => '',
 					'name' => 'poi-category-inactive',
 					'type' => 'true_false',
 					'instructions' => '',
@@ -41,5 +41,5 @@
 			'active' => 1,
 			'description' => '',
 		));
-		
+
 	endif;
