@@ -6,7 +6,7 @@ $dot-size: 30px;
 
 .flickity-page-dots {
 	counter-reset: numbered-list-item;
-	bottom: -81px;
+	bottom: -73px;
 
 	.dot {
 		position: relative;
@@ -74,5 +74,5 @@ $dot-size: 30px;
 }
 
 .slider {
-	min-height: 590px; 
+	min-height: 590px;
 }
