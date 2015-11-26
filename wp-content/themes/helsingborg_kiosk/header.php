@@ -39,7 +39,8 @@
 			color: #000; 
 			text-transform: uppercase;
 			font-size: 3em; 
-			content: " ";
+			content: "Laddar...";
+			color: #eee; 
 		} 
 	</style>
 	
