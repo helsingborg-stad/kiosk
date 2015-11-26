@@ -32,7 +32,7 @@
 				foreach ( $user_agent_array as $user_agent_id ) {
 
 					if ( strpos($user_agent_id, "HBGKIOSK-" ) === 0 ) {
-						return $user_agent_id; 
+						return trim($user_agent_id,"]"); 
 					}
 					
 				} 
