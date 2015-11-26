@@ -80,6 +80,14 @@
 		<![endif]-->
 
 		<?php wp_footer(); ?>
+		
+		<script>
+			jQuery(function(){
+				setTimeout(function(){
+					jQuery("body").removeClass("doing-preload"); 
+				}, 300); 
+			});
+		</script>
 
 	</body>
 </html>

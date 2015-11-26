@@ -23,6 +23,26 @@
 <!--[if IE 9]>    <html class="no-js ie9 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+	
+	<!-- Preloader overlay -->
+	<style>
+		body.doing-preload:after {
+			text-align: center; 
+			position: fixed; 
+			top: 80%;
+			left: 50%;
+			transform: translateY(-50%);
+			transform: translateX(-50%);
+			z-index: 9999; 
+			outline: 2000px solid rgba(255,255,255,0.3); 
+			background: rgba(255,255,255,0.3); 
+			color: #000; 
+			text-transform: uppercase;
+			font-size: 3em; 
+			content: " ";
+		} 
+	</style>
+	
     <meta charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
 
@@ -75,6 +95,8 @@
 		if (has_subcategories($cat)) {
 			$body_classes[] = 'has-subcategories';
 		}
+		
+		$body_classes[] = "doing-preload"; 
 	?>
 
 </head>
