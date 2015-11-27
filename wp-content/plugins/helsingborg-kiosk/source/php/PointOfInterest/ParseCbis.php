@@ -243,9 +243,9 @@ class ParseCbis
         foreach ($postCategories as $postCategory) {
             $mapTheseCategories = get_field('poi-category-map', 'category_' . $postCategory->term_id);
 
-            if (is_array($mapTheseCategories)) {
+            if (is_array($mapTheseCategories) && !is_wp_error($mapTheseCategories) ) {
                 foreach ($mapTheseCategories as $map) {
-                    if (in_array(html_entity_decode($map->name), $cbisCategories)) {
+                    if (!is_wp_error($map) && in_array(html_entity_decode($map->name), $cbisCategories)) {
                         $matches[] = $postCategory->term_id;
                     }
                 }
