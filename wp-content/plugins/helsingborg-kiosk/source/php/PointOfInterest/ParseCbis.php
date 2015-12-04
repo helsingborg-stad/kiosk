@@ -273,9 +273,30 @@ class ParseCbis
         update_post_meta($postId, 'poi-phone', $data->phoneNumber);
         update_post_meta($postId, 'poi-price', $data->price);
         update_post_meta($postId, 'poi-image', $data->imageUrl);
+        update_post_meta($postId, 'poi-website', $this->parseUrlField($data->website));
 
         // Update CBIS-categories taxonomy
         wp_set_post_terms($postId, $data->categories, 'cbisCategories', $append = false);
+    }
+    
+    /**
+     * Checks if required values exist in cbis item
+     * @param  object $data The cbis data
+     * @return boolean
+     */
+    private function parseUrlField($data)
+    {
+       if (!filter_var($data, FILTER_VALIDATE_URL) === false) {
+	       
+	       $data = parse_url($data); 
+	       
+	       if (is_array($data) && !empty($data) && isset($data['host'])) {
+		       return "http://" . $data['host']; 
+	       }
+	       
+	   }
+	   
+	   return ""; 
     }
 
     /**

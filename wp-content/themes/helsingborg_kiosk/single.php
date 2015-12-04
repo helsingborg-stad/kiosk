@@ -14,10 +14,10 @@ the_post();
 	//Get avabile data (filter out all blank data)
 	$sidebar_data = array_filter(
 						array(
-							'adress' 	=> get_post_meta($post->ID, 'poi-address', true),
-							'postal' 	=> get_post_meta($post->ID, 'poi-postalcode', true),
-							'city' 		=> get_post_meta($post->ID, 'poi-city', true),
-							'phone' 	=> formatPhoneNumber(get_post_meta($post->ID, 'poi-phone', true))
+							'adress' 			=> get_post_meta($post->ID, 'poi-address', true),
+							'postal_city' 		=> str_replace(" ", "", get_post_meta($post->ID, 'poi-postalcode', true) ) . " " . strtoupper( get_post_meta($post->ID, 'poi-city', true) ),
+							'phone' 			=> formatPhoneNumber(get_post_meta($post->ID, 'poi-phone', true)),
+							'url'				=> str_replace("http://", "", str_replace("www.", "", get_post_meta($post->ID, 'poi-website', true)))
 						)
 					);
 
@@ -37,13 +37,36 @@ the_post();
 				echo '<ul>';
 
 					foreach ( $sidebar_data as $sidebar_id => $sidebar_item ) {
-
-						switch ($sidebar_id) {
-						    case 'phone':
-						        if ( strlen( $sidebar_item ) > 4 ) { echo '+46 ' . ltrim( $sidebar_item, '0' ); }
-						        break;
-						    default:
-						       echo '<li>'.$sidebar_item.'</li>';
+						
+						if (!empty($sidebar_item) && $sidebar_item != "(0)" ) {
+							
+							echo '<li>'; 
+							
+								switch ($sidebar_id) {
+								    case 'phone':
+								    	echo '<i class="ion-ios-telephone" style="margin-right: 5px;"></i> ';
+								        if ( strlen( $sidebar_item ) > 4 ) { echo '+46 ' . ltrim( $sidebar_item, '0' ); }
+								        break;
+								    case 'url': 
+								 	   echo '<i class="ion-link" style="margin-right: 5px;"></i> ';
+								 	   echo $sidebar_item;
+								 	   break; 
+								 	case 'adress': 
+								 	   echo '<i class="ion-ios-navigate" style="margin-right: 5px;"></i> ';
+								 	   echo $sidebar_item;
+								 	   break; 
+								 	case 'postal_city': 
+								 	   echo '<span style="display: inline-block; width: 20px;"></span> ';
+								 	   echo $sidebar_item;
+								 	   echo '<span style="display: block; height: 10px;"></span> ';
+								 	   break; 
+								    default:
+								       echo $sidebar_item;
+								       break;  
+								}
+								
+							echo '</li>';
+							
 						}
 
 					}
