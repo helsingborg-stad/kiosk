@@ -54,7 +54,7 @@ if ( !class_exists( 'WpSimpleCache' ) ) {
 				self::$cache_time 				= 0; 									//Cachetime in seconds for ajax calls (default 10 minutes)
 				self::$post_request_checksum 	= "ajax_".md5(serialize($_POST));		//Filename for POST REQUEST
 			} else {
-				self::$cache_time 				= 60*60; 								//Global cachetime in seconds (default one month)
+				self::$cache_time 				= 60*60;	 							//Global cachetime in seconds (default one month)
 				self::$post_request_checksum 	= false; 								//Turn of post requests cache 
 			}
 			
@@ -116,10 +116,10 @@ if ( !class_exists( 'WpSimpleCache' ) ) {
 		   while($file = readdir($master_dir)) {
 		      if($file != "." AND $file != "..") {
 		         if(is_dir($file)){
-		            chmod($file, self::$dir_chmod);
+		            @chmod($file, self::$dir_chmod);
 		         }else{
 			        if ( $include_files ) {
-				        chmod($path."/".$file, self::$file_chmod);
+				        @chmod($path."/".$file, self::$file_chmod);
 			        } 
 		            if(is_dir($path."/".$file)) {
 		            	self::chmod_r($path."/".$file, true );
@@ -165,7 +165,7 @@ if ( !class_exists( 'WpSimpleCache' ) ) {
 				fwrite($file_handle, gzencode($callback_data, 9));
 				
 				//Set correct user rights
-				chmod(self::get_filename(), self::$file_chmod);
+				@chmod(self::get_filename(), self::$file_chmod);
 	
 			}
 	
@@ -357,7 +357,7 @@ add_action('admin_bar_menu', function($wp_admin_bar) {
 	//Static settings 
 	$settings = array(
 					'id' => 'wp-simple-cache-clear-all',
-					'title' => __('Töm hela cachen','wp-simple-cache'),
+					'title' => __('Töm cache','wp-simple-cache'),
 					'meta' => array(
 						'class' => 'wp-simple-cache-button'
 					)
@@ -380,7 +380,7 @@ add_action('admin_bar_menu', function($wp_admin_bar) {
 	//Static settings 
 	$settings = array(
 					'id' => 'wp-simple-cache-clear-this',
-					'title' => __('Töm cache för denna sida','wp-simple-cache'),
+					'title' => __('Töm cache för sida','wp-simple-cache'),
 					'meta' => array(
 						'class' => 'wp-simple-cache-button'
 					)
