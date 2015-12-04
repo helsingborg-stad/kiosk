@@ -1,1 +1,5 @@
-<div style="text-align: center; padding: 100px 50px; font-size: 20px;">Det finns inga platser tillgängliga i denna kategori.</div>
+<?php
+	
+	get_header();
+	get_template_part("404-message"); 
+	get_footer(); 

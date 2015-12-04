@@ -21,7 +21,7 @@ $places                     = $HelsingborgKioskFrontend->get_places($cat);
         <?php foreach ($page as $item) : $tabindex++; ?>
         <li>
             <a class="slider-row" href="<?php echo $item['post_link']; ?>" tabindex="<?php echo $tabindex; ?>">
-                <span class="place-image"><span style="background-image: url('<?php echo $item['post_image']; ?>');"></span></span>
+                <span class="place-image"><span style="background-image: url('<?php echo $item['post_image']; ?>'); background-color: #eee; "></span></span>
                 <span class="place-title"><?php echo $item['post_title']; ?></span>
                 <span class="place-distance"><i class="ion-android-walk"></i> <?php echo ( ( $item['post_distance'] != "0.0" ) ? $item['post_distance'] . " KM" : __("I närheten") ); ?></span>
                 <span class="place-action"><i class="fa fa-arrow-circle-o-right"></i></span>
@@ -32,5 +32,5 @@ $places                     = $HelsingborgKioskFrontend->get_places($cat);
     <?php endforeach; ?>
 </div>
 <?php } else { ?>
-	<?php get_template_part('404');?>
+	<?php get_template_part('404-message');?>
 <?php } ?> 

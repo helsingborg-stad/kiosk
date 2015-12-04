@@ -27,8 +27,10 @@ the_post();
 
 ?>
 	<aside>
-
+		
+		<?php if (!filter_var($imageUrl, FILTER_VALIDATE_URL) === false) { ?> 
 		<img src="<?php echo $imageUrl; ?>" style="width: 100%;" />
+		<?php } ?> 
 
 		<?php
 
