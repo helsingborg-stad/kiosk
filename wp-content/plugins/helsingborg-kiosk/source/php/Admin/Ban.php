@@ -15,7 +15,7 @@ class Ban
             'social-media-settings',
             'Banna bilder',
             'Banna bilder',
-            'administrator',
+            'edit_posts',
             'social-media-ban',
             array($this, 'banPageContent')
         );
