@@ -12,9 +12,16 @@ $number-of-visible-items: 10;
 
 	/* SINGLE PAGE */
 
-	article, aside {
+	article, aside .inner {
 		border: 1px solid $creamy-darker;
 		background: #fff;
+		margin-bottom: 40px; 
+		
+	}
+	
+	.image-max-height {
+		overflow: hidden; 
+		max-height: 242px; 
 	}
 
 	aside + article {
@@ -305,4 +312,15 @@ $number-of-visible-items: 10;
 
 .single #content {
 	top: 58%;
+}
+
+.infomessage {
+	color: #969696; 
+	padding: 15px;
+	font-size: .8em; 
+	line-height: 160%; 
+	h2 {
+		margin-top: 0;
+		font-size: 1.2em;
+	}
 }

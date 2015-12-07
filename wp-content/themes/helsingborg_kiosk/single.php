@@ -27,57 +27,65 @@ the_post();
 
 ?>
 	<aside>
-		
-		<?php if (!filter_var($imageUrl, FILTER_VALIDATE_URL) === false) { ?> 
-		<img src="<?php echo $imageUrl; ?>" style="width: 100%;" />
-		<?php } ?> 
-
-		<?php
-
-			if ( is_array( $sidebar_data ) && !empty( $sidebar_data ) ) {
-
-				echo '<ul>';
-
-					foreach ( $sidebar_data as $sidebar_id => $sidebar_item ) {
-						
-						if (!empty($sidebar_item) && $sidebar_item != "(0)" ) {
+		<div class="inner">
+			<?php if (!filter_var($imageUrl, FILTER_VALIDATE_URL) === false) { ?> 
+				<div class="image-max-height">
+					<img src="<?php echo $imageUrl; ?>" style="width: 100%;" />
+				</div>
+			<?php } ?> 
+			
+			
+			<?php
+	
+				if ( is_array( $sidebar_data ) && !empty( $sidebar_data ) ) {
+	
+					echo '<ul>';
+	
+						foreach ( $sidebar_data as $sidebar_id => $sidebar_item ) {
 							
-							echo '<li>'; 
-							
-								switch ($sidebar_id) {
-								    case 'phone':
-								    	echo '<i class="ion-ios-telephone" style="margin-right: 5px;"></i> ';
-								        if ( strlen( $sidebar_item ) > 4 ) { echo '+46 ' . ltrim( $sidebar_item, '0' ); }
-								        break;
-								    case 'url': 
-								 	   echo '<i class="ion-link" style="margin-right: 5px;"></i> ';
-								 	   echo $sidebar_item;
-								 	   break; 
-								 	case 'adress': 
-								 	   echo '<i class="ion-ios-navigate" style="margin-right: 5px;"></i> ';
-								 	   echo $sidebar_item;
-								 	   break; 
-								 	case 'postal_city': 
-								 	   echo '<span style="display: inline-block; width: 20px;"></span> ';
-								 	   echo $sidebar_item;
-								 	   echo '<span style="display: block; height: 10px;"></span> ';
-								 	   break; 
-								    default:
-								       echo $sidebar_item;
-								       break;  
-								}
+							if (!empty($sidebar_item) && $sidebar_item != "(0)" ) {
 								
-							echo '</li>';
-							
+								echo '<li>'; 
+								
+									switch ($sidebar_id) {
+									    case 'phone':
+									    	echo '<i class="ion-ios-telephone" style="margin-right: 5px;"></i> ';
+									        if ( strlen( $sidebar_item ) > 4 ) { echo '+46 ' . ltrim( $sidebar_item, '0' ); }
+									        break;
+									    case 'url': 
+									 	   echo '<i class="ion-link" style="margin-right: 5px;"></i> ';
+									 	   echo $sidebar_item;
+									 	   break; 
+									 	case 'adress': 
+									 	   echo '<i class="ion-ios-navigate" style="margin-right: 5px;"></i> ';
+									 	   echo $sidebar_item;
+									 	   break; 
+									 	case 'postal_city': 
+									 	   echo '<span style="display: inline-block; width: 20px;"></span> ';
+									 	   echo $sidebar_item;
+									 	   echo '<span style="display: block; height: 10px;"></span> ';
+									 	   break; 
+									    default:
+									       echo $sidebar_item;
+									       break;  
+									}
+									
+								echo '</li>';
+								
+							}
+	
 						}
-
-					}
-
-				echo '</ul>';
-
-			}
-		?>
-
+	
+					echo '</ul>';
+	
+				}
+			?>
+		</div>
+	
+		<div class="inner animated fadeIn">
+			<?php get_template_part('contact-message'); ?> 
+		</div>
+		
 	</aside>
 
 	<article>

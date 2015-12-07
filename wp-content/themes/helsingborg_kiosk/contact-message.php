@@ -1,0 +1,1 @@
+<div class="infomessage"><h2>Har du frågor?</h2> Kontakta oss via epost kontaktcenter@helsingborg.se eller telefon 042-10 50 00 om du vill veta mer, eller rapportera ett fel.</div>
