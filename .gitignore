@@ -28,3 +28,4 @@ wp-content/themes/helsingborg_kiosk/node_modules
 wp-content/themes/helsingborg_kiosk/node_modules/*
 wp-content/themes/helsingborg_kiosk/assets/css/dist
 wp-content/themes/helsingborg_kiosk/assets/js/dist
+wp-content/plugins/helsingborg-kiosk/log/cron_import_places.log
