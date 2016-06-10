@@ -1,5 +1,5 @@
-<?php 
-	
+<?php
+
 	add_action('init', function ()
     {
 
@@ -34,5 +34,5 @@
         );
 
         register_post_type('hbgKioskScreensaver', $args);
-    
+
     });
