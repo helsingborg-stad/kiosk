@@ -12,6 +12,7 @@ class App
         new Event\CustomPostType();
         new Screensaver\Screensaver();
         new Takeover\Takeover();
+        new InstaGramStaticFeed\Instagram();
 
         new Admin\Ban();
 
@@ -35,28 +36,28 @@ class App
 	}
 
 	public function do_import_cbis_event () {
-		
-		//Do import 
+
+		//Do import
 		new PointOfInterest\ParseCbis('http://familjenhelsingborg.se/cbisexport.csv');
-		
-		//Log when done 
+
+		//Log when done
 		file_put_contents(dirname(__FILE__)."/log/cron_import_places.log", "Last run: ".date("Y-m-d H:i:s"));
-		
+
 	}
 
 }
 
 add_action('init', function(){
-	
+
 	if (isset($_GET['cbis_import_cron'])) {
-	
-		//Do import 
+
+		//Do import
 		new PointOfInterest\ParseCbis('http://familjenhelsingborg.se/cbisexport.csv');
-		
-		//Log when done 
+
+		//Log when done
 		file_put_contents(dirname(__FILE__)."/log/cron_import_places_get.log", "Last run: ".date("Y-m-d H:i:s"));
-	
+
 	}
-	
+
 });
 

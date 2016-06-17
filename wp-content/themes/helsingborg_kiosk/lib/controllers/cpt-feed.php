@@ -31,7 +31,8 @@
                 'slug' => 'instagramfeed',
                 'with_front' => false
             ),
-            'exclude_from_search'  => true
+            'exclude_from_search'  => true,
+            'supports' => array('title','editor')
         );
 
         register_post_type('hbgKioskFeed', $args);
